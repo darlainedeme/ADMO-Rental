@@ -22,7 +22,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">2465 18th St NW #4</div>
-          <p style="max-width:38ch;">A furnished one-bedroom in Adams Morgan. Available for one year starting September 2026, with possibility of renewal. Fully furnished, in one of DC's most walkable neighborhoods.</p>
+          <p style="max-width:38ch;">A furnished one-bedroom in a small four-unit building on 18th Street, Adams Morgan. The kind of place where you'll know your neighbors and walk almost everywhere. Available September 2026, twelve-month lease, possibility of renewal.</p>
         </div>
         <div>
           <h4>Pages</h4>
