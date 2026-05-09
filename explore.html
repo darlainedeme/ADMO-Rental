@@ -377,10 +377,6 @@ details[open] .fp-summary::before { content: "▾ "; }
           <input type="checkbox" id="tg-starred" />
           <span><span class="big-toggle-icon">★</span> My top picks</span>
         </label>
-        <label class="big-toggle">
-          <input type="checkbox" id="tg-inadmo" />
-          <span><span class="big-toggle-icon">◉</span>Adams Morgan only</span>
-        </label>
       </div>
     </div>
 
@@ -633,9 +629,6 @@ sortSelect.addEventListener('change', e => { state.sort = e.target.value; render
 $('tg-starred').addEventListener('change', e => {
   state.starredOnly = e.target.checked; render(); fitToVisible();
 });
-$('tg-inadmo').addEventListener('change', e => {
-  state.inAdMoOnly = e.target.checked; render(); fitToVisible();
-});
 
 $('reset-all').addEventListener('click', () => {
   state.search = ''; searchInput.value = '';
@@ -643,7 +636,6 @@ $('reset-all').addEventListener('click', () => {
   state.preset = null;
   state.sort = 'distance'; sortSelect.value = 'distance';
   state.starredOnly = false; $('tg-starred').checked = false;
-  state.inAdMoOnly = false; $('tg-inadmo').checked = false;
   presetsHost.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
   render();
   fitToVisible();
