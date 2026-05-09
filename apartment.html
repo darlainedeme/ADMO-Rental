@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The apartment · 2465 18th St NW #4 · Adams Morgan</title>
+<meta name="description" content="Furnished one-bedroom in Adams Morgan, DC. 599 sq ft, central A/C, in-unit washer/dryer, cats and dogs OK. Available September 2026 to August 2027." />
+
+<meta property="og:title" content="The apartment · 2465 18th St NW #4" />
+<meta property="og:description" content="599 sq ft, fully furnished, in-unit laundry. 12-month lease September 2026." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
+
+<script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="assets/styles.css" />
+
+<style>
+.page-hero { padding: 4rem 0 2.5rem; }
+.page-hero h1 { max-width: 18ch; margin-bottom: 1rem; }
+.page-hero .meta { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 1.25rem; }
+
+/* Big primary photo */
+.hero-photo {
+  position: relative; height: clamp(380px, 60vh, 640px);
+  border-radius: var(--radius-lg); overflow: hidden;
+  margin-bottom: 1rem; cursor: pointer; background: var(--bg2);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-photo .label {
+  position: absolute; bottom: 1.25rem; right: 1.25rem;
+  background: rgba(0,0,0,.55); color: white;
+  padding: .55rem 1rem; border-radius: 999px; font-size: .85rem; backdrop-filter: blur(6px);
+}
+
+/* Gallery grid */
+.gallery {
+  display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 200px;
+  gap: 8px; margin-bottom: 4rem;
+}
+.gallery .tile { overflow: hidden; cursor: pointer; background: var(--bg2); border-radius: var(--radius); }
+.gallery .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.gallery .tile:hover img { transform: scale(1.05); }
+.gallery .tile.span-2 { grid-column: span 2; }
+.gallery .tile.span-3 { grid-column: span 3; }
+.gallery .tile.span-rows-2 { grid-row: span 2; }
+.gallery-cta {
+  text-align: center; margin-top: 1rem;
+}
+
+/* Quick facts strip */
+.facts-strip {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden;
+  margin-bottom: 4rem; box-shadow: var(--shadow);
+}
+.facts-strip .fact { padding: 1.25rem 1.5rem; border-right: 1px solid var(--line); }
+.facts-strip .fact:last-child { border-right: none; }
+.facts-strip .k { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .25rem; }
+.facts-strip .v { font-weight: 600; font-size: 1rem; }
+
+/* About section: 2-col */
+.about-grid {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 4rem;
+  margin-bottom: 5rem;
+}
+.about-grid .prose p { margin-bottom: 1.1rem; max-width: 60ch; line-height: 1.75; font-size: 1rem; }
+.about-grid h2 { margin-bottom: 1.5rem; }
+
+/* Features */
+.features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+  align-content: start;
+}
+.feature-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.1rem 1.2rem; box-shadow: var(--shadow);
+}
+.feature-card.wide { grid-column: span 2; }
+.feature-card .label { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .35rem; }
+.feature-card .value { font-weight: 600; font-size: .95rem; }
+
+/* Included list */
+.included-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  background: var(--bg2); padding: 3rem 2.5rem;
+  border-radius: var(--radius-lg); margin-bottom: 5rem;
+  border: 1px solid var(--line);
+}
+.included-grid h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+.included-grid ul { list-style: none; }
+.included-grid li {
+  padding: .55rem 0; font-size: .94rem; line-height: 1.5;
+  display: flex; gap: .65rem; align-items: flex-start;
+  border-bottom: 1px dashed var(--line);
+}
+.included-grid li:last-child { border-bottom: none; }
+.included-grid li .check, .included-grid li .x {
+  flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px;
+}
+.included-grid .check { color: var(--secondary); }
+.included-grid .x { color: var(--muted); }
+
+/* Lease box */
+.lease-box {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  margin-bottom: 5rem;
+  box-shadow: var(--shadow);
+}
+.lease-box .col h3 { margin-bottom: .75rem; }
+.lease-box .col ul { list-style: none; font-size: .94rem; line-height: 1.65; color: var(--muted); }
+.lease-box .col ul li::before { content: "·"; color: var(--primary); padding-right: .4rem; font-weight: bold; }
+
+/* Final CTA */
+.contact-card {
+  background: var(--primary-soft); border-radius: var(--radius-lg); padding: 2.5rem;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+  border: 1px solid rgba(193,75,47,.15);
+  margin-bottom: 4rem;
+}
+.contact-card h3 { font-size: 1.15rem; margin-bottom: .35rem; }
+.contact-card p { color: var(--muted); font-size: .95rem; max-width: 50ch; }
+
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  .gallery .tile.span-2, .gallery .tile.span-3 { grid-column: span 1; }
+  .gallery .tile.span-rows-2 { grid-row: span 1; }
+  .facts-strip { grid-template-columns: 1fr 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .included-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
+  .lease-box { grid-template-columns: 1fr; padding: 1.75rem; }
+  .contact-card { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .facts-strip { grid-template-columns: 1fr 1fr; }
+  .features { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div data-partial="nav"></div>
+
+<section class="container page-hero fade-in">
+  <div class="meta">2465 18th St NW #4 · Adams Morgan, Washington DC 20009</div>
+  <h1>The apartment.</h1>
+  <p class="lede">599 sq ft furnished one-bedroom in a small brick condo from 1900. Open-plan kitchen and living area, real spa-feel bathroom, in-unit laundry, central A/C. Quiet building, loud neighborhood.</p>
+</section>
+
+<!-- Hero photo + gallery -->
+<div class="container">
+  <div class="hero-photo" onclick="openLightbox(0)">
+    <img src="Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp" alt="Apartment hero photo" />
+    <div class="label">Click any photo for fullscreen · 21 in total</div>
+  </div>
+  <div class="gallery" id="gallery"></div>
+  <div class="gallery-cta">
+    <button class="btn btn-ghost" onclick="openLightbox(0)">View all 21 photos</button>
+  </div>
+</div>
+
+<!-- Quick facts -->
+<div class="container" style="margin-top: 4rem;">
+  <div class="facts-strip fade-in stagger" id="facts-strip"></div>
+</div>
+
+<!-- About + Features -->
+<div class="container">
+  <div class="eyebrow">What it's like</div>
+  <h2>The space, in plain words.</h2>
+  <div class="about-grid" style="margin-top: 2.5rem;">
+    <div class="prose">
+      <p>It's unit 4 in a three-story brick condo from 1900: small building, intercom, exterior cameras, quiet neighbors. The layout is open-plan, kitchen and living combined, which works because the kitchen is actually good — stainless appliances, built-in microwave, dishwasher, disposal, upgraded countertops. Hardwood floors throughout, recessed lighting, a spa-style bathroom with a double vanity and serious tile work.</p>
+      <p>At 599 sq ft it's not huge, but it's laid out well and nothing feels tight. Central A/C keeps it comfortable in summer, forced-air heat in winter. Washer and dryer are stacked in the unit, which you'll appreciate in a neighborhood where the nearest laundromat is a hike. Gas, water, and trash are covered by the condo fee.</p>
+      <p>Most people on this block don't have a car, and you won't need one. The 42 bus runs directly downtown from the corner, three Bikeshare stations are within a block, and the walk score is 99. A bike is included with the apartment if you'd like one.</p>
+      <p>The building sits on a quieter stretch of 18th, set back from the bar strip. You'll hear the neighborhood on Friday and Saturday nights but not through the walls.</p>
+    </div>
+    <div class="features fade-in stagger" id="features"></div>
+  </div>
+</div>
+
+<!-- What's included / not -->
+<div class="container">
+  <div class="included-grid">
+    <div>
+      <h3 style="color: var(--secondary);">Included</h3>
+      <ul id="included-list"></ul>
+    </div>
+    <div>
+      <h3 style="color: var(--muted);">Not included</h3>
+      <ul id="not-included-list"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Lease terms -->
+<div class="container">
+  <div class="eyebrow">Lease terms</div>
+  <h2>The deal, simply.</h2>
+  <div class="lease-box" style="margin-top: 2rem;">
+    <div class="col">
+      <h3>Dates and length</h3>
+      <ul>
+        <li>Twelve-month fixed-term lease</li>
+        <li>Move-in: September 1, 2026</li>
+        <li>Move-out: August 31, 2027</li>
+        <li>I'd consider extending if it works for both sides</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Rent and deposit</h3>
+      <ul>
+        <li>Rent: <strong style="color: var(--ink);">$2,900 / month</strong></li>
+        <li>Security deposit: one month, refundable</li>
+        <li>First month's rent due at signing</li>
+        <li>Renter's insurance required</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Pets</h3>
+      <ul>
+        <li>Cats and dogs welcome</li>
+        <li>One-time pet deposit, refundable</li>
+        <li>Building is pet-friendly throughout</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Tenant screening</h3>
+      <ul>
+        <li>Standard background and credit check</li>
+        <li>Income verification (3x rent or co-signer)</li>
+        <li>Two references</li>
+        <li>Happy to do a video call before any in-person tour</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div data-partial="footer"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">&times;</button>
+  <button class="lb-arrow lb-prev" onclick="navLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="" />
+  <button class="lb-arrow lb-next" onclick="navLightbox(1)">&#8250;</button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
+
+<script src="assets/icons.js"></script>
+<script src="assets/partials.js"></script>
+<script src="assets/shared.js"></script>
+<script>
+const PHOTOS = [
+  "Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp",
+  "Images/846bae773e2d0b55d5f4ed4428f75b08-cc_ft_768.webp",
+  "Images/16c34412194bc4dcdb3fa124f33c56f5-cc_ft_768.webp",
+  "Images/fec92ece7c3ededd27c346a2430ad92d-cc_ft_768.webp",
+  "Images/e02123ef704a3381e3cc24ff428959be-cc_ft_768.webp",
+  "Images/c9404eb434c1e056fbeba8cedf2a7c16-cc_ft_768.webp",
+  "Images/97585aec3f6b0b3d6c8318d6f4f61daf-cc_ft_768.webp",
+  "Images/c55f99c0e1d59f05470b37112060eb0a-cc_ft_384.webp",
+  "Images/e22f6e3d6828065a8ed78bdddd9303cd-cc_ft_384.webp",
+  "Images/5a2f587edd5513b509be33a6f56e9050-cc_ft_384.webp",
+  "Images/73ac34a714adabee8d64c0d64322899e-cc_ft_384.webp",
+  "Images/5dab36ec01a2ab9c8c02b5480627dbf0-cc_ft_384.webp",
+  "Images/8b810ad2c81784d1c98fadccad036a00-cc_ft_384.webp",
+  "Images/f75c0b578fd45d189bf68b99d5d257eb-cc_ft_384.webp",
+  "Images/7c26cb5ce9332a7bdbbddcebe9501d7c-cc_ft_384.webp",
+  "Images/03f76348e89180ad9b8a39001416c524-cc_ft_384.webp",
+  "Images/7cf094276add6966add935ca1ecbfd1a-cc_ft_384.webp",
+  "Images/474b114831784b37651a1fd519212a41-cc_ft_384.webp",
+  "Images/425ea9de704bcddc704242edc1df539d-cc_ft_384.webp",
+  "Images/c506424bd50142347b9bac4879e1ca61-cc_ft_384.webp",
+  "Images/f09291a68ff413f6bef0f35bb33e1aa5-cc_ft_384.webp",
+];
+
+// Build gallery: 6-col grid showing photos 1..n with mixed spans for visual rhythm
+(function() {
+  const g = document.getElementById('gallery');
+  // Show photos 1..10 in the grid (skip 0, that's the hero photo above)
+  const subset = PHOTOS.slice(1, 11);
+  // Custom spans pattern for variety
+  const spans = ['span-3 span-rows-2', 'span-3', 'span-2', 'span-2', 'span-2', 'span-3', 'span-3', 'span-2', 'span-2', 'span-2'];
+  subset.forEach((src, i) => {
+    const tile = document.createElement('div');
+    tile.className = 'tile ' + spans[i];
+    tile.innerHTML = `<img loading="lazy" src="${src}" alt="Apartment photo ${i+2}" />`;
+    tile.addEventListener('click', () => openLightbox(i + 1));
+    g.appendChild(tile);
+  });
+})();
+
+// Quick facts strip
+(function() {
+  const facts = [
+    { k: 'Rent', v: '$2,900 / mo' },
+    { k: 'Lease', v: '12 months' },
+    { k: 'Available', v: 'Sep 1, 2026' },
+    { k: 'Through', v: 'Aug 31, 2027' },
+    { k: 'Furnished', v: 'Yes' },
+    { k: 'Pets', v: 'Cats & dogs OK' },
+  ];
+  document.getElementById('facts-strip').innerHTML = facts.map(f =>
+    `<div class="fact"><div class="k">${f.k}</div><div class="v">${f.v}</div></div>`
+  ).join('');
+})();
+
+// Features
+(function() {
+  const features = [
+    { label: 'Bedrooms',   value: '1' },
+    { label: 'Bathrooms',  value: '1' },
+    { label: 'Size',       value: '599 sq ft' },
+    { label: 'Unit',       value: '#4 · 2nd floor' },
+    { label: 'Building',   value: 'Brick condo, 1900' },
+    { label: 'Heat / AC',  value: 'Central A/C + forced air' },
+    { label: 'Laundry',    value: 'In-unit washer/dryer' },
+    { label: 'Utilities',  value: 'Gas, water & trash incl.' },
+    { label: 'Walk score', value: '99 / 100' },
+  ];
+  document.getElementById('features').innerHTML = features.map(f =>
+    `<div class="feature-card"><div class="label">${f.label}</div><div class="value">${f.value}</div></div>`
+  ).join('');
+})();
+
+// Included / not included
+(function() {
+  const check = '<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+  const xmark = '<svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+  const incl = [
+    'All furniture (bed, sofa, dining, desk)',
+    'Full kitchen setup (cookware, plates, utensils)',
+    'Bedding and towels',
+    'In-unit washer/dryer',
+    'Central A/C and forced-air heat',
+    'Gas, water, and trash removing (in condo fee)',
+    'Electricity',
+    'Intercom and exterior cameras',
+  ];
+  const notIncl = [
+    'Renter\'s insurance (required, on tenant)',
+  ];
+  document.getElementById('included-list').innerHTML = incl.map(t => `<li>${check}<span>${t}</span></li>`).join('');
+  document.getElementById('not-included-list').innerHTML = notIncl.map(t => `<li>${xmark}<span>${t}</span></li>`).join('');
+})();
+
+// Lightbox
+let lbIdx = 0;
+function openLightbox(i) {
+  lbIdx = i;
+  document.getElementById('lightbox-img').src = PHOTOS[i];
+  document.getElementById('lb-count').textContent = `${i+1} / ${PHOTOS.length}`;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLightbox(d) {
+  lbIdx = (lbIdx + d + PHOTOS.length) % PHOTOS.length;
+  document.getElementById('lightbox-img').src = PHOTOS[lbIdx];
+  document.getElementById('lb-count').textContent = `${lbIdx+1} / ${PHOTOS.length}`;
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+</script>
+</body>
+</html>

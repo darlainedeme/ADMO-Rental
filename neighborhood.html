@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The neighborhood · Adams Morgan, DC</title>
+<meta name="description" content="A guide to Adams Morgan, Washington DC. Population, walk score, history, food, nightlife, transit gap, and what living here is actually like." />
+
+<meta property="og:title" content="Adams Morgan · the neighborhood guide" />
+<meta property="og:description" content="History, food, nightlife, the metro gap, and what living in Adams Morgan is actually like." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Images/neighborhood.jpg" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
+
+<script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<style>
+/* Landscape hero photo at the very top — cover, balanced framing */
+.hero-photo {
+  width: 100%; height: 360px; overflow: hidden;
+  margin-bottom: 0; background: var(--bg2);
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  animation: heroZoom 1.6s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes heroZoom {
+  from { transform: scale(1.08); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo img { animation: none; }
+}
+
+.page-hero { padding: 3rem 0 1rem; }
+.page-hero .meta { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 1.25rem; }
+.page-hero h1 { max-width: 20ch; }
+
+.intro-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem;
+  margin: 2rem 0 3rem;
+  align-items: start;
+}
+.intro-prose p { font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.25rem; text-align: justify; hyphens: auto; }
+.intro-prose p:first-child::first-letter {
+  font-family: var(--serif); font-size: 4.5em; line-height: 0.82;
+  float: left; margin: .04em .12em 0 0; color: var(--primary);
+}
+.intro-aside {
+  background: var(--bg2); border-radius: var(--radius-lg);
+  padding: 2rem; align-self: start; border: 1px solid var(--line);
+}
+.intro-aside .label { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--primary); font-weight: 600; margin-bottom: .75rem; }
+.intro-aside .quick-stat { display: flex; justify-content: space-between; padding: .85rem 0; border-bottom: 1px dashed var(--line); font-size: .92rem; }
+.intro-aside .quick-stat:last-child { border-bottom: none; }
+.intro-aside .quick-stat .v { font-weight: 600; color: var(--ink); }
+.intro-aside .quick-stat .k { color: var(--muted); }
+.intro-aside .source-link { font-size: .75rem; color: var(--muted); margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.intro-aside .source-link a { color: var(--primary); }
+
+/* Stats strip */
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  margin-bottom: 3rem;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 2rem;
+  box-shadow: var(--shadow);
+}
+.stats-row .stat { text-align: center; }
+.stats-row .stat .num { font-family: var(--serif); font-size: 2.4rem; line-height: 1; color: var(--ink); margin-bottom: .35rem; }
+.stats-row .stat .lbl { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+/* Demographics charts grid */
+.demo-section { margin-bottom: 5rem; }
+.demo-section h2 { margin-bottom: .5rem; }
+.demo-section .subtitle { color: var(--muted); font-size: .95rem; margin-bottom: 2rem; max-width: 60ch; }
+.charts-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+}
+.chart-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.chart-card h4 { font-size: .95rem; margin-bottom: .25rem; color: var(--ink); }
+.chart-card .source { font-size: .72rem; color: var(--muted); margin-bottom: .85rem; }
+.chart-card .canvas-wrap { position: relative; height: 220px; }
+
+/* Editorial OSM map block */
+.osm-map-section {
+  margin: 0 0 4rem;
+  background: #f3eee5;
+  border-radius: var(--radius-lg);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.osm-map-section .head {
+  padding: 2rem 2.5rem 1rem;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 1rem;
+}
+.osm-map-section .head h2 { color: #1a1a1a; }
+.osm-map-section .head .sub { font-size: .85rem; color: #6b6b6b; }
+.osm-map-section .map-wrap { position: relative; }
+.osm-map-section img { display: block; width: 100%; height: auto; }
+.osm-map-section .history-overlay {
+  position: absolute; right: 2.5rem; bottom: 2.5rem;
+  width: min(420px, 42%);
+  background: rgba(255,255,255,.93);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  border: 1px solid #d4ccbe; border-left: 4px solid var(--secondary);
+  border-radius: var(--radius); padding: 1.4rem 1.6rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,.12); font-size: .85rem;
+}
+.osm-map-section .history-overlay .label { font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: var(--secondary); font-weight: 700; margin-bottom: .65rem; }
+.osm-map-section .history-overlay p { font-size: .85rem; line-height: 1.55; color: #2a2a2a; margin-bottom: .75rem; }
+.osm-map-section .history-overlay p:last-child { margin-bottom: 0; }
+.osm-map-section .foot {
+  padding: 1rem 2.5rem 1.5rem;
+  display: flex; justify-content: flex-end; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  font-size: .82rem; color: #6b6b6b;
+  background: #ebe6dc; border-top: 1px solid #d4ccbe;
+}
+.osm-map-section .foot a { color: var(--primary); font-weight: 500; }
+@media (max-width: 800px) {
+  .osm-map-section .history-overlay {
+    position: static; width: auto;
+    margin: 1.25rem 1.25rem 0; backdrop-filter: none;
+  }
+}
+
+/* Themes grid */
+.themes {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+  margin-bottom: 5rem;
+}
+.theme {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+.theme:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.theme .icon-wrap {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+.theme h3 { font-size: 1.1rem; margin-bottom: .65rem; }
+.theme p { font-size: .88rem; color: var(--muted); line-height: 1.55; flex: 1; margin-bottom: 1rem; }
+.theme .places { padding-top: .85rem; border-top: 1px dashed var(--line); }
+.theme .place {
+  font-size: .8rem; padding: .25rem 0;
+  display: flex; justify-content: space-between; gap: .5rem;
+}
+.theme .place .name { color: var(--ink); }
+.theme .place .dist { color: var(--muted); flex-shrink: 0; }
+
+/* Life callout — now with image on right */
+.life-block {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem;
+  margin-bottom: 5rem; align-items: stretch;
+}
+.life-callout {
+  background: var(--primary-soft); border-left: 4px solid var(--primary);
+  padding: 2.5rem 3rem; border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  max-width: none;
+}
+.life-callout h2 { margin-bottom: 1.5rem; }
+.life-callout ul { list-style: none; }
+.life-callout li {
+  padding: .75rem 0; font-size: .95rem; line-height: 1.5;
+  display: flex; gap: .65rem;
+  border-bottom: 1px dashed rgba(193,75,47,.2);
+  text-align: justify; hyphens: auto;
+}
+.life-callout li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); margin-top: 9px; flex-shrink: 0; }
+.life-photo { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); min-height: 360px; }
+.life-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Community quote */
+.community-quote {
+  background: var(--card); border: 1px solid var(--line);
+  border-left: 4px solid var(--secondary);
+  padding: 2.5rem 3rem; border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin-bottom: 5rem; max-width: 75ch;
+  box-shadow: var(--shadow);
+}
+.community-quote .label { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--secondary); font-weight: 600; margin-bottom: 1rem; }
+.community-quote blockquote {
+  font-family: var(--serif); font-size: 1.5rem; line-height: 1.45;
+  color: var(--ink); margin: 0;
+}
+
+/* Deep narrative — now with side images */
+.narrative-cols { margin-bottom: 5rem; }
+.narrative-cols h2 { margin-bottom: 2rem; }
+.narrative-cols .col {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--line);
+}
+.narrative-cols .col:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.narrative-cols .col h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--ink); }
+.narrative-cols .col p { font-size: 1rem; line-height: 1.75; color: var(--muted); margin-bottom: 1rem; text-align: justify; hyphens: auto; }
+.narrative-cols .col strong { color: var(--ink); font-weight: 500; }
+
+/* Two-column inside a col when there's an image */
+.col-with-image {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start;
+}
+.col-with-image.image-left { grid-template-columns: 1fr 1.2fr; }
+.col-with-image .col-image {
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
+  aspect-ratio: 4/3; background: var(--bg2);
+}
+.col-with-image .col-image img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.col-with-image .col-text p { max-width: none; }
+
+/* Transit static map */
+.transit-map { width: 100%; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); margin-top: 1rem; }
+.transit-map img { width: 100%; height: auto; display: block; }
+
+.bike-tag {
+  display: inline-block; margin-top: 1rem; font-size: .85rem;
+  color: #1a1a1a; background: #fde8d4; padding: .65rem 1rem;
+  border-radius: 6px; border-left: 3px solid var(--primary);
+  font-weight: 500;
+}
+
+/* Photo strip — neighborhood shots */
+.neighborhood-photos {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+  margin-bottom: 5rem;
+  border-radius: var(--radius); overflow: hidden;
+}
+.neighborhood-photos .tile { aspect-ratio: 4/5; overflow: hidden; background: var(--bg2); }
+.neighborhood-photos .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.neighborhood-photos .tile:hover img { transform: scale(1.05); }
+
+/* Big CTA to map */
+.explore-cta {
+  background: var(--ink); color: var(--bg);
+  border-radius: var(--radius-lg); padding: 4rem 3rem;
+  text-align: center; margin-bottom: 5rem;
+}
+.explore-cta h2 { color: var(--bg); margin-bottom: 1rem; max-width: 18ch; margin-left: auto; margin-right: auto; }
+.explore-cta p { color: rgba(255,255,255,.7); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 960px) {
+  .hero-photo { height: 240px; }
+  .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .themes { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1.25rem; }
+  .charts-grid { grid-template-columns: 1fr 1fr; }
+  .life-block { grid-template-columns: 1fr; }
+  .col-with-image, .col-with-image.image-left { grid-template-columns: 1fr; }
+  .neighborhood-photos { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .hero-photo { height: 220px; }
+  .themes, .charts-grid { grid-template-columns: 1fr; }
+  .life-callout, .explore-cta, .community-quote { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div data-partial="nav"></div>
+
+<div class="hero-photo">
+  <img src="Images/neighborhood.jpg" alt="Adams Morgan, Washington DC" />
+</div>
+
+<section class="container page-hero fade-in">
+  <div class="meta">Adams Morgan · Washington DC 20009</div>
+  <h1>The neighborhood, in detail.</h1>
+</section>
+
+<!-- ═══ INTRO ═════════════════════════════════════════ -->
+<section class="container fade-in">
+  <div class="intro-grid">
+    <div class="intro-prose">
+      <p>Adams Morgan is a 0.47 sq-mi neighborhood in northwest DC, home to about 17,113 people at a density of 36,411 per square mile. It sits in Ward 1, north of Dupont Circle and west of Columbia Heights, with Rock Creek Park forming the western edge and 16th Street the eastern. The neighborhood is one of the most walkable in the country: Walk Score 99, Bike Score 92, Transit Score 80, with an average commute of just 9 minutes. Most residents are renters, mostly in their 30s, mostly working professionals, and most days you'll see them on foot. About 82% of adults hold a bachelor's degree or higher, and the median household income is $146,664 — well above the national average.</p>
+      <p>The corner of 18th Street and Columbia Road is the actual center of it. Ethiopian platters at Tsehay and Elfegne, the country's largest whiskey collection at Jack Rose, a Michelin-recognized pasta room at Reveler's Hour, and a Saturday farmers market in Unity Park, set up basically downstairs. The American Planning Association named it one of America's "great neighborhoods" in 2014, citing intact Victorian rowhouses, murals, international diversity, and a pedestrian-and-cyclist-friendly streetscape. Adams Morgan Day, the annual September street festival, draws tens of thousands and has run since 1978.</p>
+      <p>What the demographic profile doesn't capture is the texture of life here. It's a place where the barista at Tryst pulls your double espresso before you've fully said hello, where the hardware-store guy remembers what kind of light bulb you bought last month, and where three months in you'll already know half the names on the block. The architecture is grand, the food is global, the scale is human. You'll learn the neighborhood not from a guidebook but from the people you keep running into.</p>
+    </div>
+    <div class="intro-aside">
+      <div class="label">At a glance</div>
+      <div class="quick-stat"><span class="k">Population</span><span class="v"><span data-count-to="17113">17,113</span></span></div>
+      <div class="quick-stat"><span class="k">Median age</span><span class="v"><span data-count-to="34">34</span></span></div>
+      <div class="quick-stat"><span class="k">Median household income</span><span class="v"><span data-count-to="146664" data-count-prefix="$">$146,664</span></span></div>
+      <div class="quick-stat"><span class="k">Walk Score</span><span class="v"><span data-count-to="99">99</span> / 100</span></div>
+      <div class="quick-stat"><span class="k">Bike Score</span><span class="v"><span data-count-to="92">92</span> / 100</span></div>
+      <div class="quick-stat"><span class="k">Transit Score</span><span class="v"><span data-count-to="80">80</span> / 100</span></div>
+      <div class="quick-stat"><span class="k">Average commute</span><span class="v"><span data-count-to="9">9</span> min</span></div>
+      <div class="source-link">
+        Sources: US Census ACS 2019–2023, Wikipedia, Walk Score, Niche, Kurby. <a href="https://www.point2homes.com/US/Neighborhood/DC/Washington/Adams-Morgan-Demographics.html#housing" target="_blank" rel="noopener">Full demographic breakdown →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEMOGRAPHIC CHARTS ════════════════════════════ -->
+<section class="container demo-section fade-in">
+  <div class="eyebrow">Who lives here</div>
+  <h2>The numbers behind the neighborhood.</h2>
+  <p class="subtitle">Drawn from the US Census ACS 2019–2023, Niche, Walk Score, and Kurby. The picture: young, professional, well-educated, and predominantly renting.</p>
+  <div class="charts-grid fade-in stagger">
+    <div class="chart-card"><h4>Age distribution</h4><div class="source">Median age 34 · Census ACS</div><div class="canvas-wrap"><canvas id="chartAge"></canvas></div></div>
+    <div class="chart-card"><h4>Education level</h4><div class="source">82% hold a bachelor's or graduate degree</div><div class="canvas-wrap"><canvas id="chartEdu"></canvas></div></div>
+    <div class="chart-card"><h4>Household income</h4><div class="source">Median $146,664 · 51% earn $150k+</div><div class="canvas-wrap"><canvas id="chartInc"></canvas></div></div>
+    <div class="chart-card"><h4>Racial makeup</h4><div class="source">Mixed, gateway-immigrant roots</div><div class="canvas-wrap"><canvas id="chartRace"></canvas></div></div>
+    <div class="chart-card"><h4>Owners vs renters</h4><div class="source">Strong rental market: 65% renter-occupied</div><div class="canvas-wrap"><canvas id="chartOwn"></canvas></div></div>
+    <div class="chart-card"><h4>Walkability scores</h4><div class="source">Walk / Bike / Transit out of 100</div><div class="canvas-wrap"><canvas id="chartWalk"></canvas></div></div>
+  </div>
+</section>
+
+<!-- ═══ EDITORIAL MAP + HISTORY OVERLAY ═══════════════ -->
+<section class="container fade-in">
+  <div class="osm-map-section">
+    <div class="head">
+      <div>
+        <div class="eyebrow">From above</div>
+        <h2>The walking radius.</h2>
+      </div>
+      <div class="sub" style="max-width:34ch;">Parks in green, Rock Creek in blue, the street grid in white. The apartment is the red dot at 18th &amp; Columbia. Key landmarks labeled.</div>
+    </div>
+    <div class="map-wrap">
+      <img src="assets/data/neighborhood.svg" alt="Editorial field map of Adams Morgan with the apartment and key landmarks marked" loading="lazy" decoding="async" />
+      <div class="history-overlay">
+        <div class="label">A short history</div>
+        <p>Colonial-era estates after DC was created in 1791. Electric streetcars arrived in 1903 and the area grew into upper- and middle-class neighborhoods. In 1948, Charles Lazarus founded Toys "R" Us here. The name comes from two formerly segregated elementary schools, all-Black Thomas P. Morgan and all-white John Quincy Adams, which merged in 1955 following racial desegregation.</p>
+        <p>From 2010 to 2012 the city reconstructed 18th Street NW with wider sidewalks and bike infrastructure. The American Planning Association named Adams Morgan one of the country's "great neighborhoods" in 2014. It has steadily attracted new investment and a wave of younger residents while keeping much of its original character intact, and is now also one of DC's recognized hubs of LGBTQ culture.</p>
+      </div>
+    </div>
+    <div class="foot">
+      <a href="explore.html">Open the interactive version →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FIVE THEMES ═══════════════════════════════════ -->
+<section class="container fade-in">
+  <div class="eyebrow">Five things worth knowing</div>
+  <h2 style="margin-bottom: 2rem;">Cheat sheet for moving in.</h2>
+  <div class="themes fade-in stagger" id="themes-grid"></div>
+</section>
+
+<!-- ═══ LIFE CALLOUT WITH BOOKSTORE PHOTO ═════════════ -->
+<section class="container fade-in">
+  <div class="life-block">
+    <div class="life-callout">
+      <div class="eyebrow">The local rules</div>
+      <h2>What living here is actually like.</h2>
+      <ul>
+        <li>The apartment faces the quieter street behind 18th, so weekend energy stays outside</li>
+        <li>The 42 and 43 buses down Columbia Road are often faster than the metro</li>
+        <li>Tryst is the unofficial neighborhood living room, dog-friendly patio, regulars know your order</li>
+        <li>Sunday drum circle at Meridian Hill (3pm to 5pm) is a decades-old neighborhood ritual</li>
+        <li>Federalist Pig brisket sells out by 8pm, plan accordingly</li>
+        <li>Saturday farmers market sets up in Unity Park, June through December</li>
+        <li>Tail Up Goat (one Michelin star) books up two weeks ahead</li>
+        <li>Liquor-license moratorium since 2000 keeps the bar count tightly capped at ~100</li>
+      </ul>
+    </div>
+    <div class="life-photo"><img src="Images/bookstore.jpg" alt="Lost City Books, Adams Morgan" /></div>
+  </div>
+</section>
+
+<!-- ═══ NARRATIVE ═════════════════════════════════════ -->
+<section class="container narrative-cols fade-in">
+  <div class="eyebrow">In depth</div>
+  <h2>The longer version.</h2>
+
+  <div class="col">
+    <div class="col-with-image">
+      <div class="col-text">
+        <h3>Daily logistics</h3>
+        <p>Most domestic needs are met within a half-mile. The "Social Safeway" at 1747 Columbia Road dominates the grocery landscape, high volume and often crowded. For a calmer shop, Harris Teeter on Kalorama is a few blocks away. <strong>Yes! Organic Market</strong> has been here since 1970. <strong>Adams Morgan Ace Hardware</strong>, in the converted Ontario Theatre, is the place every renter ends up at within their first week. <strong>So's Your Mom</strong> is the neighborhood deli that locals tip newcomers to.</p>
+      </div>
+      <div class="col-image"><img src="Images/safeway.webp" alt="Social Safeway on Columbia Road" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="col-with-image image-left">
+      <div class="col-image"><img src="Images/lapis.webp" alt="Lapis Afghan bistro" loading="lazy" decoding="async" /></div>
+      <div class="col-text">
+        <h3>Food, the actual reason</h3>
+        <p>Fine dining is anchored by <strong>Tail Up Goat</strong> (one Michelin star, Mediterranean-Caribbean) and its sister <strong>Reveler's Hour</strong> on 18th, which does pasta and natural wine, walk-in bar seats. Adams Morgan is most famous for Ethiopian: <strong>Tsehay</strong> and <strong>Elfegne</strong> are a block apart. <strong>Lapis</strong>, the Afghan bistro literally next door to the building, gets local shoutouts for kebabs and family-style platters. <strong>Federalist Pig</strong>'s smoked brisket and ribs sell out by 8pm. For late: <strong>Amsterdam Falafelshop</strong> stays open past bar close.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="col-with-image">
+      <div class="col-text">
+        <h3>Nightlife, the cultural export</h3>
+        <p><strong>Jack Rose Dining Saloon</strong> holds the largest whiskey collection in the country, over 2,700 bottles. <strong>Roofers Union</strong>'s rooftop is peak summer. <strong>Tiki on 18th</strong> does well-made mai tais without the gimmicks. <strong>Madam's Organ</strong> has live blues seven nights a week and has been running since 1992. <strong>Dan's Cafe</strong> is the legendary squeeze-bottle dive. <strong>Code Red</strong> is the hidden cocktail bar most DC drinkers don't know about. <strong>Bossa Bistro</strong> is one of the few DC bars where people actually dance. A liquor-license moratorium since 2000 caps the bar count at around 100.</p>
+      </div>
+      <div class="col-image"><img src="Images/nightlife.jpg" alt="18th Street nightlife at night" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="col-with-image image-left">
+      <div class="col-image"><img src="Images/outdoors.jpg" alt="Rock Creek Park trail" loading="lazy" decoding="async" /></div>
+      <div class="col-text">
+        <h3>Outdoors, more than expected</h3>
+        <p><strong>Rock Creek Park</strong> connects you to over 1,700 acres of urban parkland a short walk west. Roads close to cars on weekends. <strong>Meridian Hill Park</strong> half a mile south hosts a Sunday drum circle from 3pm to 5pm that's been a neighborhood institution for decades. <strong>Marie Reed Recreation Center</strong> has an indoor pool, soccer turf, and basketball courts. <strong>Walter Pierce Park</strong> is the dog park where half the neighborhood meets in the morning. <strong>Kalorama Park</strong> sits a few blocks south with sunset views over Rock Creek.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="col-with-image">
+      <div class="col-text">
+        <h3>The metro gap</h3>
+        <p>This is the part new arrivals don't realize: Adams Morgan has no metro station of its own. It sits between Woodley Park (Red Line, over the Duke Ellington Bridge) and Columbia Heights (Green/Yellow). Neither is close. The actual answer is the <strong>42, 43, 90, 92, 96, H1, L2, S2, and S9 buses</strong>, which run frequently down Columbia Road, 16th Street, and Florida Avenue. Capital Bikeshare is exceptionally dense here, with multiple stations within a block. The map at right shows every bus stop and bikeshare station within a 5-minute walk of the front door.</p>
+        <span class="bike-tag">🚲 The apartment comes with a bike if you'd like one. Bikeshare and bike lanes do most of the rest.</span>
+      </div>
+      <div class="col-image" style="aspect-ratio: 8/5;"><img src="assets/data/transit_radius.svg" alt="Static map showing apartment with nearby bus stops and bikeshare stations" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="col-with-image image-left">
+      <div class="col-image"><img src="Images/The Mama Ayesha's Restaurant Presidential Mural.webp" alt="Mama Ayesha's Presidential Mural" loading="lazy" decoding="async" /></div>
+      <div class="col-text">
+        <h3>Daytime, when the sun's out</h3>
+        <p>The <strong>Mama Ayesha's mural</strong> on Calvert Street, a row of every US president painted alongside the restaurant's matriarch, is one of the most photographed walls in DC. The Sunday drum circle at <strong>Meridian Hill Park</strong> is the neighborhood at its most communal. <strong>Adams Morgan Day</strong> in September is a multicultural street celebration with live music, food, and crafts. The <strong>Adams Morgan Heritage Trail</strong> is a self-guided walking route with markers explaining the neighborhood's history.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <h3>The boutique economy</h3>
+    <p>There are no major clothing chains on 18th Street. <strong>Lost City Books</strong> (formerly Idle Time) has survived for decades by curating a high-quality used and new selection. <strong>Mercedes Bien Vintage</strong> is open weekends only. <strong>Smash Records</strong> is a punk vinyl institution since 1984. The neighborhood's murals, including "Carry the Rainbow on Your Shoulders" and "The Servant Christ," are among the most documented in the city. <strong>DC Arts Center</strong> hosts indie performance and exhibition work in a black-box space.</p>
+  </div>
+</section>
+
+<!-- ═══ PHOTOS ════════════════════════════════════════ -->
+<section class="container fade-in">
+  <div class="eyebrow">The street</div>
+  <h2 style="margin-bottom: 2rem;">A few corners.</h2>
+  <div class="neighborhood-photos fade-in stagger">
+    <div class="tile"><img src="Images/adams1.jpg" alt="Adams Morgan street view" loading="lazy" decoding="async" /></div>
+    <div class="tile"><img src="Images/adams2.jpg" alt="Adams Morgan rowhouses" loading="lazy" decoding="async" /></div>
+    <div class="tile"><img src="Images/adams3.jpg" alt="Adams Morgan corner" loading="lazy" decoding="async" /></div>
+    <div class="tile"><img src="Images/adams4.avif" alt="Adams Morgan additional view" loading="lazy" decoding="async" /></div>
+  </div>
+</section>
+
+<!-- ═══ CTA TO MAP ════════════════════════════════════ -->
+<div class="container">
+  <div class="explore-cta">
+    <div class="eyebrow" style="color: var(--primary);">Next</div>
+    <h2>Want the actual list?</h2>
+    <p>183 places, mapped and filterable, all within a 15-minute walk. Find your future coffee shop, gym, brunch spot, and 2am pizza in one tool.</p>
+    <a class="btn btn-primary" href="explore.html">Open the map →</a>
+  </div>
+</div>
+
+<div data-partial="footer"></div>
+
+<script src="places.js"></script>
+<script src="assets/icons.js"></script>
+<script src="assets/partials.js"></script>
+<script src="assets/shared.js"></script>
+<script>
+// ── Themes data (distances now reflect actual Google Distance Matrix walk times) ──
+const THEMES = [
+  {
+    cat: 'everyday essentials',
+    title: 'Daily life',
+    body: 'Safeway and Yes! Organic at the corner. So\'s Your Mom deli is the neighborhood sandwich tip. Saturday farmers market sets up in Unity Park, downstairs basically.',
+    places: [
+      { name: 'Adams Morgan Farmers Market', dist: '1 min walk' },
+      { name: 'Yes! Organic',                dist: '3 min walk' },
+      { name: "So's Your Mom",               dist: '3 min walk' },
+      { name: 'Safeway',                     dist: '4 min walk' },
+      { name: 'Ace Hardware',                dist: '6 min walk' },
+    ],
+  },
+  {
+    cat: 'food & dining',
+    title: 'Food',
+    body: 'Ethiopian is the signature, with Tsehay and Elfegne both Michelin-recognized and a block apart. Tail Up Goat has a full star. Lapis is the weeknight workhorse, literally next door.',
+    places: [
+      { name: 'Tsehay',           dist: '1 min walk' },
+      { name: 'Elfegne',          dist: '1 min walk' },
+      { name: 'Amsterdam Falafel',dist: '1 min walk' },
+      { name: 'Tail Up Goat',     dist: '2 min walk' },
+      { name: 'Lapis',            dist: '4 min walk' },
+    ],
+  },
+  {
+    cat: 'cafes & work',
+    title: 'Coffee &amp; work',
+    body: 'Tryst is the local living room, since 1998, animal crackers with every coffee, dog-friendly patio. Soleluna is the calm work spot. Compass and Tatte for fast caffeine.',
+    places: [
+      { name: 'Soleluna',         dist: '2 min walk' },
+      { name: 'Compass Coffee',   dist: '3 min walk' },
+      { name: 'Tryst',            dist: '4 min walk' },
+      { name: 'Tatte Bakery',     dist: '4 min walk' },
+      { name: 'Lapop',            dist: '4 min walk' },
+    ],
+  },
+  {
+    cat: 'nightlife & entertainment',
+    title: 'Nightlife',
+    body: 'Madam\'s Organ does live blues seven nights a week. Bossa is one of the few DC bars where people actually dance. Jack Rose holds the country\'s largest whiskey collection.',
+    places: [
+      { name: "Madam's Organ",     dist: 'outside' },
+      { name: 'Bossa Bistro',      dist: 'outside' },
+      { name: 'Code Red',          dist: '3 min walk' },
+      { name: "Dan's Cafe",        dist: '3 min walk' },
+      { name: 'Jack Rose',         dist: '7 min walk' },
+    ],
+  },
+  {
+    cat: 'outdoor & recreation',
+    title: 'Outdoors',
+    body: 'Walter Pierce is the morning dog park. Kalorama Park has sunset views. Marie Reed Center has indoor pool, soccer turf, basketball courts. Rock Creek Park for trails.',
+    places: [
+      { name: 'Marie Reed Center', dist: '5 min walk' },
+      { name: 'Walter Pierce Park',dist: '6 min walk' },
+      { name: 'Kalorama Park',     dist: '6 min walk' },
+      { name: 'Meridian Hill Park',dist: '12 min walk' },
+      { name: 'Rock Creek Park',   dist: '15 min walk' },
+    ],
+  },
+];
+
+(function() {
+  const grid = document.getElementById('themes-grid');
+  grid.innerHTML = THEMES.map(t => {
+    const color = window.colorFor(t.cat);
+    const icon = window.renderIcon(t.cat, 22, 'white');
+    return `
+      <div class="theme">
+        <div class="icon-wrap" style="background:${color};">${icon}</div>
+        <h3>${t.title}</h3>
+        <p>${t.body}</p>
+        <div class="places">
+          ${t.places.map(p => `<div class="place"><span class="name">${p.name}</span><span class="dist">${p.dist}</span></div>`).join('')}
+        </div>
+      </div>`;
+  }).join('');
+})();
+
+// ── Charts ────────────────────────────────────────────
+(function() {
+  if (typeof Chart === 'undefined') return;
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = '#6b6b6b';
+  const PRIMARY = '#c14b2f';
+  const PALETTE = ['#c14b2f','#d97706','#16a34a','#0891b2','#7c3aed','#475569','#be185d'];
+
+  // 1. Age distribution
+  new Chart(document.getElementById('chartAge'), {
+    type: 'bar',
+    data: {
+      labels: ['Under 15','15–24','25–44','45–64','65+'],
+      datasets: [{ data: [9.3, 7.4, 56.8, 17.3, 9.2], backgroundColor: PRIMARY, borderRadius: 4 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + '%' } } },
+      scales: { y: { ticks: { callback: v => v + '%' }, grid: { color: '#e6e6e6' } }, x: { grid: { display: false } } }
+    }
+  });
+
+  // 2. Education
+  new Chart(document.getElementById('chartEdu'), {
+    type: 'bar',
+    data: {
+      labels: ['No HS','High school','Some college','Associate','Bachelor\'s','Graduate'],
+      datasets: [{ data: [2.4, 8.7, 5.1, 1.8, 38.0, 44.1], backgroundColor: PRIMARY, borderRadius: 4 }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + '%' } } },
+      scales: { x: { ticks: { callback: v => v + '%' }, grid: { color: '#e6e6e6' } }, y: { grid: { display: false } } }
+    }
+  });
+
+  // 3. Income brackets
+  new Chart(document.getElementById('chartInc'), {
+    type: 'bar',
+    data: {
+      labels: ['<$25k','$25–44k','$45–74k','$75–149k','$150k+'],
+      datasets: [{ data: [9, 3, 11, 26, 51], backgroundColor: PRIMARY, borderRadius: 4 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + '%' } } },
+      scales: { y: { ticks: { callback: v => v + '%' }, grid: { color: '#e6e6e6' } }, x: { grid: { display: false } } }
+    }
+  });
+
+  // 4. Racial makeup
+  new Chart(document.getElementById('chartRace'), {
+    type: 'doughnut',
+    data: {
+      labels: ['White','Black','Two+ races','Hispanic','Asian','Other'],
+      datasets: [{ data: [56.8, 15.2, 15.3, 6.9, 5.6, 0.2], backgroundColor: PALETTE, borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '55%',
+      plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 8 } }, tooltip: { callbacks: { label: c => c.label + ': ' + c.parsed + '%' } } }
+    }
+  });
+
+  // 5. Owners vs renters
+  new Chart(document.getElementById('chartOwn'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Renter-occupied','Owner-occupied'],
+      datasets: [{ data: [64.7, 35.3], backgroundColor: ['#c14b2f','#475569'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '55%',
+      plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 8 } }, tooltip: { callbacks: { label: c => c.label + ': ' + c.parsed + '%' } } }
+    }
+  });
+
+  // 6. Walkability
+  new Chart(document.getElementById('chartWalk'), {
+    type: 'bar',
+    data: {
+      labels: ['Walk','Bike','Transit'],
+      datasets: [
+        { label: 'Adams Morgan', data: [99, 92, 80], backgroundColor: PRIMARY, borderRadius: 4 },
+        { label: 'National avg', data: [48, 32, 28], backgroundColor: '#cccccc', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10 } } },
+      scales: { y: { max: 100, grid: { color: '#e6e6e6' } }, x: { grid: { display: false } } }
+    }
+  });
+})();
+</script>
+</body>
+</html>

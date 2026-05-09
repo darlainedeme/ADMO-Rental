@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2465 18th St NW #4 · Furnished 1BR · Adams Morgan · Sept 2026</title>
+<meta name="description" content="A furnished one-bedroom in the heart of Adams Morgan, Washington DC. 12-month lease September 2026 to August 2027. 599 sq ft, central A/C, in-unit laundry, cats and dogs OK." />
+
+<meta property="og:title" content="2465 18th St NW #4 · Furnished 1BR · Adams Morgan, DC · Sept 2026" />
+<meta property="og:description" content="A furnished one-bedroom in the heart of Adams Morgan. Everything you need within a 5-minute walk." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
+
+<script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" />
+
+<link rel="stylesheet" href="assets/styles.css" />
+
+<style>
+/* Homepage-specific styles */
+.hero-home {
+  position: relative; min-height: 92vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+}
+.hero-home .photo {
+  position: relative; overflow: hidden; background: var(--bg2);
+}
+.hero-home .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+.hero-home:hover .photo img { transform: scale(1.04); }
+.hero-home .photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,.25));
+  pointer-events: none;
+}
+.hero-home .photo-tag {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  color: white; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
+  background: rgba(0,0,0,.45); backdrop-filter: blur(6px);
+  padding: .35rem .75rem; border-radius: 999px;
+}
+.hero-home .content {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 4rem 4rem 5rem;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before {
+  content: ""; width: 28px; height: 1px; background: var(--primary);
+}
+.hero-home h1 { margin-bottom: 1.5rem; }
+.hero-home h1 .ital { font-style: italic; color: var(--primary); }
+.hero-home p.lede { font-size: 1.1rem; max-width: 44ch; margin-bottom: 2.5rem; line-height: 1.7; }
+.hero-cta-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-stats {
+  display: flex; gap: 2.25rem; margin-top: auto;
+  padding-top: 2rem; border-top: 1px solid var(--line);
+}
+.hero-stat .num { font-family: var(--serif); font-size: 1.7rem; line-height: 1; }
+.hero-stat .lbl { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: .25rem; }
+
+/* Section cards */
+.threecol {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  margin: 4rem 0;
+}
+.section-card {
+  position: relative; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; flex-direction: column; min-height: 460px;
+  transition: transform .25s ease, box-shadow .25s ease;
+  text-decoration: none !important; color: var(--ink);
+}
+.section-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.section-card .photo { height: 240px; overflow: hidden; background: var(--bg2); }
+.section-card .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.section-card:hover .photo img { transform: scale(1.05); }
+.section-card .body { padding: 1.5rem 1.75rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+.section-card .num {
+  font-family: var(--serif); font-size: .8rem; color: var(--primary);
+  letter-spacing: .15em; margin-bottom: .25rem;
+}
+.section-card h3 { font-size: 1.5rem; margin-bottom: .55rem; }
+.section-card p { color: var(--muted); font-size: .95rem; line-height: 1.6; flex: 1; }
+.section-card .arrow {
+  margin-top: 1rem; display: inline-flex; align-items: center; gap: .35rem;
+  color: var(--primary); font-weight: 500; font-size: .9rem;
+}
+.section-card:hover .arrow { gap: .65rem; }
+
+/* Stats strip */
+/* Within-walk bar chart */
+.walk-chart {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 2.5rem 2.75rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 4rem;
+}
+.walk-chart .head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.75rem; }
+.walk-chart .head h3 { font-size: 1.4rem; margin: 0; }
+.walk-chart .head .legend { font-size: .8rem; color: var(--muted); }
+.walk-chart .row { display: grid; grid-template-columns: 9rem 1fr 3rem; gap: 1rem; align-items: center; padding: .55rem 0; }
+.walk-chart .row .label { font-size: .92rem; color: var(--ink); font-weight: 500; }
+.walk-chart .row .bar-track { height: 10px; background: var(--bg2); border-radius: 6px; overflow: hidden; }
+.walk-chart .row .bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), #d97706); border-radius: 6px; width: 0; transition: width 1.1s cubic-bezier(.2,.8,.2,1); }
+.walk-chart .row .count { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 540px) {
+  .walk-chart { padding: 1.75rem 1.5rem; }
+  .walk-chart .row { grid-template-columns: 7rem 1fr 2.5rem; gap: .65rem; }
+}
+
+.stats-strip-home {
+  background: var(--secondary); color: white;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  margin: 0 -1.5rem 4rem;
+  border-radius: var(--radius-lg);
+}
+.stats-strip-home .item {
+  padding: 2rem 2.25rem; border-right: 1px solid rgba(255,255,255,.12);
+}
+.stats-strip-home .item:last-child { border-right: none; }
+.stats-strip-home .num { font-family: var(--serif); font-size: 2.4rem; line-height: 1; display: block; margin-bottom: .35rem; }
+.stats-strip-home .lbl { font-size: .78rem; opacity: .75; text-transform: uppercase; letter-spacing: .09em; }
+
+/* Pitch / quote section */
+.pitch {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem;
+  align-items: center; padding: 5rem 0;
+}
+.pitch h2 { margin-bottom: 1.25rem; max-width: 12ch; }
+.pitch .quote-block {
+  background: var(--bg2); border-left: 4px solid var(--primary);
+  padding: 2rem 2.5rem; border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+.pitch blockquote { font-family: var(--serif); font-size: 1.25rem; line-height: 1.5; color: var(--ink); margin-bottom: 1rem; font-style: italic; }
+.pitch .signoff { font-size: .82rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+
+/* Photo strip */
+.photo-strip {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  margin: 0 0 4rem;
+  border-radius: var(--radius); overflow: hidden;
+}
+.photo-strip .tile { aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--bg2); position: relative; }
+.photo-strip .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.photo-strip .tile:hover img { transform: scale(1.06); }
+.photo-strip .tile .more {
+  position: absolute; inset: 0; background: rgba(0,0,0,.55);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: var(--serif); font-size: 1.4rem;
+  pointer-events: none;
+}
+
+/* Final CTA */
+.final-cta {
+  background: var(--ink); color: var(--bg); padding: 5rem 0;
+  text-align: center; border-radius: var(--radius-lg);
+  margin: 0 0 5rem;
+}
+.final-cta h2 { color: var(--bg); margin-bottom: 1rem; }
+.final-cta p { color: rgba(255,255,255,.65); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+.final-cta .btn-primary { background: var(--primary); }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero-home { grid-template-columns: 1fr; min-height: auto; }
+  .hero-home .photo { height: 50vw; min-height: 320px; }
+  .hero-home .content { padding: 3rem 1.5rem; }
+  .threecol { grid-template-columns: 1fr; }
+  .stats-strip-home { grid-template-columns: 1fr 1fr; }
+  .pitch { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 0; }
+  .photo-strip { grid-template-columns: repeat(3, 1fr); }
+  .photo-strip .tile:nth-child(n+4) { display: none; }
+}
+@media (max-width: 540px) {
+  .hero-home .content { padding: 2.5rem 1.25rem; }
+  .hero-home p.lede { font-size: 1rem; }
+  .hero-stats { gap: 1.25rem; }
+  .stats-strip-home { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div data-partial="nav"></div>
+
+<!-- ═══ HERO ════════════════════════════════════════════ -->
+<section class="hero-home">
+  <div class="photo">
+    <img src="Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp" alt="Apartment interior" />
+    <div class="photo-tag">2465 18th St NW · Adams Morgan</div>
+  </div>
+  <div class="content">
+    <div class="hero-eyebrow">Available Sept 1, 2026</div>
+    <h1>A furnished one-bedroom <span class="ital">in the heart</span> of Adams Morgan.</h1>
+    <p class="lede">
+      599 sq ft, fully furnished, in-unit laundry, central A/C, cats and dogs OK. Available for one year starting September 2026, with possibility of renewal.
+    </p>
+    <div class="hero-cta-row">
+      <a href="apartment.html" class="btn btn-primary">See the apartment →</a>
+      <a href="explore.html" class="btn btn-ghost">Explore the neighborhood →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num"><span data-count-to="599">599</span></div><div class="lbl">sq ft</div></div>
+      <div class="hero-stat"><div class="num">1 / 1</div><div class="lbl">bed / bath</div></div>
+      <div class="hero-stat"><div class="num"><span data-count-to="99">99</span></div><div class="lbl">walk score</div></div>
+      <div class="hero-stat"><div class="num"><span data-count-to="183">183</span></div><div class="lbl">places mapped</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THREE SECTIONS ═════════════════════════════════ -->
+<div class="container">
+  <div class="threecol fade-in stagger">
+    <a class="section-card" href="apartment.html">
+      <div class="photo"><img src="Images/16c34412194bc4dcdb3fa124f33c56f5-cc_ft_768.webp" alt="Apartment" /></div>
+      <div class="body">
+        <div class="num">01 · The space</div>
+        <h3>The apartment</h3>
+        <p>21 photos, full specs, what's included and what isn't. Layout, finishes, building, lease terms.</p>
+        <span class="arrow">See it all →</span>
+      </div>
+    </a>
+    <a class="section-card" href="neighborhood.html">
+      <div class="photo"><img src="Images/846bae773e2d0b55d5f4ed4428f75b08-cc_ft_768.webp" alt="Neighborhood" /></div>
+      <div class="body">
+        <div class="num">02 · The setting</div>
+        <h3>The neighborhood</h3>
+        <p>Adams Morgan in honest detail. History, what living here is actually like, the five things worth knowing before you arrive.</p>
+        <span class="arrow">Read the guide →</span>
+      </div>
+    </a>
+    <a class="section-card" href="explore.html">
+      <div class="photo"><img src="Images/fec92ece7c3ededd27c346a2430ad92d-cc_ft_768.webp" alt="Explore" /></div>
+      <div class="body">
+        <div class="num">03 · The dashboard</div>
+        <h3>Explore the map</h3>
+        <p>180+ curated places nearby, all within a 15-minute walk. Filter by category, distance, vibe. A practical tool for finding things once you move in.</p>
+        <span class="arrow">Open the map →</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ WHAT'S NEARBY (BAR CHART) ═════════════════════ -->
+<div class="container">
+  <div class="walk-chart fade-in" id="walk-chart">
+    <div class="head">
+      <h3>What's within a 10-minute walk</h3>
+      <div class="legend">Counts from the curated map · 183 places total</div>
+    </div>
+    <div id="walk-chart-rows"></div>
+  </div>
+</div>
+
+<!-- ═══ PITCH ══════════════════════════════════════════ -->
+<section class="container pitch fade-in">
+  <div>
+    <div class="eyebrow">A note from me</div>
+    <h2>I wanted you to feel at home from day one.</h2>
+  </div>
+  <div class="quote-block">
+    <blockquote>I really love this neighborhood, so I wanted whoever moves in to have a head start. I mapped every spot I actually use, with my own top picks marked, so you've got a handful of go-tos for the first week. After that, please go explore on your own. If you find something good I missed, tell me about it when I'm back.</blockquote>
+    <div class="signoff">— D</div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO STRIP ════════════════════════════════════ -->
+<div class="container">
+  <div class="photo-strip">
+    <div class="tile"><img src="Images/e02123ef704a3381e3cc24ff428959be-cc_ft_768.webp" alt="" /></div>
+    <div class="tile"><img src="Images/c9404eb434c1e056fbeba8cedf2a7c16-cc_ft_768.webp" alt="" /></div>
+    <div class="tile"><img src="Images/97585aec3f6b0b3d6c8318d6f4f61daf-cc_ft_768.webp" alt="" /></div>
+    <div class="tile"><img src="Images/c55f99c0e1d59f05470b37112060eb0a-cc_ft_384.webp" alt="" /></div>
+    <div class="tile">
+      <img src="Images/e22f6e3d6828065a8ed78bdddd9303cd-cc_ft_384.webp" alt="" />
+      <div class="more">+16 more</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FINAL CTA ══════════════════════════════════════ -->
+<div class="container">
+  <div class="final-cta">
+    <h2>One year. From September 2026.</h2>
+    <p>Twelve-month lease with possibility of renewal. Send a short note about you and your move-in timeline.</p>
+    <a class="btn btn-primary" href="mailto:inquiries@example.com?subject=Adams%20Morgan%20apartment%20%E2%80%94%20Sept%202026%20lease">Inquire about the apartment</a>
+  </div>
+</div>
+
+<div data-partial="footer"></div>
+
+<!-- ═══ DATA + JS ══════════════════════════════════════ -->
+<script src="places.js"></script>
+<script src="assets/icons.js"></script>
+<script src="assets/partials.js"></script>
+<script src="assets/shared.js"></script>
+<script>
+(function() {
+  // Build the within-walk bar chart from places.js
+  const P = (window.PLACES || []).filter(p => (p.walkMinutes ?? 99) <= 10);
+  const groups = [
+    { label: 'Restaurants',     test: p => p.category === 'food & dining' },
+    { label: 'Cafes & coffee',  test: p => p.category === 'cafes & work' },
+    { label: 'Bars & nightlife',test: p => p.category === 'nightlife & entertainment' },
+    { label: 'Parks & outdoor', test: p => p.category === 'outdoor & recreation' },
+    { label: 'Shops',           test: p => p.category === 'shopping & local finds' },
+    { label: 'Daily essentials',test: p => p.category === 'everyday essentials' },
+    { label: 'Wellness & beauty', test: p => p.category === 'wellness & spa' || p.category === 'beauty & grooming' },
+  ];
+  const counts = groups.map(g => ({ label: g.label, n: P.filter(g.test).length }));
+  const max = Math.max(1, ...counts.map(c => c.n));
+  const host = document.getElementById('walk-chart-rows');
+  if (host) {
+    host.innerHTML = counts.map(c => `
+      <div class="row">
+        <div class="label">${c.label}</div>
+        <div class="bar-track"><div class="bar-fill" data-target="${(c.n/max*100).toFixed(1)}"></div></div>
+        <div class="count">${c.n}</div>
+      </div>
+    `).join('');
+
+    // Animate bars when chart enters viewport
+    const wc = document.getElementById('walk-chart');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          host.querySelectorAll('.bar-fill').forEach((el,i) => {
+            setTimeout(() => { el.style.width = el.dataset.target + '%'; }, i * 90);
+          });
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    if (wc) io.observe(wc);
+  }
+})();
+</script>
+</body>
+</html>
