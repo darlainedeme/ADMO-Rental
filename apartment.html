@@ -129,6 +129,45 @@
 .contact-card h3 { font-size: 1.15rem; margin-bottom: .35rem; }
 .contact-card p { color: var(--muted); font-size: .95rem; max-width: 50ch; }
 
+/* Optional extras section */
+.extras-intro {
+  max-width: 65ch; color: var(--muted); font-size: 1rem;
+  line-height: 1.7; margin-bottom: 2.5rem;
+}
+.extras-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  margin-bottom: 5rem;
+}
+.extra-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.extra-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.extra-card .img-wrap {
+  aspect-ratio: 4/3; background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  color: #b3a999; font-size: .82rem; letter-spacing: .08em;
+  text-transform: uppercase; border-bottom: 1px solid var(--line);
+  position: relative; overflow: hidden;
+}
+.extra-card .img-wrap::before {
+  content: '📷'; position: absolute; font-size: 2.5rem; opacity: .25;
+}
+.extra-card .img-wrap span { position: relative; margin-top: 3.5rem; }
+.extra-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.extra-card .body { padding: 1.25rem 1.4rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.extra-card h4 { font-size: 1.05rem; margin-bottom: .4rem; color: var(--ink); }
+.extra-card p { font-size: .88rem; color: var(--muted); line-height: 1.55; flex: 1; }
+@media (max-width: 900px) {
+  .extras-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .extras-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 900px) {
   .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
   .gallery .tile.span-2, .gallery .tile.span-3 { grid-column: span 1; }
@@ -241,6 +280,57 @@
         <li>Two references</li>
         <li>Happy to jump on a quick video call before anything formal</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Optional extras -->
+<div class="container">
+  <div class="eyebrow">Open question</div>
+  <h2>Things I can leave behind, if you'd want them.</h2>
+  <p class="extras-intro">A few things I'd otherwise have to move out or put in storage. If any of these would be useful to you, just say so when we talk and they stay. Otherwise no problem, the apartment ships clean of all of it.</p>
+  <div class="extras-grid">
+    <div class="extra-card">
+      <div class="img-wrap"><span>Bike photo coming</span></div>
+      <div class="body">
+        <h4>Road bike</h4>
+        <p>A solid road bike, recently tuned. Honestly the fastest way around the neighborhood and gets you onto Rock Creek trails in five minutes.</p>
+      </div>
+    </div>
+    <div class="extra-card">
+      <div class="img-wrap"><span>Cat setup photo coming</span></div>
+      <div class="body">
+        <h4>Cat setup</h4>
+        <p>Litter box, food and water bowls, scratching post, carrier, the lot. If you've got a cat (or are about to), this saves you a Petco run.</p>
+      </div>
+    </div>
+    <div class="extra-card">
+      <div class="img-wrap"><span>Gym kit photo coming</span></div>
+      <div class="body">
+        <h4>Home gym kit</h4>
+        <p>Dumbbells, yoga mat, resistance bands, foam roller. Enough to get a real workout in if you don't feel like walking to the gym.</p>
+      </div>
+    </div>
+    <div class="extra-card">
+      <div class="img-wrap"><span>Basketball photo coming</span></div>
+      <div class="body">
+        <h4>Basketball</h4>
+        <p>Marie Reed has open courts five minutes away. Walter Pierce too. Pickup games happen on weekends if you put yourself out there.</p>
+      </div>
+    </div>
+    <div class="extra-card">
+      <div class="img-wrap"><span>Soccer ball photo coming</span></div>
+      <div class="body">
+        <h4>Soccer ball</h4>
+        <p>Walter Pierce has a full-size turf field. A few neighborhood pickup leagues run there. Take the ball if you want in.</p>
+      </div>
+    </div>
+    <div class="extra-card">
+      <div class="img-wrap"><span>Rackets photo coming</span></div>
+      <div class="body">
+        <h4>Tennis rackets</h4>
+        <p>A couple of decent rackets and a tube of balls. Kalorama Park has courts, and Rock Creek has tennis facilities a short bike ride away.</p>
+      </div>
     </div>
   </div>
 </div>
