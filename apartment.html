@@ -9,7 +9,7 @@
 <meta property="og:title" content="The apartment · 2465 18th St NW #4" />
 <meta property="og:description" content="A furnished one-bedroom in a small four-unit building. The kind of place where you'll know your neighbors." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp" />
+<meta property="og:image" content="Images/apt/20260509_213500930_iOS.jpg" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
 
@@ -39,6 +39,34 @@
 }
 
 /* Gallery grid */
+/* Category-grouped gallery */
+.gallery-cat { margin-bottom: 3rem; }
+.gallery-cat:last-child { margin-bottom: 0; }
+.cat-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 1rem; padding-bottom: .65rem;
+  border-bottom: 1px solid var(--line);
+}
+.cat-title { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); }
+.cat-count { font-size: .82rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.cat-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: .65rem;
+}
+.cat-grid .tile {
+  aspect-ratio: 4/3; overflow: hidden; cursor: pointer;
+  background: var(--bg2); border-radius: var(--radius);
+}
+.cat-grid .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.cat-grid .tile:hover img { transform: scale(1.05); }
+.cat-grid .tile.wide { grid-column: span 2; }
+.cat-grid .tile.tall { aspect-ratio: 3/4; }
+.cat-grid .tile.floorplan { aspect-ratio: 16/9; }
+@media (max-width: 540px) {
+  .cat-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .cat-grid .tile.wide { grid-column: span 2; }
+}
+
 .gallery {
   display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 200px;
   gap: 8px; margin-bottom: 4rem;
@@ -194,16 +222,13 @@
   <p class="lede">A 599 sq ft (56 m²) furnished one-bedroom in a small four-unit brick building from 1900. Open-plan kitchen and living area, a generous double-vanity bathroom with a big walk-in shower, sliding barn doors to the bedroom, projector for movie nights on the big white wall, in-unit laundry, central A/C. The building stays quiet, the neighborhood doesn't, and you'll figure out pretty quickly that's the point.</p>
 </section>
 
-<!-- Hero photo + gallery -->
+<!-- Hero photo + grouped gallery -->
 <div class="container">
   <div class="hero-photo" onclick="openLightbox(0)">
-    <img src="Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp" alt="Apartment hero photo" />
-    <div class="label">Click any photo for fullscreen · 21 in total</div>
+    <img src="Images/apt/20260509_213500930_iOS.jpg" alt="Apartment hero photo, kitchen and living area" />
+    <div class="label">Click any photo for fullscreen · use ← → to flip through</div>
   </div>
-  <div class="gallery" id="gallery"></div>
-  <div class="gallery-cta">
-    <button class="btn btn-ghost" onclick="openLightbox(0)">View all 21 photos</button>
-  </div>
+  <div class="gallery-section" id="gallery-section"></div>
 </div>
 
 <!-- Quick facts -->
@@ -217,14 +242,16 @@
   <h2>The space, in plain words.</h2>
   <div class="about-grid" style="margin-top: 2.5rem;">
     <div class="prose">
-      <p>It's unit 4 in a three-story brick condo from 1900. Just four apartments in the whole building, intercom entry, cameras at the door, and neighbors who actually say hi in the stairwell. That bit matters more than people realize: this isn't a 200-unit tower where you ride the elevator next to strangers. You'll know who lives upstairs by the second week.</p>
-      <p>Inside, the kitchen and living area share one open, light-flooded room with two big windows facing 18th Street. The kitchen is genuinely good: shaker cabinets, stainless appliances, built-in microwave, dishwasher, garbage disposal, marble-style countertops, white subway-tile backsplash, recessed lighting throughout. Hardwood floors run the length of the apartment.</p>
+      <p>It's unit 4 in a three-story brick condo from 1900. Just four apartments in the whole building, and neighbors who actually say hi in the stairwell. That bit matters more than people realize: this isn't a 200-unit tower where you ride the elevator next to strangers. There's nobody upstairs (you're on the top floor, so no one stomps on your head), and you'll know who lives in front and downstairs by the second week.</p>
+      <p>Inside, the kitchen and living area share one open, light-flooded room with two big windows. The windows do not face 18th Street, which is the point: you get the daylight without the sidewalk noise. The kitchen is genuinely good: shaker cabinets, stainless appliances, built-in microwave, dishwasher, garbage disposal, marble-style countertops, white subway-tile backsplash, recessed lighting throughout. Hardwood floors run the length of the apartment.</p>
       <p>The bedroom is set behind sliding barn-style doors and faces the back, so weekend energy on 18th Street stays outside. You'll hear the neighborhood on Friday and Saturday nights, but not through the walls.</p>
-      <p>The bathroom is the surprise of the place. It's bigger than the bathroom you have right now, almost certainly. Double vanity with two sinks and two mirrors on a marble counter, lots of drawer storage, and a generous tiled walk-in shower with a built-in niche shelf for shampoos. A stacked washer-dryer sits just outside the bathroom so you never see a laundromat.</p>
-      <p>At 599 sq ft (about 56 m²) it's not huge, but the open layout makes it feel much larger. <strong>The apartment is currently arranged the way I like it: open, airy, lots of empty floor, not a stick of clutter, set up for one person who wanted to breathe.</strong> The long bench-style dining table you'll see in the photos is easy to remove (and I will if you'd rather have a sofa-and-coffee-table layout, or a desk setup, or anything else). I'm flexible on the furniture — we can figure out together what works for your life and I'll add or remove pieces accordingly.</p>
+      <p>The bathroom is the surprise of the place. Double vanity with two sinks and two mirrors on a marble counter, lots of drawer storage, and a generous tiled walk-in shower with a built-in niche shelf for shampoos. A stacked washer-dryer sits just outside the bathroom so you never see a laundromat.</p>
+      <p>At 599 sq ft (about 56 m²) the open layout makes it feel much larger than the number suggests. <strong>The apartment is currently arranged the way I like it: open, airy, lots of empty floor, not a stick of clutter, set up for one person who wanted to breathe.</strong> The dining piece is a foldable table that takes a minute to put away (and I will if you'd rather have a sofa-and-coffee-table layout, or more workout space, or anything else). I'm flexible on the furniture, we can figure out together what works for your life and I'll add or remove pieces accordingly.</p>
+      <p><em>Note: the listing photos you'll see were taken under the previous arrangement and are placeholder material. New photos with the current setup are coming. The screenshot below shows roughly how it looks today, more open, less furniture, more floor.</em></p>
       <p>Central A/C keeps it comfortable through DC summers, forced-air heat through the winters. Gas, water, trash, and a robot vacuum that handles the floors all stay with the apartment.</p>
-      <p>For movie nights, there's a projector that throws a huge image onto the long white wall in the living room — better than a TV and the cinema rolled together when friends come over.</p>
-      <p>You won't need a car. The 42 bus runs straight downtown from the corner, three Capital Bikeshare stations sit within a block, and the walk score is 99. If you'd like, I'll leave the bike too — it's the fastest way around the neighborhood and gets you to Rock Creek trails in about five minutes.</p>
+      <p>For movie nights, there's a projector that throws a huge image onto the long white wall in the living room. Better than a TV and the cinema rolled together when friends come over.</p>
+      <p>You won't need a car. The 42 bus runs straight downtown from the corner, three Capital Bikeshare stations sit within a block, and the walk score is 99. If you'd like, I'll leave the bike too. It's the fastest way around the neighborhood and gets you to Rock Creek trails in about five minutes.</p>
+      <p><strong>The apartment is registered with the DC pet community.</strong> If you ever want to foster a cat through the local rescue (Humane Rescue Alliance / City Dogs &amp; City Kitties DC), I'm happy to put you in touch. The unit has already been vetted as a foster-friendly home.</p>
     </div>
     <div class="features fade-in stagger" id="features"></div>
   </div>
@@ -346,43 +373,96 @@
 <script src="assets/partials.js"></script>
 <script src="assets/shared.js"></script>
 <script>
-const PHOTOS = [
-  "Images/12571b062bb1b039ca33b65e3913a3fb-cc_ft_768.webp",
-  "Images/846bae773e2d0b55d5f4ed4428f75b08-cc_ft_768.webp",
-  "Images/16c34412194bc4dcdb3fa124f33c56f5-cc_ft_768.webp",
-  "Images/fec92ece7c3ededd27c346a2430ad92d-cc_ft_768.webp",
-  "Images/e02123ef704a3381e3cc24ff428959be-cc_ft_768.webp",
-  "Images/c9404eb434c1e056fbeba8cedf2a7c16-cc_ft_768.webp",
-  "Images/97585aec3f6b0b3d6c8318d6f4f61daf-cc_ft_768.webp",
-  "Images/c55f99c0e1d59f05470b37112060eb0a-cc_ft_384.webp",
-  "Images/e22f6e3d6828065a8ed78bdddd9303cd-cc_ft_384.webp",
-  "Images/5a2f587edd5513b509be33a6f56e9050-cc_ft_384.webp",
-  "Images/73ac34a714adabee8d64c0d64322899e-cc_ft_384.webp",
-  "Images/5dab36ec01a2ab9c8c02b5480627dbf0-cc_ft_384.webp",
-  "Images/8b810ad2c81784d1c98fadccad036a00-cc_ft_384.webp",
-  "Images/f75c0b578fd45d189bf68b99d5d257eb-cc_ft_384.webp",
-  "Images/7c26cb5ce9332a7bdbbddcebe9501d7c-cc_ft_384.webp",
-  "Images/03f76348e89180ad9b8a39001416c524-cc_ft_384.webp",
-  "Images/7cf094276add6966add935ca1ecbfd1a-cc_ft_384.webp",
-  "Images/474b114831784b37651a1fd519212a41-cc_ft_384.webp",
-  "Images/425ea9de704bcddc704242edc1df539d-cc_ft_384.webp",
-  "Images/c506424bd50142347b9bac4879e1ca61-cc_ft_384.webp",
-  "Images/f09291a68ff413f6bef0f35bb33e1aa5-cc_ft_384.webp",
+// Photos grouped by category. The first item is the hero (already shown above).
+const GALLERY = [
+  {
+    title: 'Living + kitchen',
+    photos: [
+      { src: 'Images/apt/20260509_213500930_iOS.jpg', alt: 'Open living and kitchen, current arrangement', cls: 'wide' },
+      { src: 'Images/apt/20260509_213802312_iOS.jpg', alt: 'Living area with big windows and orange sectional' },
+      { src: 'Images/apt/20260509_213620868_iOS.jpg', alt: 'Living area with bike rack and projector wall' },
+      { src: 'Images/apt/20260509_213651642_iOS.jpg', alt: 'Living area looking toward the bedroom barn doors' },
+      { src: 'Images/apt/20260509_213553703_iOS.jpg', alt: 'Living area with the windows on the back side' },
+      { src: 'Images/apt/20260509_213557707_iOS.jpg', alt: 'Living area with the cat tower in the window' },
+      { src: 'Images/apt/20260509_213544154_iOS.jpg', alt: 'Wide angle, kitchen and living', cls: 'wide' },
+      { src: 'Images/apt/20260509_213534983_iOS.jpg', alt: 'Kitchen and living from the bedroom side' },
+      { src: 'Images/apt/20260509_213444015_iOS.jpg', alt: 'Living area, more open since photos taken' },
+    ]
+  },
+  {
+    title: 'Kitchen',
+    photos: [
+      { src: 'Images/apt/20260509_212704351_iOS.jpg', alt: 'Kitchen with stainless fridge, range, dishwasher' },
+      { src: 'Images/apt/20260509_212732728_iOS.jpg', alt: 'Kitchen and dining piece with barn doors closed' },
+      { src: 'Images/apt/20260509_212730940_iOS.jpg', alt: 'Kitchen wide angle' },
+    ]
+  },
+  {
+    title: 'Bedroom',
+    photos: [
+      { src: 'Images/apt/c9404eb434c1e056fbeba8cedf2a7c16-cc_ft_768.webp', alt: 'Bedroom with paper-lantern light fixture' },
+      { src: 'Images/apt/c506424bd50142347b9bac4879e1ca61-cc_ft_384.webp', alt: 'Bedroom seen through sliding barn doors' },
+      { src: 'Images/apt/f75c0b578fd45d189bf68b99d5d257eb-cc_ft_384.webp', alt: 'Bedroom side angle, bed and side tables' },
+    ]
+  },
+  {
+    title: 'Bathroom',
+    photos: [
+      { src: 'Images/apt/20260509_211035569_iOS.jpg', alt: 'Bathroom: double vanity, marble counter, big walk-in shower with subway tile' },
+    ]
+  },
+  {
+    title: 'Laundry',
+    photos: [
+      { src: 'Images/apt/20260509_194451655_iOS.jpg', alt: 'Stacked washer/dryer in its own closet' },
+    ]
+  },
+  {
+    title: 'Entry, hallway, building',
+    photos: [
+      { src: 'Images/apt/20260509_194309384_iOS.jpg', alt: 'Front door of unit 4 with smart lock' },
+      { src: 'Images/apt/20260509_211215807_iOS.jpg', alt: 'Internal entry with built-in storage' },
+      { src: 'Images/apt/20260509_194252879_iOS.jpg', alt: 'Stairwell to the upper floor' },
+      { src: 'Images/apt/20260509_194247241_iOS.jpg', alt: 'Looking up the building stairs' },
+      { src: 'Images/apt/20260509_193336152_iOS.jpg', alt: 'Building exterior on 18th Street, above Andy\'s Pizza' },
+      { src: 'Images/apt/20260509_193403970_iOS.jpg', alt: '18th Street, the strip the building sits on', cls: 'wide' },
+    ]
+  },
+  {
+    title: 'Floor plan',
+    photos: [
+      { src: 'Images/apt/20260509_204323920_iOS.jpg', alt: 'Floor plan: bath, bedroom, closet, kitchen, living', cls: 'floorplan wide' },
+    ]
+  },
 ];
 
-// Build gallery: 6-col grid showing photos 1..n with mixed spans for visual rhythm
+// Flatten to a single PHOTOS array (used by lightbox)
+const PHOTOS = GALLERY.flatMap(cat => cat.photos.map(p => p.src));
+
+// Build the grouped gallery
 (function() {
-  const g = document.getElementById('gallery');
-  // Show photos 1..10 in the grid (skip 0, that's the hero photo above)
-  const subset = PHOTOS.slice(1, 11);
-  // Custom spans pattern for variety
-  const spans = ['span-3 span-rows-2', 'span-3', 'span-2', 'span-2', 'span-2', 'span-3', 'span-3', 'span-2', 'span-2', 'span-2'];
-  subset.forEach((src, i) => {
-    const tile = document.createElement('div');
-    tile.className = 'tile ' + spans[i];
-    tile.innerHTML = `<img loading="lazy" src="${src}" alt="Apartment photo ${i+2}" />`;
-    tile.addEventListener('click', () => openLightbox(i + 1));
-    g.appendChild(tile);
+  const host = document.getElementById('gallery-section');
+  let idx = 0;
+  GALLERY.forEach(cat => {
+    const section = document.createElement('div');
+    section.className = 'gallery-cat';
+    const head = document.createElement('div');
+    head.className = 'cat-head';
+    head.innerHTML = `<div class="cat-title">${cat.title}</div><div class="cat-count">${cat.photos.length} photo${cat.photos.length===1?'':'s'}</div>`;
+    section.appendChild(head);
+    const grid = document.createElement('div');
+    grid.className = 'cat-grid';
+    cat.photos.forEach(p => {
+      const tile = document.createElement('div');
+      tile.className = 'tile ' + (p.cls || '');
+      tile.innerHTML = `<img loading="lazy" decoding="async" src="${p.src}" alt="${p.alt}" />`;
+      const myIdx = idx;
+      tile.addEventListener('click', () => openLightbox(myIdx));
+      grid.appendChild(tile);
+      idx++;
+    });
+    section.appendChild(grid);
+    host.appendChild(section);
   });
 })();
 
@@ -433,7 +513,6 @@ const PHOTOS = [
     'Electricity',
     'Robot vacuum cleaner',
     'Projector + big white living-room wall (movie nights)',
-    'Intercom and exterior cameras',
   ];
   const notIncl = [
     'Renter\'s insurance (required, on tenant)',

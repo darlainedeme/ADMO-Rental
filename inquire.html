@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inquire about the apartment · 2465 18th St NW</title>
+<meta name="description" content="Send a quick note about you and your timeline. I usually reply the same day." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
+<script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="assets/styles.css" />
+
+<style>
+.inquire-hero { padding: 4rem 0 1.5rem; }
+.inquire-hero .meta { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 1.25rem; }
+.inquire-hero h1 { max-width: 22ch; margin-bottom: 1rem; }
+.inquire-hero .lede { font-size: 1.05rem; line-height: 1.65; color: var(--muted); max-width: 60ch; }
+
+.form-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); padding: 2.5rem 2.75rem;
+  margin: 2rem 0 5rem;
+  max-width: 720px;
+  box-shadow: var(--shadow);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+.form-field { display: flex; flex-direction: column; gap: .4rem; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label {
+  font-size: .78rem; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink); font-weight: 600;
+}
+.form-field input, .form-field select, .form-field textarea {
+  font: inherit; padding: .8rem 1rem;
+  background: var(--bg); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  outline: none; border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(193,75,47,.15);
+}
+.form-field textarea { resize: vertical; min-height: 120px; }
+.form-field .hint { font-size: .78rem; color: var(--muted); }
+.form-actions {
+  display: flex; align-items: center; gap: 1rem;
+  margin-top: 1.5rem; flex-wrap: wrap;
+}
+.form-actions .note { font-size: .82rem; color: var(--muted); }
+
+.thank-you {
+  display: none;
+  background: var(--primary-soft); border: 1px solid rgba(193,75,47,.2);
+  border-left: 4px solid var(--primary);
+  padding: 1.75rem 2rem; border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+.thank-you.show { display: block; }
+.thank-you h3 { margin-bottom: .5rem; }
+
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; }
+  .form-card { padding: 1.75rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div data-partial="nav"></div>
+
+<section class="container inquire-hero fade-in">
+  <div class="meta">Inquire</div>
+  <h1>Tell me a bit about you and your timeline.</h1>
+  <p class="lede">I read every message and usually reply the same day. Happy to do a quick video call before any in-person tour. The form below sends straight to my inbox.</p>
+</section>
+
+<section class="container fade-in">
+  <div class="thank-you" id="thank-you">
+    <h3>Thanks for the note.</h3>
+    <p>Your message is on its way to me. I'll reply within a day or so. If it's urgent, feel free to send it again from a different email in case mine misfiled it.</p>
+  </div>
+
+  <!-- IMPORTANT: replace YOUR_FORM_ID below with your Formspree endpoint.
+       Sign up at https://formspree.io (free), create a form, point it at darlainedeme@gmail.com,
+       paste the form's endpoint URL into the action= attribute. -->
+  <form class="form-card" id="inquire-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="hidden" name="_subject" value="Adams Morgan apartment inquiry" />
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="for a quick call if helpful" />
+      </div>
+      <div class="form-field">
+        <label for="movein">Hoped move-in date</label>
+        <input type="text" id="movein" name="movein" placeholder="e.g. Sept 1 2026, or flexible" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="duration">How long would you stay?</label>
+        <select id="duration" name="duration">
+          <option value="12 months (the lease)">12 months (the lease)</option>
+          <option value="12 months and would consider renewing">12 months and would consider renewing</option>
+          <option value="Other / let's talk">Other, let's talk</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="occupants">Who'd be living here?</label>
+        <select id="occupants" name="occupants">
+          <option value="Just me">Just me</option>
+          <option value="Me + a partner">Me + a partner</option>
+          <option value="Me + a roommate">Me + a roommate</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="pets">Any pets?</label>
+        <select id="pets" name="pets">
+          <option value="No">No</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+          <option value="Cat + Dog">Cat + Dog</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="work">What do you do?</label>
+        <input type="text" id="work" name="work" placeholder="role, company or field, totally optional" />
+      </div>
+    </div>
+
+    <div class="form-field full" style="margin-top:.5rem;">
+      <label for="message">A few lines about you</label>
+      <textarea id="message" name="message" placeholder="Where you're moving from, what drew you to Adams Morgan, anything you want me to know. Doesn't need to be long." required></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Send the message</button>
+      <span class="note">I usually reply within a day. Your details stay between you and me.</span>
+    </div>
+  </form>
+</section>
+
+<div data-partial="footer"></div>
+
+<script src="assets/partials.js"></script>
+<script src="assets/shared.js"></script>
+<script>
+// Submit via fetch so we can show a thank-you without leaving the page
+(function() {
+  const form = document.getElementById('inquire-form');
+  const ok = document.getElementById('thank-you');
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    // If the action is still the placeholder, fall back to a mailto so messages aren't lost
+    if (form.action.includes('YOUR_FORM_ID')) {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const lines = [];
+      for (const [k, v] of fd.entries()) if (k !== '_subject' && k !== '_gotcha' && v) lines.push(`${k}: ${v}`);
+      const body = encodeURIComponent(lines.join('\n\n'));
+      window.location.href = `mailto:darlainedeme@gmail.com?subject=${encodeURIComponent('Adams Morgan apartment inquiry')}&body=${body}`;
+      return;
+    }
+    e.preventDefault();
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        ok.classList.add('show');
+        ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        alert('Something glitched on submit. Please try again in a moment.');
+      }
+    } catch (err) {
+      alert('Network hiccup. Please try again.');
+    }
+  });
+})();
+</script>
+</body>
+</html>

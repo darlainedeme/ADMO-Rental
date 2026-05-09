@@ -760,11 +760,11 @@
     <text y="20" font-size="10" fill="#6b6b6b" letter-spacing=".5" text-transform="uppercase">WALK SCORE</text>
   </g>
   <g transform="translate(180, 78)">
-    <text font-family="DM Serif Display, Georgia, serif" font-size="32" fill="#1a1a1a">17,113</text>
+    <text font-family="DM Serif Display, Georgia, serif" font-size="32" fill="#1a1a1a">17.113</text>
     <text y="20" font-size="10" fill="#6b6b6b" letter-spacing=".5">POPULATION</text>
   </g>
   <g transform="translate(24, 148)">
-    <text font-family="DM Serif Display, Georgia, serif" font-size="22" fill="#1a1a1a">14,058<tspan font-size="11" fill="#999"> /km²</tspan></text>
+    <text font-family="DM Serif Display, Georgia, serif" font-size="22" fill="#1a1a1a">14.058<tspan font-size="11" fill="#999"> /km²</tspan></text>
     <text y="20" font-size="10" fill="#6b6b6b" letter-spacing=".5">DENSITY</text>
   </g>
   <g transform="translate(180, 148)">

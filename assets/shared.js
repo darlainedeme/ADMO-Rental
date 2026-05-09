@@ -71,7 +71,7 @@
     const prefix = el.dataset.countPrefix || '';
     const suffix = el.dataset.countSuffix || '';
     const start = performance.now();
-    const fmt = n => prefix + n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+    const fmt = n => prefix + n.toLocaleString('de-DE', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
     el.classList.add('count-up');
     const tick = now => {
       const t = Math.min(1, (now - start) / dur);

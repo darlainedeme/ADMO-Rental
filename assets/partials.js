@@ -11,7 +11,7 @@
           <a href="neighborhood.html">The neighborhood</a>
           <a href="explore.html">Explore the map</a>
           <button id="dm-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
-          <a href="mailto:inquiries@example.com?subject=Adams%20Morgan%20apartment%20%E2%80%94%20Sept%202026%20lease" class="nav-cta">Inquire</a>
+          <a href="inquire.html" class="nav-cta">Inquire</a>
         </div>
       </div>
     </nav>
