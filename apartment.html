@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,7 +13,7 @@
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
 
-<script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<script>(function(){const t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,7 +39,7 @@
 }
 
 /* Gallery grid */
-/* Category-grouped gallery */
+/* Category-grouped gallery — uniform tiles to avoid grid gaps */
 .gallery-cat { margin-bottom: 3rem; }
 .gallery-cat:last-child { margin-bottom: 0; }
 .cat-head {
@@ -49,9 +49,10 @@
 }
 .cat-title { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); }
 .cat-count { font-size: .82rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+/* Variable column counts based on photo count, set per-section via inline style */
 .cat-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: .65rem;
+  display: grid; gap: .65rem;
+  grid-template-columns: repeat(var(--cols, 4), 1fr);
 }
 .cat-grid .tile {
   aspect-ratio: 4/3; overflow: hidden; cursor: pointer;
@@ -59,12 +60,17 @@
 }
 .cat-grid .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .cat-grid .tile:hover img { transform: scale(1.05); }
-.cat-grid .tile.wide { grid-column: span 2; }
-.cat-grid .tile.tall { aspect-ratio: 3/4; }
-.cat-grid .tile.floorplan { aspect-ratio: 16/9; }
+/* Wide variant for one-photo categories: full row, 16:9 */
+.cat-grid.solo { grid-template-columns: 1fr; }
+.cat-grid.solo .tile { aspect-ratio: 16/9; }
+.cat-grid.floorplan { grid-template-columns: 1fr; }
+.cat-grid.floorplan .tile { aspect-ratio: 21/9; }
+@media (max-width: 900px) {
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 540px) {
-  .cat-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
-  .cat-grid .tile.wide { grid-column: span 2; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+  .cat-grid.solo { grid-template-columns: 1fr; }
 }
 
 .gallery {
@@ -114,20 +120,68 @@
 .feature-card .label { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: .35rem; }
 .feature-card .value { font-weight: 600; font-size: .95rem; }
 
-/* Included list */
-.included-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-  background: var(--bg2); padding: 3rem 2.5rem;
-  border-radius: var(--radius-lg); margin-bottom: 5rem;
+/* Lease stack — sits inside the right column of about-grid, mirrors included style */
+.lease-stack {
+  margin-top: 1rem;
+  background: var(--card);
+  padding: 1.5rem 1.4rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.lease-stack .lease-eyebrow {
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--primary); font-weight: 700; margin-bottom: .35rem;
+}
+.lease-stack h3 { font-size: 1.15rem; margin-bottom: 1rem; color: var(--ink); }
+.lease-stack .lease-block + .lease-block { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--line); }
+.lease-stack .lease-block h4 {
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .08em;
+  margin-bottom: .5rem; color: var(--secondary);
+}
+.lease-stack ul { list-style: none; }
+.lease-stack li {
+  padding: .25rem 0; font-size: .87rem; line-height: 1.45; color: var(--muted);
+}
+.lease-stack li::before {
+  content: "·"; color: var(--primary); padding-right: .4rem; font-weight: bold;
+}
+
+/* Included list — sits inside the right column of about-grid */
+.included-stack {
+  margin-top: 1.75rem;
+  background: var(--bg2);
+  padding: 1.5rem 1.4rem 1.25rem;
+  border-radius: var(--radius);
   border: 1px solid var(--line);
 }
-.included-grid h3 { margin-bottom: 1rem; font-size: 1.2rem; }
-.included-grid ul { list-style: none; }
-.included-grid li {
-  padding: .55rem 0; font-size: .94rem; line-height: 1.5;
-  display: flex; gap: .65rem; align-items: flex-start;
+.included-stack + .included-stack { margin-top: 1rem; }
+.included-stack h3 {
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .1em;
+  margin-bottom: .9rem; color: var(--secondary);
+}
+.included-stack.notincluded {
+  background: #fdf1e8;
+  border-color: #f4c89c;
+  border-left: 3px solid #d97706;
+}
+.included-stack.notincluded h3 { color: #c2410c; }
+.included-stack.notincluded li { color: #7c3a0f; }
+.included-stack.notincluded .x { color: #d97706; }
+.included-stack ul { list-style: none; }
+.included-stack li {
+  padding: .45rem 0; font-size: .88rem; line-height: 1.45;
+  display: flex; gap: .55rem; align-items: flex-start;
   border-bottom: 1px dashed var(--line);
 }
+.included-stack li:last-child { border-bottom: none; }
+.included-stack li .check, .included-stack li .x {
+  flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px;
+}
+.included-stack .check { color: var(--secondary); }
+.included-stack .x { color: var(--muted); }
+/* Legacy 2-col grid (no longer used but kept for safety) */
+.included-grid { display: none; }
 .included-grid li:last-child { border-bottom: none; }
 .included-grid li .check, .included-grid li .x {
   flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px;
@@ -181,7 +235,7 @@
   text-transform: uppercase; border-bottom: 1px solid var(--line);
   position: relative; overflow: hidden;
 }
-.extra-card .img-wrap::before {
+.extra-card .img-wrap:not(:has(img))::before {
   content: '📷'; position: absolute; font-size: 2.5rem; opacity: .25;
 }
 .extra-card .img-wrap span { position: relative; margin-top: 3.5rem; }
@@ -243,73 +297,65 @@
   <div class="about-grid" style="margin-top: 2.5rem;">
     <div class="prose">
       <p>It's unit 4 in a three-story brick condo from 1900. Just four apartments in the whole building, and neighbors who actually say hi in the stairwell. That bit matters more than people realize: this isn't a 200-unit tower where you ride the elevator next to strangers. There's nobody upstairs (you're on the top floor, so no one stomps on your head), and you'll know who lives in front and downstairs by the second week.</p>
-      <p>Inside, the kitchen and living area share one open, light-flooded room with two big windows. The windows do not face 18th Street, which is the point: you get the daylight without the sidewalk noise. The kitchen is genuinely good: shaker cabinets, stainless appliances, built-in microwave, dishwasher, garbage disposal, marble-style countertops, white subway-tile backsplash, recessed lighting throughout. Hardwood floors run the length of the apartment.</p>
-      <p>The bedroom is set behind sliding barn-style doors and faces the back, so weekend energy on 18th Street stays outside. You'll hear the neighborhood on Friday and Saturday nights, but not through the walls.</p>
+      <p>Inside, the kitchen and living area share one open, light-flooded room with two big windows. The windows do not face 18th Street, which is the point: you get the daylight without the sidewalk noise. <strong>The apartment gets a remarkable amount of natural light</strong>, especially in the afternoon, the kind that makes plants thrive and your morning coffee feel like a small ritual. The kitchen is genuinely good: shaker cabinets, stainless appliances, built-in microwave, dishwasher, garbage disposal, marble-style countertops, white subway-tile backsplash, recessed lighting throughout. Hardwood floors run the length of the apartment.</p>
+      <p>The bedroom is set behind sliding barn-style doors and faces the back, so weekend energy on 18th Street stays outside. You'll hear the neighborhood on Friday and Saturday nights, but not through the walls. <strong>You'll see the bedroom in the photos as currently empty</strong> because I sleep on a Japanese futon that I roll out at night and put away in the morning. Before I leave I'll bring in a proper bed (queen, frame and mattress, ready for you). The earlier bedroom photos with the bed and side tables show how it looked before I moved in, so you can picture both arrangements.</p>
       <p>The bathroom is the surprise of the place. Double vanity with two sinks and two mirrors on a marble counter, lots of drawer storage, and a generous tiled walk-in shower with a built-in niche shelf for shampoos. A stacked washer-dryer sits just outside the bathroom so you never see a laundromat.</p>
       <p>At 599 sq ft (about 56 m²) the open layout makes it feel much larger than the number suggests. <strong>The apartment is currently arranged the way I like it: open, airy, lots of empty floor, not a stick of clutter, set up for one person who wanted to breathe.</strong> The dining piece is a foldable table that takes a minute to put away (and I will if you'd rather have a sofa-and-coffee-table layout, or more workout space, or anything else). I'm flexible on the furniture, we can figure out together what works for your life and I'll add or remove pieces accordingly.</p>
-      <p><em>Note: the listing photos you'll see were taken under the previous arrangement and are placeholder material. New photos with the current setup are coming. The screenshot below shows roughly how it looks today, more open, less furniture, more floor.</em></p>
+      <p>The couch is a modular piece that pulls apart, rearranges, or unfolds into a flat surface big enough to nap on or seat half a dozen friends for a movie night. It's deeply comfortable, easy to clean, and the kind of furniture that quietly does a lot of the work in a small space.</p>
       <p>Central A/C keeps it comfortable through DC summers, forced-air heat through the winters. Gas, water, trash, and a robot vacuum that handles the floors all stay with the apartment.</p>
       <p>For movie nights, there's a projector that throws a huge image onto the long white wall in the living room. Better than a TV and the cinema rolled together when friends come over.</p>
       <p>You won't need a car. The 42 bus runs straight downtown from the corner, three Capital Bikeshare stations sit within a block, and the walk score is 99. If you'd like, I'll leave the bike too. It's the fastest way around the neighborhood and gets you to Rock Creek trails in about five minutes.</p>
       <p><strong>The apartment is registered with the DC pet community.</strong> If you ever want to foster a cat through the local rescue (Humane Rescue Alliance / City Dogs &amp; City Kitties DC), I'm happy to put you in touch. The unit has already been vetted as a foster-friendly home.</p>
     </div>
-    <div class="features fade-in stagger" id="features"></div>
-  </div>
-</div>
-
-<!-- What's included / not -->
-<div class="container">
-  <div class="included-grid">
-    <div>
-      <h3 style="color: var(--secondary);">Included</h3>
-      <ul id="included-list"></ul>
-    </div>
-    <div>
-      <h3 style="color: var(--muted);">Not included</h3>
-      <ul id="not-included-list"></ul>
-    </div>
-  </div>
-</div>
-
-<!-- Lease terms -->
-<div class="container">
-  <div class="eyebrow">Lease terms</div>
-  <h2>The deal, plainly.</h2>
-  <div class="lease-box" style="margin-top: 2rem;">
-    <div class="col">
-      <h3>Dates and length</h3>
-      <ul>
-        <li>Twelve-month fixed-term lease</li>
-        <li>Move-in: September 1, 2026</li>
-        <li>Move-out: August 31, 2027</li>
-        <li>Open to renewing if it's working for both of us</li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Rent and deposit</h3>
-      <ul>
-        <li>Rent: <strong style="color: var(--ink);">$2,900 / month</strong></li>
-        <li>Security deposit: one month, refundable</li>
-        <li>First month's rent due at signing</li>
-        <li>Renter's insurance required</li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Pets</h3>
-      <ul>
-        <li>Cats and dogs welcome</li>
-        <li>One-time pet deposit, refundable</li>
-        <li>Building is pet-friendly throughout</li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Tenant screening</h3>
-      <ul>
-        <li>Standard background and credit check</li>
-        <li>Income verification (3x rent or co-signer)</li>
-        <li>Two references</li>
-        <li>Happy to jump on a quick video call before anything formal</li>
-      </ul>
+    <div class="about-side">
+      <div class="features fade-in stagger" id="features"></div>
+      <div class="included-stack">
+        <h3>Included</h3>
+        <ul id="included-list"></ul>
+      </div>
+      <div class="included-stack notincluded">
+        <h3>Not included</h3>
+        <ul id="not-included-list"></ul>
+      </div>
+      <div class="lease-stack">
+        <div class="lease-eyebrow">Lease terms</div>
+        <h3>The deal, plainly.</h3>
+        <div class="lease-block">
+          <h4>Dates and length</h4>
+          <ul>
+            <li>Twelve-month fixed-term lease</li>
+            <li>Move-in: September 1, 2026</li>
+            <li>Move-out: August 31, 2027</li>
+            <li>Open to renewing if it's working for both of us</li>
+          </ul>
+        </div>
+        <div class="lease-block">
+          <h4>Rent and deposit</h4>
+          <ul>
+            <li>Rent: <strong style="color: var(--ink);">$2,900 / month</strong></li>
+            <li>Security deposit: one month, refundable</li>
+            <li>First month's rent due at signing</li>
+            <li>Renter's insurance required</li>
+          </ul>
+        </div>
+        <div class="lease-block">
+          <h4>Pets</h4>
+          <ul>
+            <li>Cats and dogs welcome</li>
+            <li>One-time pet deposit, refundable</li>
+            <li>Building is pet-friendly throughout</li>
+          </ul>
+        </div>
+        <div class="lease-block">
+          <h4>Tenant screening</h4>
+          <ul>
+            <li>Standard background and credit check</li>
+            <li>Income verification (3x rent or co-signer)</li>
+            <li>Two references</li>
+            <li>Happy to jump on a quick video call before anything formal</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -321,35 +367,35 @@
   <p class="extras-intro">A few things I'd otherwise have to move out or put in storage. If any of these would be useful to you, just say so when we talk and they stay. Otherwise no problem, the apartment ships clean of all of it.</p>
   <div class="extras-grid">
     <div class="extra-card">
-      <div class="img-wrap"><span>Bike photo coming</span></div>
+      <div class="img-wrap"><img src="Images/extras/20260509_225903300_iOS.jpg" alt="Road bike" loading="lazy" decoding="async" /></div>
       <div class="body">
         <h4>Road bike</h4>
         <p>A solid road bike, recently tuned. Honestly the fastest way around the neighborhood and gets you onto Rock Creek trails in five minutes.</p>
       </div>
     </div>
     <div class="extra-card">
-      <div class="img-wrap"><span>Treadmill photo coming</span></div>
+      <div class="img-wrap"><img src="Images/extras/tm.jpg" alt="Under-desk treadmill" loading="lazy" decoding="async" /></div>
       <div class="body">
         <h4>Under-desk treadmill</h4>
         <p>The standing desk is staying either way. Underneath it sits a slim walking-pad treadmill, perfect for moving while you take meetings. Happy to leave it or roll it out, your call.</p>
       </div>
     </div>
     <div class="extra-card">
-      <div class="img-wrap"><span>Cat setup photo coming</span></div>
+      <div class="img-wrap"><img src="Images/extras/cat.jpg" alt="Cat setup" loading="lazy" decoding="async" /></div>
       <div class="body">
         <h4>Cat setup</h4>
         <p>Litter box, food and water bowls, scratching post, carrier, the lot. If you've got a cat (or are about to), this saves you a Petco run.</p>
       </div>
     </div>
     <div class="extra-card">
-      <div class="img-wrap"><span>Gym kit photo coming</span></div>
+      <div class="img-wrap"><img src="Images/extras/machine.jpg" alt="Home gym machine" loading="lazy" decoding="async" /></div>
       <div class="body">
         <h4>Home gym kit</h4>
-        <p>Dumbbells, yoga mat, resistance bands, foam roller. Enough to get a real workout in if you don't feel like walking to the gym.</p>
+        <p>Compact gym machine, dumbbells, yoga mat, resistance bands, foam roller. Enough to get a real workout in if you don't feel like walking to the gym.</p>
       </div>
     </div>
     <div class="extra-card">
-      <div class="img-wrap"><span>Sports gear photo coming</span></div>
+      <div class="img-wrap"><img src="Images/extras/sport.webp" alt="Sports gear" loading="lazy" decoding="async" /></div>
       <div class="body">
         <h4>Sports gear</h4>
         <p>Basketball, soccer ball, tennis rackets and balls. Marie Reed has indoor and outdoor courts five minutes away, Walter Pierce has a full-size turf field for soccer pickup, and Kalorama and Rock Creek both have tennis. Take the kit if you want to hit the courts.</p>
@@ -373,19 +419,16 @@
 <script src="assets/partials.js"></script>
 <script src="assets/shared.js"></script>
 <script>
-// Photos grouped by category. The first item is the hero (already shown above).
+// Photos grouped by category. Single-photo categories use a "solo" layout.
 const GALLERY = [
   {
     title: 'Living + kitchen',
     photos: [
-      { src: 'Images/apt/20260509_213500930_iOS.jpg', alt: 'Open living and kitchen, current arrangement', cls: 'wide' },
+      { src: 'Images/apt/20260509_213500930_iOS.jpg', alt: 'Open living and kitchen, current arrangement' },
       { src: 'Images/apt/20260509_213802312_iOS.jpg', alt: 'Living area with big windows and orange sectional' },
       { src: 'Images/apt/20260509_213620868_iOS.jpg', alt: 'Living area with bike rack and projector wall' },
-      { src: 'Images/apt/20260509_213651642_iOS.jpg', alt: 'Living area looking toward the bedroom barn doors' },
-      { src: 'Images/apt/20260509_213553703_iOS.jpg', alt: 'Living area with the windows on the back side' },
       { src: 'Images/apt/20260509_213557707_iOS.jpg', alt: 'Living area with the cat tower in the window' },
-      { src: 'Images/apt/20260509_213544154_iOS.jpg', alt: 'Wide angle, kitchen and living', cls: 'wide' },
-      { src: 'Images/apt/20260509_213534983_iOS.jpg', alt: 'Kitchen and living from the bedroom side' },
+      { src: 'Images/apt/20260509_213544154_iOS.jpg', alt: 'Wide angle, kitchen and living' },
       { src: 'Images/apt/20260509_213444015_iOS.jpg', alt: 'Living area, more open since photos taken' },
     ]
   },
@@ -394,25 +437,41 @@ const GALLERY = [
     photos: [
       { src: 'Images/apt/20260509_212704351_iOS.jpg', alt: 'Kitchen with stainless fridge, range, dishwasher' },
       { src: 'Images/apt/20260509_212732728_iOS.jpg', alt: 'Kitchen and dining piece with barn doors closed' },
-      { src: 'Images/apt/20260509_212730940_iOS.jpg', alt: 'Kitchen wide angle' },
     ]
   },
   {
-    title: 'Bedroom',
+    title: 'Bedroom (currently)',
     photos: [
-      { src: 'Images/apt/c9404eb434c1e056fbeba8cedf2a7c16-cc_ft_768.webp', alt: 'Bedroom with paper-lantern light fixture' },
-      { src: 'Images/apt/c506424bd50142347b9bac4879e1ca61-cc_ft_384.webp', alt: 'Bedroom seen through sliding barn doors' },
-      { src: 'Images/apt/f75c0b578fd45d189bf68b99d5d257eb-cc_ft_384.webp', alt: 'Bedroom side angle, bed and side tables' },
+      { src: 'Images/apt/20260509_223936625_iOS.jpg', alt: 'Bedroom currently empty with tatami mat and the cat. A proper bed will be in by move-in.' },
+      { src: 'Images/apt/20260509_223933119_iOS.jpg', alt: 'Bedroom looking through the open barn doors, tatami visible' },
+    ]
+  },
+  {
+    title: 'Bedroom (with bed, for reference)',
+    photos: [
+      { src: 'Images/apt/c9404eb434c1e056fbeba8cedf2a7c16-cc_ft_768.webp', alt: 'Bedroom with bed, paper-lantern light, before I moved in' },
+      { src: 'Images/apt/c506424bd50142347b9bac4879e1ca61-cc_ft_384.webp', alt: 'Bedroom seen through sliding barn doors, before' },
+      { src: 'Images/apt/f75c0b578fd45d189bf68b99d5d257eb-cc_ft_384.webp', alt: 'Bedroom side angle with side tables, before' },
     ]
   },
   {
     title: 'Bathroom',
     photos: [
-      { src: 'Images/apt/20260509_211035569_iOS.jpg', alt: 'Bathroom: double vanity, marble counter, big walk-in shower with subway tile' },
+      { src: 'Images/apt/e02123ef704a3381e3cc24ff428959be-cc_ft_768.webp', alt: 'Bathroom: double vanity with two sinks and two mirrors' },
+      { src: 'Images/apt/20260509_224005974_iOS.jpg', alt: 'Walk-in shower close-up: subway tile, niche shelf, glass door' },
+      { src: 'Images/apt/20260509_211035569_iOS.jpg', alt: 'Bathroom wide angle showing vanity and shower' },
+    ]
+  },
+  {
+    title: 'Closets &amp; storage',
+    photos: [
+      { src: 'Images/apt/20260509_223954117_iOS.jpg', alt: 'Five-panel double closet doors in the bedroom' },
+      { src: 'Images/apt/7c26cb5ce9332a7bdbbddcebe9501d7c-cc_ft_384.webp', alt: 'Closet interior with shelf and ironing board' },
     ]
   },
   {
     title: 'Laundry',
+    layout: 'solo',
     photos: [
       { src: 'Images/apt/20260509_194451655_iOS.jpg', alt: 'Stacked washer/dryer in its own closet' },
     ]
@@ -425,13 +484,14 @@ const GALLERY = [
       { src: 'Images/apt/20260509_194252879_iOS.jpg', alt: 'Stairwell to the upper floor' },
       { src: 'Images/apt/20260509_194247241_iOS.jpg', alt: 'Looking up the building stairs' },
       { src: 'Images/apt/20260509_193336152_iOS.jpg', alt: 'Building exterior on 18th Street, above Andy\'s Pizza' },
-      { src: 'Images/apt/20260509_193403970_iOS.jpg', alt: '18th Street, the strip the building sits on', cls: 'wide' },
+      { src: 'Images/apt/20260509_193403970_iOS.jpg', alt: '18th Street, the strip the building sits on' },
     ]
   },
   {
     title: 'Floor plan',
+    layout: 'floorplan',
     photos: [
-      { src: 'Images/apt/20260509_204323920_iOS.jpg', alt: 'Floor plan: bath, bedroom, closet, kitchen, living', cls: 'floorplan wide' },
+      { src: 'Images/apt/20260509_204323920_iOS.jpg', alt: 'Floor plan: bath, bedroom, closet, kitchen, living' },
     ]
   },
 ];
@@ -451,10 +511,19 @@ const PHOTOS = GALLERY.flatMap(cat => cat.photos.map(p => p.src));
     head.innerHTML = `<div class="cat-title">${cat.title}</div><div class="cat-count">${cat.photos.length} photo${cat.photos.length===1?'':'s'}</div>`;
     section.appendChild(head);
     const grid = document.createElement('div');
-    grid.className = 'cat-grid';
+    // Pick column count based on photo count, or use solo/floorplan layouts
+    let extra = '';
+    let cols = 4;
+    if (cat.layout === 'solo') extra = ' solo';
+    else if (cat.layout === 'floorplan') extra = ' floorplan';
+    else if (cat.photos.length === 2) cols = 2;
+    else if (cat.photos.length === 3) cols = 3;
+    else if (cat.photos.length >= 4) cols = 4;
+    grid.className = 'cat-grid' + extra;
+    grid.style.setProperty('--cols', cols);
     cat.photos.forEach(p => {
       const tile = document.createElement('div');
-      tile.className = 'tile ' + (p.cls || '');
+      tile.className = 'tile';
       tile.innerHTML = `<img loading="lazy" decoding="async" src="${p.src}" alt="${p.alt}" />`;
       const myIdx = idx;
       tile.addEventListener('click', () => openLightbox(myIdx));

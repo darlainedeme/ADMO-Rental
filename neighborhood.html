@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,18 +13,19 @@
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
 
-<script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<script>(function(){const t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" />
 <link rel="stylesheet" href="assets/styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 
 <style>
-/* Landscape hero photo at the very top — cover, balanced framing */
+/* Landscape hero photo at the very top — taller so the full mural shows */
 .hero-photo {
-  width: 100%; height: 360px; overflow: hidden;
+  width: 100%; height: 70vh; min-height: 460px; max-height: 680px;
+  overflow: hidden;
   margin-bottom: 0; background: var(--bg2);
 }
 .hero-photo img {
@@ -248,21 +249,25 @@
   margin-bottom: 5rem;
   border-radius: var(--radius); overflow: hidden;
 }
+@media (min-width: 1100px) {
+  .neighborhood-photos { grid-template-columns: repeat(7, 1fr); }
+}
 .neighborhood-photos .tile { aspect-ratio: 4/5; overflow: hidden; background: var(--bg2); }
 .neighborhood-photos .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .neighborhood-photos .tile:hover img { transform: scale(1.05); }
 
 /* Big CTA to map */
 .explore-cta {
-  background: var(--ink); color: var(--bg);
+  background: #1a1a1a; color: #ffffff;
   border-radius: var(--radius-lg); padding: 4rem 3rem;
   text-align: center; margin-bottom: 5rem;
 }
-.explore-cta h2 { color: var(--bg); margin-bottom: 1rem; max-width: 18ch; margin-left: auto; margin-right: auto; }
-.explore-cta p { color: rgba(255,255,255,.7); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+.explore-cta h2 { color: #ffffff; margin-bottom: 1rem; max-width: 18ch; margin-left: auto; margin-right: auto; }
+.explore-cta p { color: rgba(255,255,255,.78); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+.explore-cta .laptop-note { color: rgba(255,255,255,.55); font-size: .85rem; max-width: 46ch; margin: 0 auto 1.75rem; }
 
 @media (max-width: 960px) {
-  .hero-photo { height: 240px; }
+  .hero-photo { height: 50vh; min-height: 320px; max-height: 480px; }
   .intro-grid { grid-template-columns: 1fr; gap: 2rem; }
   .themes { grid-template-columns: 1fr 1fr; }
   .stats-row { grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1.25rem; }
@@ -272,7 +277,7 @@
   .neighborhood-photos { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 540px) {
-  .hero-photo { height: 220px; }
+  .hero-photo { height: 280px; min-height: 0; }
   .themes, .charts-grid { grid-template-columns: 1fr; }
   .life-callout, .explore-cta, .community-quote { padding: 2rem 1.5rem; }
 }
@@ -283,7 +288,7 @@
 <div data-partial="nav"></div>
 
 <div class="hero-photo">
-  <img src="Images/neighborhood.jpg" alt="Adams Morgan, Washington DC" />
+  <img src="Images/nbh/20260509_193403970_iOS.jpg" alt="Adams Morgan, 18th Street with Tryst, Bossa, and the Madam's Organ mural" />
 </div>
 
 <section class="container page-hero fade-in">
@@ -295,7 +300,8 @@
 <section class="container fade-in">
   <div class="intro-grid">
     <div class="intro-prose">
-      <p>Adams Morgan is the closest thing DC has to a real <strong>15-minute city</strong>. Almost everything you need (groceries, the gym, the dog park, the bookshop, your coffee place, dinner, drinks, the dentist) sits inside a quarter-mile radius of the front door. Most of DC is built around commuting; here you'll see the same faces in line for coffee, at the dog park, on the basketball court at Marie Reed, browsing the shelves at Lost City Books, at the Saturday farmers market downstairs. It's small (0.47 sq mi · 1.2 km², about 17.000 people), it's dense, and almost everyone walks. Walk Score 99, Bike Score 92, Transit Score 80. Average commute is nine minutes.</p>
+      <p>Adams Morgan is the closest thing DC has to a real <strong>15-minute city</strong>. Almost everything you need (groceries, the gym, the dog park, the bookshop, your coffee place, dinner, drinks, the dentist) sits inside a quarter-mile radius (roughly 400 m for my international friends) of the front door. Most of DC is built around commuting; here you'll see the same faces in line for coffee, at the dog park, on the basketball court at Marie Reed, browsing the shelves at Lost City Books, at the Saturday farmers market downstairs. It's small (0.47 sq mi · 1.2 km², about 17.000 people), it's dense, and almost everyone walks. Walk Score 99, Bike Score 92, Transit Score 80. Average commute is nine minutes.</p>
+      <p><strong>Honest disclaimer.</strong> If what you want is a quiet, suburban kind of calm, this isn't the spot. Adams Morgan has a pulse: bars, music, foot traffic, weekend crowds. But here's the thing about this specific apartment: the bedroom faces the back, the windows don't face 18th Street, and the building has just four units. Inside, you'll be surprised how peaceful it is. So if you want a vibrant neighborhood you can step into when you feel like it, and a quiet place to come home to when you don't, this is your spot.</p>
       <p>The center of it is the corner of 18th Street and Columbia Road. From the front door you're a block from Ethiopian dinners at Tsehay and Elfegne, kebabs at Lapis (the Afghan bistro literally next door to the building), pasta at Reveler's Hour, and a Saturday farmers market that sets up basically downstairs. The American Planning Association named the neighborhood one of America's "great neighborhoods" in 2014 for the Victorian rowhouses, murals, international diversity, and pedestrian-first streets. Adams Morgan Day, the September street festival, has run since 1978 and draws tens of thousands every year.</p>
       <p>For someone who likes to move around, the geography is unbeatable. Rock Creek Park (1,700 acres · 690 hectares of trails) is a five-minute walk west. Marie Reed Recreation Center has an indoor pool, a soccer turf, and basketball courts inside the neighborhood. Walter Pierce Park has the dog crowd in the morning and a full-size soccer field in the evening. There are gyms, yoga studios, Solidcore, run clubs, pickup leagues, and a Capital Bikeshare station basically at the door. Whatever your sport is, you can probably do it without driving.</p>
       <p>The thing the demographic profile doesn't capture is the texture. It's a place where the barista at Tryst pulls your double espresso before you've fully said hello, where the hardware-store guy remembers what kind of light bulb you bought last month, and where three months in you'll already know half the names on the block. The architecture is grand, the food is global, the scale is human, and you'll learn the neighborhood not from a guidebook but from the people you keep running into.</p>
@@ -339,7 +345,7 @@
         <div class="eyebrow">From above</div>
         <h2>The walking radius.</h2>
       </div>
-      <div class="sub" style="max-width:34ch;">Parks in green, Rock Creek in blue, the street grid in white. The apartment is the red dot at 18th &amp; Columbia. Key landmarks labeled.</div>
+      <div class="sub" style="max-width:34ch;">Parks in green, Rock Creek in blue, the street grid in white. The apartment is the red dot at 18th &amp; Columbia, surrounded by green spaces on three sides.</div>
     </div>
     <div class="map-wrap">
       <img src="assets/data/neighborhood.svg" alt="Editorial field map of Adams Morgan with the apartment and key landmarks marked" loading="lazy" decoding="async" />
@@ -379,7 +385,6 @@
         <li>Sunday drum circle at Meridian Hill (3pm to 5pm) has been running for decades</li>
         <li>Federalist Pig brisket sells out by 8pm, plan accordingly</li>
         <li>Saturday farmers market in Unity Park, June through December, basically downstairs</li>
-        <li>Tail Up Goat (one Michelin star) books up two weeks ahead, so plan ahead for date nights</li>
       </ul>
     </div>
     <div class="life-photo"><img src="Images/bookstore.jpg" alt="Lost City Books, Adams Morgan" /></div>
@@ -397,7 +402,7 @@
         <h3>Daily life is a half-mile radius</h3>
         <p>Almost everything you need is within a half-mile of the door. The "Social Safeway" at 1747 Columbia Road is the workhorse, high volume, often crowded but everybody ends up there. Harris Teeter on Kalorama is the calmer shop a few blocks away. <strong>Yes! Organic Market</strong> has been here since 1970, no chain energy. <strong>Adams Morgan Ace Hardware</strong> is in the converted Ontario Theatre, you'll end up there your first week (something always needs a screw). <strong>So's Your Mom</strong> is the deli locals tell newcomers about, get the Italian sub. The farmers market downstairs on Saturdays handles produce, bread, and the occasional bumping-into-people you meant to text.</p>
       </div>
-      <div class="col-image"><img src="Images/safeway.webp" alt="Social Safeway on Columbia Road" loading="lazy" decoding="async" /></div>
+      <div class="col-image"><img src="Images/nbh/IMG_0746.jpg" alt="Social Safeway on Columbia Road" loading="lazy" decoding="async" /></div>
     </div>
   </div>
 
@@ -447,7 +452,7 @@
       <div class="col-image"><img src="Images/The Mama Ayesha's Restaurant Presidential Mural.webp" alt="Mama Ayesha's Presidential Mural" loading="lazy" decoding="async" /></div>
       <div class="col-text">
         <h3>Daytime, when the sun's out</h3>
-        <p>The <strong>Mama Ayesha's mural</strong> on Calvert Street, a row of every US president painted alongside the restaurant's matriarch, is one of the most photographed walls in DC. The <strong>Sunday drum circle at Meridian Hill</strong> is the neighborhood at its most communal: bring a blanket, stay until sunset. <strong>Adams Morgan Day</strong> every September is a multicultural street festival with live music, food, and crafts. The <strong>Adams Morgan Heritage Trail</strong> is a self-guided walking route with markers explaining the neighborhood's history if you ever want to play tourist for an afternoon.</p>
+        <p>The <strong>Mama Ayesha's mural</strong> on Calvert Street, a row of every US president painted alongside the restaurant's matriarch, is one of the most photographed walls in DC. The <strong>Sunday drum circle at Meridian Hill</strong> is the neighborhood at its most communal: bring a blanket, stay until sunset. <strong>Adams Morgan Day</strong> every September is a multicultural street festival with live music, food, and crafts. <strong>Adams Morgan PorchFest</strong> happens twice a year (spring and fall): bands play on residential porches up and down the neighborhood and you walk between sets, drink in hand. It's the most fun anyone has all year. The <strong>Adams Morgan Heritage Trail</strong> is a self-guided walking route with markers explaining the neighborhood's history if you ever want to play tourist for an afternoon.</p>
       </div>
     </div>
   </div>
@@ -467,6 +472,9 @@
     <div class="tile"><img src="Images/adams2.jpg" alt="Adams Morgan rowhouses" loading="lazy" decoding="async" /></div>
     <div class="tile"><img src="Images/adams3.jpg" alt="Adams Morgan corner" loading="lazy" decoding="async" /></div>
     <div class="tile"><img src="Images/adams4.avif" alt="Adams Morgan additional view" loading="lazy" decoding="async" /></div>
+    <div class="tile"><img src="Images/nbh/20260509_194014150_iOS.jpg" alt="Adams Morgan corner I walk past" loading="lazy" decoding="async" /></div>
+    <div class="tile"><img src="Images/nbh/20260509_193743578_iOS.jpg" alt="A storefront on 18th Street" loading="lazy" decoding="async" /></div>
+    <div class="tile"><img src="Images/nbh/20260509_193540272_iOS.jpg" alt="A view down 18th Street" loading="lazy" decoding="async" /></div>
   </div>
 </section>
 
@@ -476,6 +484,7 @@
     <div class="eyebrow" style="color: var(--primary);">Next</div>
     <h2>Want my actual list?</h2>
     <p>183 places I use, mapped and filterable, all within a 15-minute walk. My favorites are starred. Find your future coffee shop, gym, brunch spot, dog walk, and 2am slice in one place.</p>
+    <p class="laptop-note">Heads up: the interactive map works best on a laptop where you can see the map and the list side by side. On a phone the place list still works, but the map view is more cramped.</p>
     <a class="btn btn-primary" href="explore.html">Open the map →</a>
   </div>
 </div>
@@ -568,8 +577,8 @@ const THEMES = [
   }).join('');
 })();
 
-// ── Charts ────────────────────────────────────────────
-(function() {
+// ── Charts (wait for Chart.js to finish loading via defer) ────────────
+function initCharts() {
   if (typeof Chart === 'undefined') return;
   Chart.defaults.font.family = "'Inter', sans-serif";
   Chart.defaults.font.size = 11;
@@ -661,7 +670,13 @@ const THEMES = [
       scales: { y: { max: 100, grid: { color: '#e6e6e6' } }, x: { grid: { display: false } } }
     }
   });
-})();
+}
+// Run after the page is parsed AND Chart.js (deferred) has loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCharts);
+} else {
+  initCharts();
+}
 </script>
 </body>
 </html>

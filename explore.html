@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,7 +13,7 @@
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c14b2f'/%3E%3Ctext x='16' y='23' font-size='13' font-weight='700' fill='white' text-anchor='middle' font-family='Georgia%2C serif'%3E18%3C/text%3E%3C/svg%3E" />
 
-<script>(function(){const t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<script>(function(){const t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -429,8 +429,8 @@ details[open] .fp-summary::before { content: "▾ "; }
         <div class="rp-row">
           <label class="rp-label">Sort</label>
           <select class="sort-select" id="sort-select">
-            <option value="distance">Closest first</option>
             <option value="rating">Highest rated</option>
+            <option value="distance">Closest first</option>
             <option value="name">Alphabetical</option>
           </select>
         </div>
@@ -557,7 +557,7 @@ const state = {
   search: '',
   maxWalkMin: 15,                 // minutes; dataset capped at 15
   preset: null,                   // preset id or null
-  sort: 'distance',
+  sort: 'rating',
   starredOnly: false,
   inAdMoOnly: false,
 };
@@ -618,11 +618,20 @@ $('reset-presets').addEventListener('click', () => {
 });
 
 /* ── Wire inputs ───────────────────────────────────── */
-searchInput.addEventListener('input', e => { state.search = e.target.value.toLowerCase().trim(); render(); });
+// Debounce search so we re-render after the user stops typing, not on every keystroke
+let _searchTimer = null;
+searchInput.addEventListener('input', e => {
+  const v = e.target.value.toLowerCase().trim();
+  if (_searchTimer) clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(() => { state.search = v; render(); }, 140);
+});
+// Update label immediately, debounce the heavy re-render
+let _distTimer = null;
 distSlider.addEventListener('input', e => {
   state.maxWalkMin = parseInt(e.target.value, 10);
   distVal.textContent = `${state.maxWalkMin} min walk`;
-  render();
+  if (_distTimer) clearTimeout(_distTimer);
+  _distTimer = setTimeout(render, 100);
 });
 sortSelect.addEventListener('change', e => { state.sort = e.target.value; render(); });
 
@@ -634,7 +643,7 @@ $('reset-all').addEventListener('click', () => {
   state.search = ''; searchInput.value = '';
   state.maxWalkMin = 15; distSlider.value = 15; distVal.textContent = '15 min walk';
   state.preset = null;
-  state.sort = 'distance'; sortSelect.value = 'distance';
+  state.sort = 'rating'; sortSelect.value = 'rating';
   state.starredOnly = false; $('tg-starred').checked = false;
   presetsHost.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
   render();
@@ -766,7 +775,8 @@ function loadOverlays() {
 }
 
 function initMap() {
-  map = L.map('map', { zoomControl: true, scrollWheelZoom: true })
+  // preferCanvas dramatically speeds up rendering of geojson paths (parks, neighborhood, bike lanes, bus stops)
+  map = L.map('map', { zoomControl: true, scrollWheelZoom: true, preferCanvas: true, fadeAnimation: false })
     .setView([APT.lat, APT.lon], 15);
 
   // OpenStreetMap standard tiles
@@ -792,23 +802,34 @@ function initMap() {
   $('fit-all').addEventListener('click', fitToVisible);
 }
 
-function renderMarkers(places) {
-  markerLayer.clearLayers();
-  markerByKey.clear();
-
-  places.forEach(p => {
-    const baseHtml = window.renderMapMarker(p.category, { size: 32, inner: 16 });
-    // Starred markers get a small gold ring + star
-    const html = p.isStarred
+// Cache divIcons by (category, isStarred). Cuts marker construction cost dramatically.
+const _iconCache = new Map();
+function getMarkerIcon(category, isStarred) {
+  const key = (isStarred ? '★|' : '|') + category;
+  let icon = _iconCache.get(key);
+  if (!icon) {
+    const baseHtml = window.renderMapMarker(category, { size: 32, inner: 16 });
+    const html = isStarred
       ? `<div style="position:relative;">${baseHtml}<div style="position:absolute;top:-6px;right:-6px;background:#fbbf24;color:#1a1a1a;border-radius:50%;width:14px;height:14px;font-size:10px;line-height:14px;text-align:center;font-weight:700;border:1.5px solid white;">★</div></div>`
       : baseHtml;
-    const icon = L.divIcon({
+    icon = L.divIcon({
       className: 'place-marker-wrap',
       html: html,
       iconSize: [32, 32],
       iconAnchor: [16, 16],
     });
-    const m = L.marker([p.lat, p.lon], { icon, riseOnHover: true, zIndexOffset: p.isStarred ? 600 : 0 });
+    _iconCache.set(key, icon);
+  }
+  return icon;
+}
+
+function renderMarkers(places) {
+  markerLayer.clearLayers();
+  markerByKey.clear();
+
+  places.forEach(p => {
+    const icon = getMarkerIcon(p.category, p.isStarred);
+    const m = L.marker([p.lat, p.lon], { icon, zIndexOffset: p.isStarred ? 600 : 0 });
 
     const wm = placeWalkMin(p);
     const walkText = wm == null ? '' : (wm === 0 ? 'outside the door' : `${wm} min walk`);
