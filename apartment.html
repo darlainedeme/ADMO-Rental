@@ -341,7 +341,7 @@
         <div class="lease-block">
           <h4>Rent and deposit</h4>
           <ul>
-            <li>Rent: <strong style="color: var(--ink);">$2,900 / month</strong></li>
+            <li>Rent: <strong style="color: var(--ink);">$2,800 / month</strong> <span style="font-size: .82em; color: var(--muted);">($2,550 base + $250 utilities allowance covering electricity, internet, gas, water, sewer, trash; all utilities in the landlord's name)</span></li>
             <li>Security deposit: one month, refundable</li>
             <li>First month's rent due at signing</li>
             <li>Renter's insurance required</li>
@@ -556,10 +556,10 @@ const PHOTOS = GALLERY.flatMap(cat => cat.photos.map(p => p.src));
 // Quick facts strip
 (function() {
   const facts = [
-    { k: 'Rent', v: '$2,900 / mo' },
+    { k: 'Rent', v: '$2,800 / mo' },
+    { k: 'Bills incl.', v: 'Everything' },
     { k: 'Lease', v: '12 months' },
     { k: 'Available', v: 'Sep 1, 2026' },
-    { k: 'Through', v: 'Aug 31, 2027' },
     { k: 'Furnished', v: 'Yes' },
     { k: 'Pets', v: 'Cats & dogs OK' },
   ];
@@ -578,8 +578,7 @@ const PHOTOS = GALLERY.flatMap(cat => cat.photos.map(p => p.src));
     { label: 'Building',   value: 'Brick condo, 1900' },
     { label: 'Heat / AC',  value: 'Central A/C + forced air' },
     { label: 'Laundry',    value: 'In-unit washer/dryer' },
-    { label: 'Utilities',  value: 'Gas, water & trash incl.' },
-    { label: 'Bills incl.', value: 'Internet + electricity' },
+    { label: 'Bills incl.', value: 'Everything (gas, water, trash, electricity, internet)' },
     { label: 'Walk score', value: '99 / 100' },
   ];
   document.getElementById('features').innerHTML = features.map(f =>

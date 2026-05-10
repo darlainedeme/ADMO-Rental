@@ -1,0 +1,963 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2cm,top=2.4cm,bottom=2.4cm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage[hidelinks,bookmarks=true,bookmarksopen=true,bookmarksnumbered=false]{hyperref}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{etoolbox}
+\usepackage{titletoc}
+\usepackage{microtype}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\tcbuselibrary{skins}
+
+% Brand colors
+\definecolor{brandred}{HTML}{C14B2F}
+\definecolor{brandink}{HTML}{1A1A1A}
+\definecolor{brandmuted}{HTML}{6B6B6B}
+\definecolor{brandbg}{HTML}{F4F0E8}
+\definecolor{brandbg2}{HTML}{EEE8DC}
+\definecolor{brandline}{HTML}{D8D0C0}
+\definecolor{brandgreen}{HTML}{16A34A}
+\definecolor{brandamber}{HTML}{D97706}
+
+% Fonts (DejaVu Sans is reliably installed)
+\setmainfont{DejaVu Serif}[
+  UprightFont = *,
+  BoldFont = * Bold,
+  ItalicFont = * Italic,
+  BoldItalicFont = * Bold Italic,
+]
+\setsansfont{DejaVu Sans}
+\newfontfamily\headingfont{DejaVu Serif}[BoldFont = * Bold]
+\newfontfamily\sansheading{DejaVu Sans}[BoldFont = * Bold]
+
+% Body styling
+\setlength{\parskip}{0.6em plus 0.2em minus 0.1em}
+\setlength{\parindent}{0pt}
+
+% Section numbering & spacing — magazine style
+\titleformat{\section}
+  {\sansheading\bfseries\Huge\color{brandink}}
+  {\thesection}{0.7em}{}
+\titleformat{\subsection}
+  {\sansheading\bfseries\Large\color{brandred}}
+  {}{0pt}{}
+\titleformat{\subsubsection}
+  {\sansheading\bfseries\large\color{brandink}}
+  {}{0pt}{}
+\titlespacing*{\section}{0pt}{3.2ex plus 1ex minus .2ex}{1.2ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{2.5ex plus 1ex minus .2ex}{1.0ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.8ex plus 1ex minus .2ex}{0.8ex plus .2ex}
+
+% Eyebrow command
+\newcommand{\eyebrow}[1]{{\sansheading\bfseries\footnotesize\color{brandred}\MakeUppercase{#1}\par\vspace{0.2em}}}
+
+% Page header
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sansheading\footnotesize\color{brandmuted}2465 18th St NW \#4 \textcolor{brandred}{\textbullet} Adams Morgan, DC}
+\fancyhead[R]{\sansheading\footnotesize\color{brandmuted}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}}
+
+% Stat box
+\newtcolorbox{statbox}{
+  enhanced, colback=brandbg2, colframe=brandline, boxrule=0.4pt,
+  arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt,
+}
+
+% Pretty table for places
+\newcolumntype{N}{>{\centering\arraybackslash}m{0.7cm}}
+\newcolumntype{W}{>{\raggedright\arraybackslash}p{2cm}}
+
+\begin{document}
+
+
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{2cm}
+{\sansheading\footnotesize\color{brandred}\MakeUppercase{A neighborhood guide for}\par}
+\vspace{0.4em}
+{\headingfont\fontsize{42pt}{48pt}\selectfont 2465 18th St NW \#4\par}
+\vspace{0.5em}
+{\headingfont\itshape\Large Adams Morgan, Washington DC\par}
+\vspace{2cm}
+
+\begin{tcolorbox}[
+  enhanced, colback=white, colframe=brandred, boxrule=0pt,
+  borderline west={3pt}{0pt}{brandred},
+  arc=0pt, left=18pt, right=18pt, top=14pt, bottom=14pt,
+  width=0.78\textwidth,
+]
+{\sansheading\large I moved to Adams Morgan because I wanted somewhere that actually felt alive, and it absolutely delivered. I need to leave DC momentarily and didn't want to hand the place over to a stranger without a proper introduction. So, because I'm a bit of a nerd and I love maps and charts, I built this guide.}
+\par\vspace{0.6em}
+\hfill\textit{Yours, D}
+\end{tcolorbox}
+
+\vfill
+{\sansheading\footnotesize\color{brandmuted}A furnished one-bedroom in a small four-unit building \\
+Available September 2026 \textcolor{brandred}{\textbullet} 12-month lease, possibility of renewal\par}
+\vspace{1.5cm}
+\end{titlepage}
+
+
+\thispagestyle{empty}
+\renewcommand{\contentsname}{\sansheading\Huge\color{brandink} Table of contents}
+\tableofcontents
+\clearpage
+
+\section{The apartment}\label{sec:apt}
+
+\eyebrow{The space, in plain words}
+
+A 599 sq ft (about 56 m\textsuperscript{2}) furnished one-bedroom in a small four-unit brick building from 1900. Open-plan kitchen and living area, a generous double-vanity bathroom with a big walk-in shower, sliding barn doors to the bedroom, projector for movie nights on the big white wall, in-unit laundry, central A/C. The building stays quiet, the neighborhood doesn't, and you'll figure out pretty quickly that's the point.
+
+\subsection*{What it's like}
+
+It's unit 4 in a three-story brick condo from 1900. Just four apartments in the whole building, and neighbors who actually say hi in the stairwell. That bit matters more than people realize: this isn't a 200-unit tower where you ride the elevator next to strangers. There's nobody upstairs (you're on the top floor, so no one stomps on your head), and you'll know who lives in front and downstairs by the second week.
+
+Inside, the kitchen and living area share one open, light-flooded room with two big windows. The windows do not face 18th Street, which is the point: you get the daylight without the sidewalk noise. \textbf{The apartment gets a remarkable amount of natural light}, especially in the afternoon, the kind that makes plants thrive and your morning coffee feel like a small ritual. The kitchen is genuinely good: shaker cabinets, stainless appliances, built-in microwave, dishwasher, garbage disposal, marble-style countertops, white subway-tile backsplash, recessed lighting throughout. Hardwood floors run the length of the apartment.
+
+The bedroom is set behind sliding barn-style doors and faces the back, so weekend energy on 18th Street stays outside. \textbf{You'll see the bedroom in the photos as currently empty} because I sleep on a Japanese futon that I roll out at night and put away in the morning. Before I leave I'll bring in a proper bed (queen, frame and mattress, ready for you).
+
+The bathroom is the surprise of the place. Double vanity with two sinks and two mirrors on a marble counter, lots of drawer storage, and a generous tiled walk-in shower with a built-in niche shelf for shampoos. A stacked washer-dryer sits just outside the bathroom so you never see a laundromat.
+
+At 599 sq ft (about 56 m\textsuperscript{2}) the open layout makes it feel much larger than the number suggests. \textbf{The apartment is currently arranged the way I like it: open, airy, lots of empty floor, not a stick of clutter, set up for one person who wanted to breathe.} The dining piece is a foldable table that takes about 20 seconds to put away. I'm flexible on the furniture, we can figure out together what works for your life.
+
+The couch is a modular piece that pulls apart, rearranges, or unfolds into a flat surface big enough to nap on or seat half a dozen friends for a movie night. It's deeply comfortable, easy to clean, and the kind of furniture that quietly does a lot of the work in such a space.
+
+Central A/C keeps it comfortable through DC summers, forced-air heat through the winters. Gas, water, trash, electricity, internet, and a robot vacuum that handles the floors all stay with the apartment.
+
+For movie nights, there's a projector that throws a huge image onto the long white wall in the living room. Better than a TV and the cinema rolled together when friends come over.
+
+You won't need a car. The 42 bus runs straight downtown from the corner, three Capital Bikeshare stations sit within a block, and the walk score is 99. If you'd like, I'll leave the bike too.
+
+\textbf{The apartment is registered with the DC pet community.} If you ever want to foster a cat through City Dogs \& City Kitties DC, I'm happy to put you in touch. The unit has already been vetted as a foster-friendly home.
+
+\subsection*{Quick facts}
+
+\begin{statbox}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\linewidth}{@{}lXlX@{}}
+\textbf{Bedrooms} & 1 & \textbf{Bathrooms} & 1 \\
+\textbf{Size} & 599 sq ft \textcolor{brandmuted}{(56 m\textsuperscript{2})} & \textbf{Unit} & \#4 \textcolor{brandmuted}{(top floor)} \\
+\textbf{Building} & Brick condo, 1900 & \textbf{Heat / AC} & Central A/C + forced air \\
+\textbf{Laundry} & In-unit washer/dryer & \textbf{Walk Score} & 99 / 100 \\
+\textbf{Utilities} & Gas, water, trash & \textbf{Bills incl.} & Internet + electricity \\
+\textbf{Pets} & Cats \& dogs OK & \textbf{Furnished} & Yes \\
+\end{tabularx}
+\end{statbox}
+
+\subsection*{The deal, plainly}
+
+\begin{tcolorbox}[
+  enhanced, colback=brandbg2, colframe=brandred, boxrule=0pt,
+  borderline west={3pt}{0pt}{brandred},
+  arc=2pt, left=14pt, right=14pt, top=10pt, bottom=10pt,
+]
+\textbf{\large Rent: \$2,900 / month} \\
+\textbf{Lease:} 12-month fixed-term, September 1 2026 to August 31 2027, open to renewing if it's working for both of us. \\
+\textbf{Security deposit:} one month, refundable. First month's rent due at signing. Renter's insurance required. \\
+\textbf{Pets:} cats and dogs welcome, one-time refundable deposit. Building is pet-friendly throughout. \\
+\textbf{Tenant screening:} standard background and credit check, income verification (3$\times$ rent or co-signer), two references, video call before anything formal.
+\end{tcolorbox}
+
+\subsection*{What's included, what's not}
+
+\begin{minipage}[t]{0.48\linewidth}
+{\sansheading\bfseries\color{brandgreen}Included}
+\begin{itemize}[leftmargin=1em,nosep,after=\strut]
+\item All furniture (bed, sofa, dining, standing desk)
+\item Full kitchen setup (cookware, plates, utensils)
+\item Bedding and towels
+\item In-unit washer/dryer
+\item Central A/C and forced-air heat
+\item Gas, water, and trash removal
+\item Electricity
+\item Internet (Wi-Fi)
+\item Robot vacuum cleaner
+\item Projector + big white living-room wall
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\sansheading\bfseries\color{brandamber}Not included}
+\begin{itemize}[leftmargin=1em,nosep,after=\strut]
+\item Renter's insurance (required, on tenant)
+\end{itemize}
+\end{minipage}
+
+\subsection*{Things I can leave behind, if you'd want them}
+
+A few things I'd otherwise have to move out or put in storage. If any of these would be useful, just say so when we talk and they stay.
+
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{Road bike.} Recently tuned. The fastest way around the neighborhood and gets you to Rock Creek trails in five minutes.
+\item \textbf{Under-desk treadmill.} Standing desk stays either way; the walking pad underneath is yours if you want it.
+\item \textbf{Cat setup.} Litter box, food and water bowls, scratching post, carrier.
+\item \textbf{Home gym kit.} Compact gym machine, dumbbells, yoga mat, resistance bands, foam roller.
+\item \textbf{Sports gear.} Basketball, soccer ball, tennis rackets and balls. Marie Reed has indoor and outdoor courts five minutes away, Walter Pierce has a full-size turf field.
+\end{itemize}
+
+\clearpage
+
+\section{The neighborhood}\label{sec:nbh}
+
+\eyebrow{Why I love living here, and why you will too}
+
+Adams Morgan is the closest thing DC has to a real \textbf{15-minute city}. Almost everything you need (groceries, the gym, the dog park, the bookshop, your coffee place, dinner, drinks, the dentist) sits inside a quarter-mile radius (roughly 400 m for my international friends) of the front door. Most of DC is built around commuting; here you'll see the same faces in line for coffee, at the dog park, on the basketball court at Marie Reed, browsing the shelves at Lost City Books, at the Saturday farmers market downstairs. It's small (0.47 sq mi $\cdot$ 1.2 km\textsuperscript{2}, about 17.000 people), it's dense, and almost everyone walks. Walk Score 99, Bike Score 92, Transit Score 80.
+
+\begin{tcolorbox}[
+  enhanced, colback={brandred!8}, colframe=brandred, boxrule=0pt,
+  borderline west={3pt}{0pt}{brandred},
+  arc=2pt, left=14pt, right=14pt, top=10pt, bottom=10pt,
+]
+\textbf{Honest disclaimer.} If what you want is a quiet, suburban kind of calm, this isn't the spot. Adams Morgan has a pulse: bars, music, foot traffic, weekend crowds. But here's the thing about this specific apartment: the bedroom faces the back, the windows don't face 18th Street, and the building has just four units. Inside, you'll be surprised how peaceful it is. So if you want a vibrant neighborhood you can step into when you feel like it, and a quiet place to come home to when you don't, this is your spot.
+\end{tcolorbox}
+
+The center of it is the corner of 18th Street and Columbia Road. From the front door you're a block from Ethiopian dinners at Tsehay and Elfegne, kebabs at Lapis a few minutes down Columbia, pasta at Reveler's Hour, and a Saturday farmers market that sets up basically downstairs. The American Planning Association named the neighborhood one of America's ``great neighborhoods'' in 2014. Adams Morgan Day, the September street festival, has run since 1978 and draws tens of thousands every year.
+
+For someone who likes to move around, the geography is unbeatable. Rock Creek Park (1.700 acres / 690 hectares of trails) is a five-minute walk west. Marie Reed Recreation Center has an indoor pool, a soccer turf, and basketball courts inside the neighborhood. Walter Pierce Park has the dog crowd in the morning and a full-size soccer field in the evening. There are gyms, yoga studios, Solidcore, run clubs, pickup leagues, and a Capital Bikeshare station basically at the door.
+
+The thing the demographic profile doesn't capture is the texture. It's a place where the barista at Tryst pulls your double espresso before you've fully said hello, where you can take a torn jacket to Do\~na Rosa down the block and have it back the next day, and where three months in you'll already know half the names on the block.
+
+\subsection*{At a glance}
+
+\begin{statbox}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabularx}{\linewidth}{@{}lXlX@{}}
+\textbf{Population} & 17.113 & \textbf{Median age} & 34 \\
+\textbf{Median income} & \$146.664 & \textbf{Median rent (area)} & \$2.341 \\
+\textbf{Walk Score} & 99 / 100 & \textbf{Bike Score} & 92 / 100 \\
+\textbf{Transit Score} & 80 / 100 & \textbf{Density} & 14.058 / km\textsuperscript{2} \\
+\textbf{Area} & 0.47 sq mi (1.2 km\textsuperscript{2}) & \textbf{Avg commute} & 9 min \\
+\end{tabularx}
+{\footnotesize\color{brandmuted}Sources: US Census ACS 2019--2023, Walk Score, Niche, Kurby.}
+\end{statbox}
+
+\subsection*{A short history}
+
+Colonial-era estates after DC was created in 1791. Electric streetcars arrived in 1903 and the area grew into upper- and middle-class neighborhoods. In 1948, Charles Lazarus founded Toys ``R'' Us here. The name comes from two formerly segregated elementary schools, all-Black Thomas P. Morgan and all-white John Quincy Adams, which merged in 1955 following racial desegregation. From 2010 to 2012 the city reconstructed 18th Street NW with wider sidewalks and bike infrastructure. The American Planning Association named Adams Morgan one of the country's ``great neighborhoods'' in 2014. It has steadily attracted new investment and a wave of younger residents while keeping much of its original character intact, and is now also one of DC's recognized hubs of LGBTQ culture.
+
+\subsection*{Things I'd tell a friend}
+
+\begin{itemize}[leftmargin=1.2em,nosep,after=\strut]
+\item The bedroom faces the back, so the weekend stays outside the apartment.
+\item It's a four-unit building. You'll know your neighbors by name within a couple weeks.
+\item The 42 and 43 buses down Columbia Road beat the metro most of the time.
+\item Tryst is the unofficial living room of the neighborhood: dog-friendly patio, your barista will start pulling your usual the second you walk in.
+\item Marie Reed Center has indoor pool, basketball, soccer turf, and yoga, all five minutes away.
+\item Walter Pierce dog park in the morning is where you'll meet half the neighborhood.
+\item Lost City Books on 18th is the local literary anchor, browse-it-on-a-rainy-Sunday kind of place.
+\item Sunday drum circle at Meridian Hill (3pm to 5pm) has been running for decades.
+\item Federalist Pig brisket sells out by 8pm, plan accordingly.
+\item Saturday farmers market in Unity Park, June through December, basically downstairs.
+\end{itemize}
+
+\subsection*{The longer version}
+
+\subsubsection*{Daily life is a half-mile radius}
+Almost everything you need is within a half-mile of the door. The ``Social Safeway'' at 1747 Columbia Road is the workhorse, high volume, often crowded. Harris Teeter on Kalorama is the calmer shop a few blocks away. \textbf{Yes! Organic Market} has been here since 1970. \textbf{Adams Morgan Ace Hardware} is housed in the converted Ontario Theatre, a beautiful old movie house that's now part hardware store, part neighborhood plant shop. \textbf{So's Your Mom} is the deli locals tell newcomers about, get the Italian sub.
+
+\subsubsection*{What you'll be eating}
+\textbf{Lapis}, an Afghan bistro a few minutes' walk down Columbia Road, is my weeknight default. Kebabs, rice, the kind of plates you order without thinking. Beyond that, the neighborhood's signature is Ethiopian: \textbf{Tsehay} and \textbf{Elfegne} are a block apart, eat with your hands, leave full, never spend a fortune. \textbf{Federalist Pig} does the best smoked brisket in DC and sells out by 8pm. \textbf{Amsterdam Falafelshop} stays open past bar close. For something fancier, \textbf{Tail Up Goat} and its sister \textbf{Reveler's Hour} are both walking distance.
+
+\subsubsection*{Nightlife you'll actually use}
+\textbf{Jack Rose} holds the largest whiskey collection in the country (2.700+ bottles). \textbf{Roofers Union}'s rooftop is peak summer. \textbf{Tiki on 18th} makes well-made tropical drinks. \textbf{Madam's Organ} has live blues seven nights a week (running since 1992) and is two doors down. \textbf{Bossa} is one of the very few DC bars where people actually dance. \textbf{Code Red} is the hidden cocktail bar. A liquor-license moratorium from 2000 capped the bar count at around 100, which keeps the strip dense without sprawling.
+
+\subsubsection*{Outdoors and sport, more than you'd guess}
+\textbf{Rock Creek Park} opens up 1.700 acres (690 hectares) of trails a five-minute walk west. \textbf{Marie Reed Recreation Center} has an indoor pool, soccer turf, and basketball courts. \textbf{Walter Pierce Park} has a full-size soccer field. \textbf{Solidcore}, several yoga studios, gyms, and run clubs are all within ten minutes. \textbf{Meridian Hill}'s Sunday drum circle (3pm to 5pm) is the neighborhood at its most communal.
+
+\subsubsection*{The metro gap, and why it doesn't matter}
+Adams Morgan doesn't have its own metro stop. The neighborhood sits between Woodley Park (Red Line) and Columbia Heights (Green/Yellow), both about 12 minutes away. The real answer is the bus: the \textbf{42, 43, 90, 92, 96, H1, L2, S2, and S9} all run frequently down Columbia Road, 16th Street, and Florida Avenue. Capital Bikeshare is exceptionally dense, with multiple stations within a block. The apartment comes with a bike if you'd like it.
+
+\subsubsection*{Daytime, when the sun's out}
+The \textbf{Mama Ayesha's mural} on Calvert Street, a row of every US president painted alongside the restaurant's matriarch, is one of the most photographed walls in DC. \textbf{Sunday drum circle at Meridian Hill}: bring a blanket, stay until sunset. \textbf{Adams Morgan Day} every September. \textbf{Adams Morgan PorchFest} happens twice a year (spring and fall): bands play on residential porches, you walk between sets, drink in hand. The most fun anyone has all year.
+
+\subsubsection*{The shops that aren't chains}
+The local hero is \textbf{Lost City Books} (formerly Idle Time): independent, deeply curated, regular author talks. \textbf{Mercedes Bien Vintage} is open weekends only since the 80s. \textbf{Smash Records} is a punk vinyl institution since 1984. The neighborhood's murals (including ``Carry the Rainbow on Your Shoulders'' and ``The Servant Christ'') are among the most documented in the city. \textbf{DC Arts Center} hosts indie performance and exhibition work.
+
+\clearpage
+
+\section{The 15-minute city, by category}\label{sec:places}
+
+\eyebrow{Every place I actually use, mapped and listed}
+
+What follows is the full list of places within a 15-minute walk of the apartment, grouped by category. Each section has a map with numbered markers and the full details below. \textbf{Starred places ($\bigstar$)} are my personal top picks.
+
+
+\subsection{Food \& dining}
+\addcontentsline{toc}{subsection}{Food \textbackslash{}\& dining}
+
+\noindent\textit{43 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/food-dining.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & \textcolor{brandred}{$\bigstar$}~\textbf{Elfegne} \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2420 18th St NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Ethiopian, sambusas, doro tibs} \\
+\addlinespace[2pt]
+2 & \textcolor{brandred}{$\bigstar$}~\textbf{Sakuramen Ramen Bar} \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2441 18th St NW,  Washington} \\ 4.6★ (1k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{ramen, gyoza, vegetarian options} \\
+\addlinespace[2pt]
+3 & \textcolor{brandred}{$\bigstar$}~\textbf{Tsehay} \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2429 18th St NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Ethiopian, shiro, vegetable platter} \\
+\addlinespace[2pt]
+4 & \textcolor{brandred}{$\bigstar$}~\textbf{Reveler's Hour} \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2400 18th St NW,  Washington} \\ 4.5★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{fresh pasta, natural wine, bar seats} \\
+\addlinespace[2pt]
+5 & \textcolor{brandred}{$\bigstar$}~\textbf{Mola} \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2438 18th St NW,  Washington} \\ 4.7★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Latin American snacks, empanadas} \\
+\addlinespace[2pt]
+6 & \textcolor{brandred}{$\bigstar$}~\textbf{Lapis} \\ \textcolor{brandmuted}{\footnotesize brunch spot} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1847 Columbia Rd NW,  Washington} \\ 4.4★ (1k+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Afghan brunch, rose-cardamom pancakes, kebabs} \\
+\addlinespace[2pt]
+7 & \textcolor{brandred}{$\bigstar$}~\textbf{Federalist Pig} \\ \textcolor{brandmuted}{\footnotesize casual dinner} & 7 min walk & \textcolor{brandmuted}{\footnotesize 1654 Columbia Rd NW,  Washington} \\ 4.5★ (1k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{brisket, ribs, mac and cheese} \\
+\addlinespace[2pt]
+8 & \textcolor{brandred}{$\bigstar$}~\textbf{Anju} \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 11 min walk & \textcolor{brandmuted}{\footnotesize 1805 18th St NW,  Washington} \\ 4.5★ (1k+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Korean, fried chicken, brunch French toast} \\
+\addlinespace[2pt]
+9 & Al Volo Osteria \\ \textcolor{brandmuted}{\footnotesize casual dinner} & 1 min walk & \textcolor{brandmuted}{\footnotesize 1790 Columbia Rd NW,  Washington} \\ 4.5★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{fresh pasta, gelato} \\
+\addlinespace[2pt]
+10 & Amsterdam Falafelshop \\ \textcolor{brandmuted}{\footnotesize cheap eats / fast casual} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2425 18th St NW,  Washington} \\ 4.3★ (1k+) · \textbackslash{}\$ \\ \textit{falafel, toppings bar, late-night} \\
+\addlinespace[2pt]
+11 & BUL Korean \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2431 18th St NW,  Washington} \\ 4.3★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Korean street food, skewers, kimchee} \\
+\addlinespace[2pt]
+12 & Cana \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2412 18th St NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Brazilian, drinks} \\
+\addlinespace[2pt]
+13 & Donburi \\ \textcolor{brandmuted}{\footnotesize cheap eats / fast casual} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2438 18th St NW,  Washington} \\ 4.4★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{katsudon, rice bowls, counter seats} \\
+\addlinespace[2pt]
+14 & Hilo Vibe House \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2439 18th St NW,  Washington} \\ 4.7★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Sushi, poke} \\
+\addlinespace[2pt]
+15 & Retrobottega \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2435 18th St NW,  Washington} \\ 4.5★ (500+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Italian small plates, wine} \\
+\addlinespace[2pt]
+16 & Taqueria Al Lado \\ \textcolor{brandmuted}{\footnotesize cheap eats / fast casual} & 1 min walk & \textcolor{brandmuted}{\footnotesize 1792 Columbia Rd NW,  Washington} \\ 4.3★ (250+) · \textbackslash{}\$ \\ \textit{tacos, cod taco} \\
+\addlinespace[2pt]
+17 & Duccini's \\ \textcolor{brandmuted}{\footnotesize pizza} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2400 18th St NW,  Washington} \\ 3.7★ (250+) · \textbackslash{}\$ \\ \textit{jumbo slice} \\
+\addlinespace[2pt]
+18 & Falafel Sam \\ \textcolor{brandmuted}{\footnotesize cheap eats / fast casual} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2425 18th St NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$ \\ \textit{falafel, takeout} \\
+\addlinespace[2pt]
+19 & Johnny Pistolas \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2333 18th St NW,  Washington} \\ 4.3★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Mexican, tacos, brunch} \\
+\addlinespace[2pt]
+20 & Perry's \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 2 min walk & \textcolor{brandmuted}{\footnotesize 1811 Columbia Rd NW,  Washington} \\ 4.4★ (1k+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{sushi, drag brunch, rooftop} \\
+\addlinespace[2pt]
+21 & Rise Bakery \\ \textcolor{brandmuted}{\footnotesize bakery / pastry} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2409 18th St NW,  Washington} \\ 4.5★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{gluten-free, vegan pastries} \\
+\addlinespace[2pt]
+22 & Tail Up Goat \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 2 min walk & \textcolor{brandmuted}{\footnotesize 1827 Adams Mill Rd NW,  Washington} \\ 4.6★ (500+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Mediterranean small plates, fresh pasta, wine} \\
+\addlinespace[2pt]
+23 & Van Leeuwen Ice Cream \\ \textcolor{brandmuted}{\footnotesize bakery / pastry} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2421 18th St NW,  Washington} \\ 4.3★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{ice cream} \\
+\addlinespace[2pt]
+24 & Air Restaurant \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2473 18th St NW Fl 2,  Washington} \\ 4.5★ (2k+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{upscale, brunch buffet} \\
+\addlinespace[2pt]
+25 & Andy's Pizza \\ \textcolor{brandmuted}{\footnotesize pizza} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2405 18th St NW,  Washington} \\ 4.7★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{NY-style slices, sober pizza} \\
+\addlinespace[2pt]
+26 & Izumi \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1832 Columbia Rd NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{sushi, sashimi} \\
+\addlinespace[2pt]
+27 & Mezè Restaurant \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2437 18th St NW,  Washington} \\ 4.4★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Middle Eastern small plates, mojitos} \\
+\addlinespace[2pt]
+28 & Namak \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1813 Columbia Rd NW,  Washington} \\ 4.5★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Eastern Mediterranean, mezze, kebabs} \\
+\addlinespace[2pt]
+29 & Oh Mama Grill \\ \textcolor{brandmuted}{\footnotesize cheap eats / fast casual} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1829 Columbia Rd NW,  Washington} \\ 4.4★ (250+) · \textbackslash{}\$ \\ \textit{kosher grill, kids meals} \\
+\addlinespace[2pt]
+30 & Pizza Mart \\ \textcolor{brandmuted}{\footnotesize pizza} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2435 18th St NW,  Washington} \\ 3.6★ (250+) · \textbackslash{}\$ \\ \textit{jumbo slice, late-night} \\
+\addlinespace[2pt]
+31 & The Grill From Ipanema \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1858 Columbia Rd NW,  Washington} \\ 4.5★ (500+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Brazilian, churrasco} \\
+\addlinespace[2pt]
+32 & the DINER \\ \textcolor{brandmuted}{\footnotesize brunch spot} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2453 18th St NW,  Washington} \\ 4.2★ (1k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{24-hour brunch, milkshakes, kids menu} \\
+\addlinespace[2pt]
+33 & New York Grill \\ \textcolor{brandmuted}{\footnotesize cheap eats / fast casual} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1764 Columbia Rd NW,  Washington} \\ 4.8★ (250+) · \textbackslash{}\$ \\ \textit{halal grill, fresh} \\
+\addlinespace[2pt]
+34 & Pitango Gelato \& Cafe \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1841 Columbia Rd NW,  Washington} \\ 4.3★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{gelato, espresso} \\
+\addlinespace[2pt]
+35 & VEGZ \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2120 18th St NW,  Washington} \\ 4.7★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Vegan Indian} \\
+\addlinespace[2pt]
+36 & Ceibo \\ \textcolor{brandmuted}{\footnotesize date night restaurant} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2106 18th St NW 1st Fl,  Washington} \\ 4.9★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{South American, wine} \\
+\addlinespace[2pt]
+37 & Cake Room Bakery \\ \textcolor{brandmuted}{\footnotesize bakery / pastry} & 7 min walk & \textcolor{brandmuted}{\footnotesize 2006 18th St NW,  Washington} \\ 4.5★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{cakes, cupcakes, custom orders} \\
+\addlinespace[2pt]
+38 & Chicken Paradise \\ \textcolor{brandmuted}{\footnotesize cheap eats / fast casual} & 7 min walk & \textcolor{brandmuted}{\footnotesize 2008 18th St NW,  Washington} \\ 4.5★ (100+) · \textbackslash{}\$ \\ \textit{chicken sandwiches} \\
+\addlinespace[2pt]
+39 & Lucky Buns \\ \textcolor{brandmuted}{\footnotesize late-night food} & 7 min walk & \textcolor{brandmuted}{\footnotesize 2000 18th St NW,  Washington} \\ 4.3★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{globally-inspired burgers, tandoori chicken sandwich} \\
+\addlinespace[2pt]
+40 & Mama Ayesha's \\ \textcolor{brandmuted}{\footnotesize casual dinner} & 7 min walk & \textcolor{brandmuted}{\footnotesize 1967 Calvert St NW,  Washington} \\ 4.5★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Middle Eastern, kebabs, presidents mural} \\
+\addlinespace[2pt]
+41 & Bar Charley \\ \textcolor{brandmuted}{\footnotesize casual dinner} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1825 18th St NW,  Washington} \\ 4.5★ (1k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{steak, drinks, brunch} \\
+\addlinespace[2pt]
+42 & Lauriol Plaza \\ \textcolor{brandmuted}{\footnotesize international cuisine} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1835 18th St NW,  Washington} \\ 4.4★ (2k+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Mexican, fish tacos, margaritas} \\
+\addlinespace[2pt]
+43 & Vagabond Bar and Kitchen \\ \textcolor{brandmuted}{\footnotesize brunch spot} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1836 18th St NW,  Washington} \\ 4.7★ (500+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{brunch, cocktails} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Cafes \& work}
+\addcontentsline{toc}{subsection}{Cafes \textbackslash{}\& work}
+
+\noindent\textit{13 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/cafes-work.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & \textcolor{brandred}{$\bigstar$}~\textbf{Tryst} \\ \textcolor{brandmuted}{\footnotesize work-friendly cafe} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2459 18th St NW,  Washington} \\ 4.3★ (1k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{all-day brunch, coffee, wifi} \\
+\addlinespace[2pt]
+2 & \textcolor{brandred}{$\bigstar$}~\textbf{Soleluna} \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 2 min walk & \textcolor{brandmuted}{\footnotesize 1787 Columbia Rd NW,  Washington} \\ 4.7★ (250+) · \textbackslash{}\$ \\ \textit{espresso, light breakfast, quiet wifi} \\
+\addlinespace[2pt]
+3 & \textcolor{brandred}{$\bigstar$}~\textbf{Compass Coffee} \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1817 Columbia Rd NW,  Washington} \\ 4.4★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{local DC roaster, breakfast sandwiches} \\
+\addlinespace[2pt]
+4 & \textcolor{brandred}{$\bigstar$}~\textbf{Lapop} \\ \textcolor{brandmuted}{\footnotesize aesthetic / hang-out cafe} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1847 Columbia Rd NW,  Washington} \\ 4.6★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{coffee, pastries, sometimes a DJ} \\
+\addlinespace[2pt]
+5 & \textcolor{brandred}{$\bigstar$}~\textbf{Tatte Bakery \& Cafe} \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1835 Columbia Rd NW,  Washington} \\ 4.3★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{pastries, work seating} \\
+\addlinespace[2pt]
+6 & \textcolor{brandred}{$\bigstar$}~\textbf{Yerevan Cafe} \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 4 min walk & \textcolor{brandmuted}{\footnotesize 2204 18th St NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$ \\ \textit{Armenian coffee, sweets, wine} \\
+\addlinespace[2pt]
+7 & No Goodbyes \\ \textcolor{brandmuted}{\footnotesize work-friendly cafe} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1770 Euclid St NW,  Washington} \\ 4.2★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{coffee, pastries, wine} \\
+\addlinespace[2pt]
+8 & Venture X \\ \textcolor{brandmuted}{\footnotesize coworking space} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1763 Columbia Rd NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{coworking, day pass, huddle rooms} \\
+\addlinespace[2pt]
+9 & Coin Des Poetes \\ \textcolor{brandmuted}{\footnotesize quiet study cafe} & 5 min walk & \textcolor{brandmuted}{\footnotesize 1800 Wyoming Ave NW,  Washington} \\ 4.2★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{coffee, light bites} \\
+\addlinespace[2pt]
+10 & The Potter's House \\ \textcolor{brandmuted}{\footnotesize quiet study cafe} & 7 min walk & \textcolor{brandmuted}{\footnotesize 1658 Columbia Rd NW,  Washington} \\ 4.3★ (500+) · \textbackslash{}\$ \\ \textit{reading, books, slow coffee} \\
+\addlinespace[2pt]
+11 & Jolt 'N Bolt Coffee \& Tea House \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1918 18th St NW,  Washington} \\ 4.4★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{coffee, pastries} \\
+\addlinespace[2pt]
+12 & Others Coffee \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1722 Florida Ave NW,  Washington} \\ 5.0★ (100+) · \textbackslash{}\$ \\ \textit{coffee, friendly} \\
+\addlinespace[2pt]
+13 & Café Cino \\ \textcolor{brandmuted}{\footnotesize coffee \& breakfast} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1825 18th St NW,  Washington} \\ 4.9★ (50+) · \textbackslash{}\$ \\ \textit{coffee} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Nightlife \& entertainment}
+\addcontentsline{toc}{subsection}{Nightlife \textbackslash{}\& entertainment}
+
+\noindent\textit{17 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/nightlife-entertainment.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & \textcolor{brandred}{$\bigstar$}~\textbf{Tiki on 18th} \\ \textcolor{brandmuted}{\footnotesize cocktail bar} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2412 18th St NW,  Washington} \\ 4.3★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{tiki cocktails, mai tais} \\
+\addlinespace[2pt]
+2 & \textcolor{brandred}{$\bigstar$}~\textbf{Code Red} \\ \textcolor{brandmuted}{\footnotesize cocktail bar} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2440 18th St NW,  Washington} \\ 4.7★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{prohibition cocktails, hidden bar} \\
+\addlinespace[2pt]
+3 & \textcolor{brandred}{$\bigstar$}~\textbf{Maison Bar à Vins} \\ \textcolor{brandmuted}{\footnotesize wine bar} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2218 18th St NW,  Washington} \\ 4.6★ (50+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{natural wine, French snacks} \\
+\addlinespace[2pt]
+4 & \textcolor{brandred}{$\bigstar$}~\textbf{Jack Rose Dining Saloon} \\ \textcolor{brandmuted}{\footnotesize rooftop bar} & 7 min walk & \textcolor{brandmuted}{\footnotesize 2007 18th St NW,  Washington} \\ 4.6★ (1k+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{whiskey collection, rooftop} \\
+\addlinespace[2pt]
+5 & Laugh Index Theatre \\ \textcolor{brandmuted}{\footnotesize comedy / performance venue} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2438 18th St NW,  Washington} \\ 4.8★ (50+) · \textbackslash{}\$ \\ \textit{improv, sketch} \\
+\addlinespace[2pt]
+6 & Mixxed Food \& Drinks \\ \textcolor{brandmuted}{\footnotesize cocktail bar} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2427 18th St NW,  Washington} \\ 4.3★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{drinks, fun playlist} \\
+\addlinespace[2pt]
+7 & Riff Raff DC \\ \textcolor{brandmuted}{\footnotesize neighborhood bar} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2333 18th St NW,  Washington} \\ 5.0★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{craft drinks} \\
+\addlinespace[2pt]
+8 & Dan's Cafe \\ \textcolor{brandmuted}{\footnotesize dive bar} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2315 18th St NW,  Washington} \\ 4.3★ (250+) · \textbackslash{}\$ \\ \textit{squeeze-bottle liquor, jukebox} \\
+\addlinespace[2pt]
+9 & Grand Duchess \\ \textcolor{brandmuted}{\footnotesize cocktail bar} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2337 18th St NW,  Washington} \\ 4.6★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{happy hour cocktails} \\
+\addlinespace[2pt]
+10 & Pitchers DC \\ \textcolor{brandmuted}{\footnotesize neighborhood bar} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2317 18th St NW,  Washington} \\ 4.0★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{sports, karaoke} \\
+\addlinespace[2pt]
+11 & Town Tavern \\ \textcolor{brandmuted}{\footnotesize neighborhood bar} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2323 18th St NW,  Washington} \\ 3.9★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{cheap drinks, comedy nights, sports} \\
+\addlinespace[2pt]
+12 & Bedrock Billiards \\ \textcolor{brandmuted}{\footnotesize neighborhood bar} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1841 Columbia Rd NW,  Washington} \\ 4.2★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{pool tables, cheap beer} \\
+\addlinespace[2pt]
+13 & Muzette \\ \textcolor{brandmuted}{\footnotesize comedy / performance venue} & 4 min walk & \textcolor{brandmuted}{\footnotesize 2305 18th St NW,  Washington} \\ 3.8★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{karaoke, dining} \\
+\addlinespace[2pt]
+14 & Sinners and Saints \\ \textcolor{brandmuted}{\footnotesize neighborhood bar} & 4 min walk & \textcolor{brandmuted}{\footnotesize 2309 18th St NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{music, bartenders} \\
+\addlinespace[2pt]
+15 & Soussi Restaurant \\ \textcolor{brandmuted}{\footnotesize cocktail bar} & 4 min walk & \textcolor{brandmuted}{\footnotesize 2228 18th St NW,  Washington} \\ 4.0★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Mediterranean food, hookah} \\
+\addlinespace[2pt]
+16 & The Green Zone \\ \textcolor{brandmuted}{\footnotesize cocktail bar} & 4 min walk & \textcolor{brandmuted}{\footnotesize 2226 18th St NW,  Washington} \\ 4.5★ (500+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{Middle Eastern cocktails, small plates} \\
+\addlinespace[2pt]
+17 & The Blaguard \\ \textcolor{brandmuted}{\footnotesize neighborhood bar} & 7 min walk & \textcolor{brandmuted}{\footnotesize 2003 18th St NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{sports, half-price Mondays} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Outdoors \& recreation}
+\addcontentsline{toc}{subsection}{Outdoors \textbackslash{}\& recreation}
+
+\noindent\textit{11 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/outdoor-recreation.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & \textcolor{brandred}{$\bigstar$}~\textbf{Kalorama Park} \\ \textcolor{brandmuted}{\footnotesize park} & 6 min walk & \textcolor{brandmuted}{\footnotesize 1875 Columbia Rd NW,  Washington} \\ 4.6★ (500+) \\ \textit{picnics, basketball, playground} \\
+\addlinespace[2pt]
+2 & \textcolor{brandred}{$\bigstar$}~\textbf{Walter Pierce Park} \\ \textcolor{brandmuted}{\footnotesize dog park} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2630 Adams Mill Rd NW,  Washington} \\ 4.5★ (100+) \\ \textit{dog park, playground, soccer field} \\
+\addlinespace[2pt]
+3 & \textcolor{brandred}{$\bigstar$}~\textbf{Meridian Hill Park} \\ \textcolor{brandmuted}{\footnotesize park} & 12 min walk & \textcolor{brandmuted}{\footnotesize 2400 15th St NW,  Washington} \\ 4.7★ (2k+) \\ \textit{Sunday drum circle, cascading fountain} \\
+\addlinespace[2pt]
+4 & \textcolor{brandred}{$\bigstar$}~\textbf{Rock Creek Park} \\ \textcolor{brandmuted}{\footnotesize running route or trail} & 15 min walk & \textcolor{brandmuted}{\footnotesize 2500 Calvert St NW,  Washington} \\ 4.8★ (1k+) \\ \textit{running, cycling, hiking} \\
+\addlinespace[2pt]
+5 & Marie Reed Recreation Center \\ \textcolor{brandmuted}{\footnotesize fitness studio} & 4 min walk & \textcolor{brandmuted}{\footnotesize 2200 Champlain St NW,  Washington} \\ \textit{DC Parks rec center with indoor pool, soccer turf, basketball courts} \\
+\addlinespace[2pt]
+6 & Kalorama Park Basketball Court \\ \textcolor{brandmuted}{\footnotesize basketball court} & 5 min walk & \textcolor{brandmuted}{\footnotesize 1875 Columbia Rd NW,  Washington} \\ 4.0★ (50+) \\ \textit{pickup basketball} \\
+\addlinespace[2pt]
+7 & Marie H Reed Recreation Center \\ \textcolor{brandmuted}{\footnotesize park} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2200 Champlain St NW,  Washington} \\ 4.7★ (50+) \\ \textit{pool, soccer turf, basketball} \\
+\addlinespace[2pt]
+8 & Marie Reed Aquatic Center \\ \textcolor{brandmuted}{\footnotesize outdoor pool} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2200 Champlain St NW,  Washington} \\ 4.2★ (50+) \\ \textit{6-lane indoor 25-yard pool} \\
+\addlinespace[2pt]
+9 & Marie Reed Soccer Field \\ \textcolor{brandmuted}{\footnotesize soccer field or pitch} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2200 Champlain St NW,  Washington} \\ 4.7★ (50+) \\ \textit{pickup soccer, weekend leagues} \\
+\addlinespace[2pt]
+10 & Tennis Courts (18th St) \\ \textcolor{brandmuted}{\footnotesize tennis court} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2179 18th St NW,  Washington} \\ 4.4★ (30+) \\ \textit{public tennis} \\
+\addlinespace[2pt]
+11 & Walter Pierce Athletic Field \\ \textcolor{brandmuted}{\footnotesize soccer field or pitch} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2634 Adams Mill Rd NW,  Washington} \\ 4.8★ (50+) \\ \textit{pickup soccer} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Everyday essentials}
+\addcontentsline{toc}{subsection}{Everyday essentials}
+
+\noindent\textit{25 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/everyday-essentials.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & PNC Bank \\ \textcolor{brandmuted}{\footnotesize bank} & 2 min walk & \textcolor{brandmuted}{\footnotesize 1779 Columbia Rd NW,  Washington} \\ 3.5★ (50+) \\ \textit{teller services, ATM} \\
+\addlinespace[2pt]
+2 & Bank of America \\ \textcolor{brandmuted}{\footnotesize bank} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1835 Columbia Rd NW,  Washington} \\ 3.7★ (50+) \\ \textit{ATM, deposits} \\
+\addlinespace[2pt]
+3 & Bestway Cleaners \\ \textcolor{brandmuted}{\footnotesize dry cleaner} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2438 18th St NW,  Washington} \\ 4.2★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{dry cleaning, alterations} \\
+\addlinespace[2pt]
+4 & CVS Pharmacy \\ \textcolor{brandmuted}{\footnotesize pharmacy} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1755 Columbia Rd NW,  Washington} \\ 2.5★ (100+) · \textbackslash{}\$ \\ \textit{prescription pickup, basics} \\
+\addlinespace[2pt]
+5 & So's Your Mom \\ \textcolor{brandmuted}{\footnotesize specialty food} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1831 Columbia Rd NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$ \\ \textit{NY-style deli sandwiches, bagels} \\
+\addlinespace[2pt]
+6 & USPS Kalorama Station \\ \textcolor{brandmuted}{\footnotesize post office} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2300 18th St NW,  Washington} \\ 2.7★ (250+) \\ \textit{mail, packages, passport applications} \\
+\addlinespace[2pt]
+7 & Yes! Organic Market \\ \textcolor{brandmuted}{\footnotesize specialty food} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1825 Columbia Rd NW,  Washington} \\ 3.7★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{organic produce, vegan options} \\
+\addlinespace[2pt]
+8 & 7-Eleven Columbia Rd \\ \textcolor{brandmuted}{\footnotesize grocery (small / convenience)} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1755 Columbia Rd NW,  Washington} \\ 3.0★ (50+) · \textbackslash{}\$ \\ \textit{late-night snacks, drinks, basics} \\
+\addlinespace[2pt]
+9 & Kalorama Pharmacy \\ \textcolor{brandmuted}{\footnotesize pharmacy} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1841 Columbia Rd NW,  Washington} \\ 4.5★ (50+) · \textbackslash{}\$ \\ \textit{independent prescription filling} \\
+\addlinespace[2pt]
+10 & Safeway \\ \textcolor{brandmuted}{\footnotesize grocery (large)} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1747 Columbia Rd NW,  Washington} \\ 3.3★ (1k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{weekly grocery run, pharmacy pickup, late-night essentials} \\
+\addlinespace[2pt]
+11 & Streets Market \\ \textcolor{brandmuted}{\footnotesize grocery (small / convenience)} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1864 Columbia Rd NW,  Washington} \\ 3.7★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{prepared foods, beer and wine, quick stops} \\
+\addlinespace[2pt]
+12 & Colombia Market \\ \textcolor{brandmuted}{\footnotesize grocery (small / convenience)} & 5 min walk & \textcolor{brandmuted}{\footnotesize 1733 Columbia Rd NW,  Washington} \\ 4.1★ (50+) · \textbackslash{}\$ \\ \textit{snacks, ice cream, lottery tickets} \\
+\addlinespace[2pt]
+13 & Santa Rosa de Lima \\ \textcolor{brandmuted}{\footnotesize tailor} & 5 min walk & \textcolor{brandmuted}{\footnotesize 1748 Columbia Rd NW,  Washington} \\ 4.8★ (30+) · \textbackslash{}\$ \\ \textit{alterations} \\
+\addlinespace[2pt]
+14 & The UPS Store \\ \textcolor{brandmuted}{\footnotesize shipping center} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2202 18th St NW,  Washington} \\ 4.0★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Amazon returns, packing, shipping} \\
+\addlinespace[2pt]
+15 & Adams Morgan Ace Hardware \\ \textcolor{brandmuted}{\footnotesize hardware store} & 6 min walk & \textcolor{brandmuted}{\footnotesize 1704 Columbia Rd NW,  Washington} \\ 4.7★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{tools, paint, plants, keys} \\
+\addlinespace[2pt]
+16 & Solidcore Adams Morgan \\ \textcolor{brandmuted}{\footnotesize fitness studio} & 6 min walk & \textcolor{brandmuted}{\footnotesize 1706 Columbia Rd NW,  Washington} \\ 4.5★ (100+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{reformer pilates, slow burn} \\
+\addlinespace[2pt]
+17 & CorePower Yoga \\ \textcolor{brandmuted}{\footnotesize yoga studio} & 7 min walk & \textcolor{brandmuted}{\footnotesize 1701 Columbia Rd NW,  Washington} \\ 4.4★ (100+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{hot yoga, sculpt classes} \\
+\addlinespace[2pt]
+18 & MINT Gym \& Studio \\ \textcolor{brandmuted}{\footnotesize gym} & 7 min walk & \textcolor{brandmuted}{\footnotesize 1724 California St NW,  Washington} \\ 4.6★ (100+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{strength, cardio, classes} \\
+\addlinespace[2pt]
+19 & Eco Laundry Adams Morgan \\ \textcolor{brandmuted}{\footnotesize laundromat} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1908 Columbia Rd NW,  Washington} \\ 3.8★ (50+) · \textbackslash{}\$ \\ \textit{self-service laundry, drop-off} \\
+\addlinespace[2pt]
+20 & Alterations By Nawid \\ \textcolor{brandmuted}{\footnotesize tailor} & 9 min walk & \textcolor{brandmuted}{\footnotesize 1901 18th St NW,  Washington} \\ 5.0★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{alterations} \\
+\addlinespace[2pt]
+21 & FedEx Authorized ShipCenter \\ \textcolor{brandmuted}{\footnotesize shipping center} & 9 min walk & \textcolor{brandmuted}{\footnotesize 1929 18th St NW,  Washington} \\ 4.2★ (50+) \\ \textit{FedEx drop-off, packing supplies} \\
+\addlinespace[2pt]
+22 & Harris Teeter Kalorama \\ \textcolor{brandmuted}{\footnotesize grocery (large)} & 9 min walk & \textcolor{brandmuted}{\footnotesize 1631 Kalorama Rd NW,  Washington} \\ 3.7★ (1k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{cleaner shopping, better produce, full pharmacy} \\
+\addlinespace[2pt]
+23 & Lucky Pup Yoga \\ \textcolor{brandmuted}{\footnotesize yoga studio} & 9 min walk & \textcolor{brandmuted}{\footnotesize 1638 Kalorama Rd NW,  Washington} \\ 4.5★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{puppy yoga} \\
+\addlinespace[2pt]
+24 & VIDA Fitness U Street \\ \textcolor{brandmuted}{\footnotesize gym} & 12 min walk & \textcolor{brandmuted}{\footnotesize 1612 U St NW,  Washington} \\ 3.7★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{full gym, classes, pool, sauna} \\
+\addlinespace[2pt]
+25 & SNS Alterations \\ \textcolor{brandmuted}{\footnotesize tailor} & 15 min walk & \textcolor{brandmuted}{\footnotesize 1512 U St NW,  Washington} \\ 4.9★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{alterations} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Shopping \& local finds}
+\addcontentsline{toc}{subsection}{Shopping \textbackslash{}\& local finds}
+
+\noindent\textit{15 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/shopping-local-finds.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & \textcolor{brandred}{$\bigstar$}~\textbf{Adams Morgan Farmers Market} \\ \textcolor{brandmuted}{\footnotesize farmers market} & 1 min walk & \textcolor{brandmuted}{\footnotesize 1801 Columbia Rd NW,  Washington} \\ 4.6★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{local produce, bread, pastries} \\
+\addlinespace[2pt]
+2 & \textcolor{brandred}{$\bigstar$}~\textbf{Smash Records} \\ \textcolor{brandmuted}{\footnotesize record store} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2314 18th St NW,  Washington} \\ 4.5★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{punk vinyl, vintage clothes} \\
+\addlinespace[2pt]
+3 & \textcolor{brandred}{$\bigstar$}~\textbf{Tiny Vinyl Shop} \\ \textcolor{brandmuted}{\footnotesize record store} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2501 Champlain St NW,  Washington} \\ 4.7★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{vinyl, recommendations} \\
+\addlinespace[2pt]
+4 & \textcolor{brandred}{$\bigstar$}~\textbf{PLNTR} \\ \textcolor{brandmuted}{\footnotesize plant shop} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1825 18th St NW 2nd Fl,  Washington} \\ 5.0★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{plants, pots} \\
+\addlinespace[2pt]
+5 & Little Shop of Flowers \\ \textcolor{brandmuted}{\footnotesize plant shop} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2421 18th St NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{florist, custom bouquets} \\
+\addlinespace[2pt]
+6 & Mercedes Bien Vintage \\ \textcolor{brandmuted}{\footnotesize vintage / thrift shop} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2423 18th St NW,  Washington} \\ 4.6★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{curated vintage, weekends only} \\
+\addlinespace[2pt]
+7 & Bazaar Atlas \\ \textcolor{brandmuted}{\footnotesize home goods / decor} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2405 18th St NW,  Washington} \\ 4.6★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{rugs, textiles, gifts} \\
+\addlinespace[2pt]
+8 & Because Science \\ \textcolor{brandmuted}{\footnotesize gift shop} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1759 Columbia Rd NW,  Washington} \\ 4.9★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{science gifts, toys, kits} \\
+\addlinespace[2pt]
+9 & Urban Dwell \\ \textcolor{brandmuted}{\footnotesize gift shop} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1837 Columbia Rd NW,  Washington} \\ 4.9★ (50+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{DC prints, gifts, cards} \\
+\addlinespace[2pt]
+10 & Khartoum Halal Bakkal \\ \textcolor{brandmuted}{\footnotesize specialty food} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2116 18th St NW,  Washington} \\ 4.1★ (100+) · \textbackslash{}\$ \\ \textit{halal meat, groceries} \\
+\addlinespace[2pt]
+11 & Golden Hour Collective \\ \textcolor{brandmuted}{\footnotesize vintage / thrift shop} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2104 18th St NW,  Washington} \\ 4.9★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{vintage clothing, \$20-100} \\
+\addlinespace[2pt]
+12 & Middle East Books and More \\ \textcolor{brandmuted}{\footnotesize bookstore} & 9 min walk & \textcolor{brandmuted}{\footnotesize 1902 18th St NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Middle East focused books} \\
+\addlinespace[2pt]
+13 & PLNTR Plant Shop \\ \textcolor{brandmuted}{\footnotesize plant shop} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1825 18th St NW 2nd Fl,  Washington} \\ 5.0★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{plants} \\
+\addlinespace[2pt]
+14 & Metro Club Vintage \\ \textcolor{brandmuted}{\footnotesize vintage / thrift shop} & 11 min walk & \textcolor{brandmuted}{\footnotesize 1821 18th St NW,  Washington} \\ 4.9★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{vintage selection} \\
+\addlinespace[2pt]
+15 & Joint Custody \\ \textcolor{brandmuted}{\footnotesize vintage / thrift shop} & 14 min walk & \textcolor{brandmuted}{\footnotesize 1530 U St NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{vintage apparel, electronics, records} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Health \& safety}
+\addcontentsline{toc}{subsection}{Health \textbackslash{}\& safety}
+
+\noindent\textit{9 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/health-safety.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & DC Wellness, Beyond \\ \textcolor{brandmuted}{\footnotesize mental health / therapy practice} & 1 min walk & \textcolor{brandmuted}{\footnotesize 1801 Columbia Rd NW,  Washington} \\ 5.0★ (15+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{massage therapy, wellness} \\
+\addlinespace[2pt]
+2 & MedStar Urgent Care Adams Morgan \\ \textcolor{brandmuted}{\footnotesize urgent care clinic} & 2 min walk & \textcolor{brandmuted}{\footnotesize 1805 Columbia Rd NW,  Washington} \\ 4.1★ (2k+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{walk-in care, x-rays} \\
+\addlinespace[2pt]
+3 & One Medical Adams Morgan \\ \textcolor{brandmuted}{\footnotesize primary care / GP clinic} & 2 min walk & \textcolor{brandmuted}{\footnotesize 1827 Adams Mill Rd NW Suite C,  Washington} \\ 4.6★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{primary care, telehealth} \\
+\addlinespace[2pt]
+4 & Fashion Optical \\ \textcolor{brandmuted}{\footnotesize optometrist} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1766 Columbia Rd NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{glasses, fittings} \\
+\addlinespace[2pt]
+5 & Out of the Margins Therapy \\ \textcolor{brandmuted}{\footnotesize mental health / therapy practice} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1807 Belmont Rd NW,  Washington} \\ 5.0★ (10+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{therapy} \\
+\addlinespace[2pt]
+6 & Adams Morgan Cosmetic Dentistry \\ \textcolor{brandmuted}{\footnotesize dental clinic} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1746 Columbia Rd NW,  Washington} \\ 4.0★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{general and cosmetic dentistry} \\
+\addlinespace[2pt]
+7 & Adams Morgan Family Dentistry \\ \textcolor{brandmuted}{\footnotesize dental clinic} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1790 Lanier Pl NW,  Washington} \\ 4.7★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{family dentistry} \\
+\addlinespace[2pt]
+8 & Smile Dental (Faisal Mir, DDS) \\ \textcolor{brandmuted}{\footnotesize dental clinic} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2108 18th St NW,  Washington} \\ 4.7★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{general dentistry} \\
+\addlinespace[2pt]
+9 & MPD Third District \\ \textcolor{brandmuted}{\footnotesize police station} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1620 V St NW,  Washington} \\ 3.0★ (50+) \\ \textit{non-emergency reports} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Wellness \& spa}
+\addcontentsline{toc}{subsection}{Wellness \textbackslash{}\& spa}
+
+\noindent\textit{5 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/wellness-spa.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & Essence Head Spa \& Massage \\ \textcolor{brandmuted}{\footnotesize head spa} & 1 min walk & \textcolor{brandmuted}{\footnotesize 1794 Columbia Rd NW,  Washington} \\ 5.0★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{head spa, massage} \\
+\addlinespace[2pt]
+2 & Capital Blossom Day Spa \\ \textcolor{brandmuted}{\footnotesize day spa} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1805 Belmont Rd NW,  Washington} \\ 4.8★ (500+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{facials, massage, body} \\
+\addlinespace[2pt]
+3 & Prada Massage Spa \\ \textcolor{brandmuted}{\footnotesize massage spa} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2122 18th St NW,  Washington} \\ 4.6★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{massage} \\
+\addlinespace[2pt]
+4 & Unwind Wellness Adams Morgan \\ \textcolor{brandmuted}{\footnotesize massage spa} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1990 18th St NW,  Washington} \\ 4.9★ (250+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{massage, body work} \\
+\addlinespace[2pt]
+5 & Wat Massage \\ \textcolor{brandmuted}{\footnotesize thai massage} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1804 Vernon St NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{Thai massage} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Beauty \& grooming}
+\addcontentsline{toc}{subsection}{Beauty \textbackslash{}\& grooming}
+
+\noindent\textit{7 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/beauty-grooming.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & \textcolor{brandred}{$\bigstar$}~\textbf{Trim Hair Salon} \\ \textcolor{brandmuted}{\footnotesize hair salon} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2700 Ontario Rd NW,  Washington} \\ 5.0★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{haircut, color} \\
+\addlinespace[2pt]
+2 & \textcolor{brandred}{$\bigstar$}~\textbf{Manifest} \\ \textcolor{brandmuted}{\footnotesize barber shop} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1807 Florida Ave NW,  Washington} \\ 4.7★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{haircut, beard, drinks} \\
+\addlinespace[2pt]
+3 & Maggy's Beauty Salon \\ \textcolor{brandmuted}{\footnotesize hair salon} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2407 18th St NW,  Washington} \\ 4.7★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{trim, roller set} \\
+\addlinespace[2pt]
+4 & Bristle Hairdressing \\ \textcolor{brandmuted}{\footnotesize hair salon} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1770 Columbia Rd NW,  Washington} \\ 4.7★ (50+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{haircut for all genders} \\
+\addlinespace[2pt]
+5 & StyleBar Hair Salon \\ \textcolor{brandmuted}{\footnotesize hair salon} & 4 min walk & \textcolor{brandmuted}{\footnotesize 1754 Columbia Rd NW,  Washington} \\ 4.8★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{haircut, color} \\
+\addlinespace[2pt]
+6 & Wilson's Barbershop \\ \textcolor{brandmuted}{\footnotesize barber shop} & 7 min walk & \textcolor{brandmuted}{\footnotesize 2010 18th St NW,  Washington} \\ 4.7★ (50+) · \textbackslash{}\$ \\ \textit{haircut, straight shave} \\
+\addlinespace[2pt]
+7 & Eddie's Hair Creations \\ \textcolor{brandmuted}{\footnotesize barber shop} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1718 Florida Ave NW,  Washington} \\ 4.5★ (100+) · \textbackslash{}\$ \\ \textit{barber} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Religious \& spiritual}
+\addcontentsline{toc}{subsection}{Religious \textbackslash{}\& spiritual}
+
+\noindent\textit{7 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/religious-spiritual.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & Church of the Saviour \\ \textcolor{brandmuted}{\footnotesize church} & 9 min walk & \textcolor{brandmuted}{\footnotesize 1640 Columbia Rd NW,  Washington} \\ 4.7★ (3+) \\ \textit{non-denominational} \\
+\addlinespace[2pt]
+2 & All Souls Church Unitarian \\ \textcolor{brandmuted}{\footnotesize unitarian church} & 12 min walk & \textcolor{brandmuted}{\footnotesize 1500 Harvard St NW,  Washington} \\ 4.6★ (100+) \\ \textit{Unitarian Universalist} \\
+\addlinespace[2pt]
+3 & Augustana Lutheran Church \\ \textcolor{brandmuted}{\footnotesize lutheran church} & 13 min walk & \textcolor{brandmuted}{\footnotesize 2100 New Hampshire Ave NW,  Washington} \\ 4.9★ (15+) \\ \textit{Lutheran services} \\
+\addlinespace[2pt]
+4 & St Augustine Church \\ \textcolor{brandmuted}{\footnotesize catholic church} & 14 min walk & \textcolor{brandmuted}{\footnotesize 1419 V St NW,  Washington} \\ 4.8★ (250+) \\ \textit{Catholic mass, music} \\
+\addlinespace[2pt]
+5 & TheSHUL of the Nation's Capital \\ \textcolor{brandmuted}{\footnotesize synagogue} & 14 min walk & \textcolor{brandmuted}{\footnotesize 2110 Leroy Pl NW,  Washington} \\ 4.5★ (40+) \\ \textit{Chabad services} \\
+\addlinespace[2pt]
+6 & American Fazl Mosque \\ \textcolor{brandmuted}{\footnotesize mosque} & 15 min walk & \textcolor{brandmuted}{\footnotesize 2141 Leroy Pl NW,  Washington} \\ 4.8★ (250+) \\ \textit{daily prayer} \\
+\addlinespace[2pt]
+7 & Our Lady Queen of the Americas \\ \textcolor{brandmuted}{\footnotesize catholic church} & 15 min walk & \textcolor{brandmuted}{\footnotesize 2200 California St NW,  Washington} \\ 4.8★ (50+) \\ \textit{Catholic mass} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Transport \& connectivity}
+\addcontentsline{toc}{subsection}{Transport \textbackslash{}\& connectivity}
+
+\noindent\textit{7 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/transport-connectivity.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & Bikeshare Adams Mill \& Columbia \\ \textcolor{brandmuted}{\footnotesize Capital Bikeshare station} & 2 min walk & \textcolor{brandmuted}{\footnotesize 2150 Adams Mill Rd NW,  Washington} \\ 4.0★ (2+) \\ \textit{north Bikeshare} \\
+\addlinespace[2pt]
+2 & Bikeshare 18th \& Columbia \\ \textcolor{brandmuted}{\footnotesize Capital Bikeshare station} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1817 Columbia Rd NW,  Washington} \\ 3.5★ (2+) \\ \textit{closest Bikeshare} \\
+\addlinespace[2pt]
+3 & Zipcar Adams Morgan \\ \textcolor{brandmuted}{\footnotesize car rental / Zipcar location} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1825 Columbia Rd NW,  Washington} \\ 4.0★ (30+) \\ \textit{hourly car rental} \\
+\addlinespace[2pt]
+4 & Bikeshare 17th \& Kalorama \\ \textcolor{brandmuted}{\footnotesize Capital Bikeshare station} & 7 min walk & \textcolor{brandmuted}{\footnotesize 17th St NW \& Kalorama Rd NW,  Washington} \\ \textit{Bikeshare} \\
+\addlinespace[2pt]
+5 & Bikeshare Columbia \& Ontario \\ \textcolor{brandmuted}{\footnotesize Capital Bikeshare station} & 8 min walk & \textcolor{brandmuted}{\footnotesize Columbia Rd NW \& Ontario Rd NW,  Washington} \\ 5.0★ (1+) \\ \textit{Bikeshare} \\
+\addlinespace[2pt]
+6 & It's Electric Charging Station \\ \textcolor{brandmuted}{\footnotesize EV charger} & 9 min walk & \textcolor{brandmuted}{\footnotesize 1640 Columbia Rd NW,  Washington} \\ \textit{EV charging} \\
+\addlinespace[2pt]
+7 & Bikeshare Columbia \& Belmont \\ \textcolor{brandmuted}{\footnotesize Capital Bikeshare station} & 13 min walk & \textcolor{brandmuted}{\footnotesize Columbia Rd NW \& Belmont Rd NW,  Washington} \\ 4.0★ (1+) \\ \textit{backup Bikeshare} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Culture \& attractions}
+\addcontentsline{toc}{subsection}{Culture \textbackslash{}\& attractions}
+
+\noindent\textit{3 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/culture-attractions.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & DC Arts Center \\ \textcolor{brandmuted}{\footnotesize cultural center or community space} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2438 18th St NW,  Washington} \\ 4.5★ (100+) · \textbackslash{}\$ \\ \textit{gallery, theater, performances} \\
+\addlinespace[2pt]
+2 & Mexican Cultural Institute \\ \textcolor{brandmuted}{\footnotesize cultural center or community space} & 12 min walk & \textcolor{brandmuted}{\footnotesize 2829 16th St NW,  Washington} \\ 4.8★ (250+) \\ \textit{murals, exhibits} \\
+\addlinespace[2pt]
+3 & Suns Cinema \\ \textcolor{brandmuted}{\footnotesize cinema / movie theater} & 14 min walk & \textcolor{brandmuted}{\footnotesize 3107 Mt Pleasant St NW,  Washington} \\ 4.7★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{cocktails, indie movies} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Tourism \& landmarks}
+\addcontentsline{toc}{subsection}{Tourism \textbackslash{}\& landmarks}
+
+\noindent\textit{3 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/tourism-landmarks.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & Cows on Bicycles Mural \\ \textcolor{brandmuted}{\footnotesize iconic neighborhood photo spots} & 1 min walk & \textcolor{brandmuted}{\footnotesize 2424 18th St NW,  Washington} \\ 4.6★ (15+) \\ \textit{public art} \\
+\addlinespace[2pt]
+2 & Duke Ellington Bridge \\ \textcolor{brandmuted}{\footnotesize monument} & 7 min walk & \textcolor{brandmuted}{\footnotesize Calvert St NW,  Washington} \\ \textit{art deco bridge over Rock Creek connecting Adams Morgan to Woodley Park} \\
+\addlinespace[2pt]
+3 & Mural of Presidents \\ \textcolor{brandmuted}{\footnotesize iconic neighborhood photo spots} & 7 min walk & \textcolor{brandmuted}{\footnotesize 1965 Calvert St NW,  Washington} \\ 5.0★ (2+) \\ \textit{presidents mural at Mama Ayesha's} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Family-friendly}
+\addcontentsline{toc}{subsection}{Family-friendly}
+
+\noindent\textit{4 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/family-friendly.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & Lanier Lullabies \\ \textcolor{brandmuted}{\footnotesize day care center} & 3 min walk & \textcolor{brandmuted}{\footnotesize 1844 Columbia Rd NW,  Washington} \\ 5.0★ (5+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{daycare} \\
+\addlinespace[2pt]
+2 & Marie Reed Playground \\ \textcolor{brandmuted}{\footnotesize playground} & 5 min walk & \textcolor{brandmuted}{\footnotesize 2200 Champlain St NW,  Washington} \\ 4.0★ (50+) \\ \textit{playground, soccer, splash play} \\
+\addlinespace[2pt]
+3 & Kalorama Park Playground \\ \textcolor{brandmuted}{\footnotesize playground} & 6 min walk & \textcolor{brandmuted}{\footnotesize 1875 Columbia Rd NW,  Washington} \\ 4.3★ (50+) \\ \textit{two playgrounds, basketball} \\
+\addlinespace[2pt]
+4 & MESAC Child Development Center \\ \textcolor{brandmuted}{\footnotesize day care center} & 8 min walk & \textcolor{brandmuted}{\footnotesize 1646 Columbia Rd NW,  Washington} \\ 5.0★ (25+) · \textbackslash{}\$\textbackslash{}\$\textbackslash{}\$ \\ \textit{daycare} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\subsection{Pet-friendly}
+\addcontentsline{toc}{subsection}{Pet-friendly}
+
+\noindent\textit{4 places within a 15-minute walk}
+
+\begin{center}
+\includegraphics[width=\linewidth]{maps/pet-friendly.pdf}
+\end{center}
+\vspace{0.5em}
+\renewcommand{\arraystretch}{1.3}
+{\footnotesize
+\begin{longtable}{@{}p{0.5cm}p{6.5cm}p{2.5cm}p{6.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Place} & \textbf{Walk} & \textbf{Notes} \\
+\midrule
+\endhead
+1 & Tails of the City Pet Care \\ \textcolor{brandmuted}{\footnotesize pet store / supplies} & 3 min walk & \textcolor{brandmuted}{\footnotesize 2300 18th St NW Box 21571,  Washington} \\ 4.6★ (20+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{dog walking, sitting} \\
+\addlinespace[2pt]
+2 & Adams Morgan Animal Hospital \\ \textcolor{brandmuted}{\footnotesize veterinarian} & 6 min walk & \textcolor{brandmuted}{\footnotesize 2112 18th St NW,  Washington} \\ 4.4★ (100+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{vet, dental, surgery} \\
+\addlinespace[2pt]
+3 & Banfield Pet Hospital \\ \textcolor{brandmuted}{\footnotesize veterinarian} & 7 min walk & \textcolor{brandmuted}{\footnotesize 1700 Columbia Rd NW,  Washington} \\ 3.6★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{vet, wellness plans} \\
+\addlinespace[2pt]
+4 & City Dogs 18th Street \\ \textcolor{brandmuted}{\footnotesize pet store / supplies} & 10 min walk & \textcolor{brandmuted}{\footnotesize 1832 18th St NW,  Washington} \\ 4.4★ (250+) · \textbackslash{}\$\textbackslash{}\$ \\ \textit{daycare, grooming} \\
+\bottomrule
+\end{longtable}
+}
+\clearpage
+
+\section{Get in touch}\label{sec:inquire}
+
+If this looks like your place, drop me a few lines about you and your move-in timeline. I usually reply the same day. Happy to do a quick video call before any in-person tour.
+
+\begin{tcolorbox}[
+  enhanced, colback=brandbg2, colframe=brandred, boxrule=0pt,
+  borderline west={3pt}{0pt}{brandred},
+  arc=2pt, left=14pt, right=14pt, top=10pt, bottom=10pt,
+]
+\textbf{Send a note via the website's inquiry form:}\\
+\href{https://YOUR-DOMAIN/inquire.html}{\texttt{inquire.html}} on the website
+\end{tcolorbox}
+
+\vspace{2em}
+\hfill\textit{\Large Yours, D}
+
+\end{document}
