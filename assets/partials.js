@@ -40,8 +40,37 @@
     </footer>
   `;
 
+  // ── Page-nav at the bottom of each page ─────────────────
+  const ALL_PAGES = [
+    { href: 'index.html',        label: 'Home',          desc: 'Why I built this site' },
+    { href: 'apartment.html',    label: 'The apartment', desc: 'Photos, layout, lease terms' },
+    { href: 'neighborhood.html', label: 'Neighborhood',  desc: 'Why I love living here' },
+    { href: 'explore.html',      label: 'The map',       desc: 'Every spot I actually use' },
+    { href: 'inquire.html',      label: 'Inquire',       desc: 'Send me a quick message' },
+  ];
+  const currentPage = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  const others = ALL_PAGES.filter(p => p.href.toLowerCase() !== currentPage);
+  const PAGE_NAV_HTML = `
+    <section class="page-nav-pane">
+      <div class="container">
+        <div class="page-nav-eyebrow">Keep going</div>
+        <div class="page-nav-grid">
+          ${others.map(p => `
+            <a class="page-nav-card" href="${p.href}">
+              <div class="page-nav-label">${p.label}</div>
+              <div class="page-nav-desc">${p.desc}</div>
+              <span class="page-nav-arrow">→</span>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+
   const navHost = document.querySelector('[data-partial="nav"]');
   const footerHost = document.querySelector('[data-partial="footer"]');
+  const pageNavHost = document.querySelector('[data-partial="page-nav"]');
   if (navHost) navHost.outerHTML = NAV_HTML;
+  if (pageNavHost) pageNavHost.outerHTML = PAGE_NAV_HTML;
   if (footerHost) footerHost.outerHTML = FOOTER_HTML;
 })();

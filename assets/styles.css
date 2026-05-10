@@ -120,6 +120,51 @@ h3 { font-size: 1.25rem; line-height: 1.25; }
   .nav-links a.nav-cta { padding: .35rem .8rem; font-size: .82rem; }
 }
 
+/* ── Page-nav pane (between page content and footer) ── */
+.page-nav-pane {
+  padding: 4rem 0 4rem;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.page-nav-eyebrow {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--primary); font-weight: 700; margin-bottom: 1.25rem;
+}
+.page-nav-grid {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.page-nav-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.4rem 1.5rem 1.5rem;
+  display: flex; flex-direction: column; gap: .35rem;
+  position: relative; overflow: hidden;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease;
+  text-decoration: none; color: inherit;
+  box-shadow: var(--shadow);
+}
+.page-nav-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+.page-nav-card .page-nav-label {
+  font-family: var(--serif); font-size: 1.25rem; color: var(--ink);
+}
+.page-nav-card .page-nav-desc {
+  font-size: .85rem; color: var(--muted); line-height: 1.45;
+}
+.page-nav-card .page-nav-arrow {
+  position: absolute; right: 1.25rem; top: 1.4rem;
+  color: var(--primary); font-size: 1.1rem;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1);
+}
+.page-nav-card:hover .page-nav-arrow { transform: translateX(4px); }
+@media (max-width: 540px) {
+  .page-nav-pane { padding: 3rem 0; }
+  .page-nav-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Footer ────────────────────────────────────────── */
 footer {
   padding: 3rem 0 2rem; border-top: 1px solid var(--line);

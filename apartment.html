@@ -49,6 +49,15 @@
 }
 .cat-title { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); }
 .cat-count { font-size: .82rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.cat-note {
+  background: rgba(193,75,47,.10);
+  border-left: 3px solid #c14b2f;
+  color: #c14b2f;
+  font-size: .9rem; font-weight: 500;
+  padding: .75rem 1rem; border-radius: 4px;
+  margin-bottom: 1rem; line-height: 1.5;
+}
+.cat-note strong { color: #8c2f1c; }
 /* Variable column counts based on photo count, set per-section via inline style */
 .cat-grid {
   display: grid; gap: .65rem;
@@ -404,6 +413,7 @@
   </div>
 </div>
 
+<div data-partial="page-nav"></div>
 <div data-partial="footer"></div>
 
 <!-- Lightbox -->
@@ -441,6 +451,7 @@ const GALLERY = [
   },
   {
     title: 'Bedroom (currently)',
+    note: '<strong>Heads up:</strong> the bedroom looks empty in these photos because I currently sleep on a Japanese futon I roll out at night and put away in the morning. <strong>Before I leave I\'ll bring in a proper bed</strong> (queen, frame and mattress, ready for you).',
     photos: [
       { src: 'Images/apt/20260509_223936625_iOS.jpg', alt: 'Bedroom currently empty with tatami mat and the cat. A proper bed will be in by move-in.' },
       { src: 'Images/apt/20260509_223933119_iOS.jpg', alt: 'Bedroom looking through the open barn doors, tatami visible' },
@@ -448,6 +459,7 @@ const GALLERY = [
   },
   {
     title: 'Bedroom (with bed, for reference)',
+    note: '<strong>For reference only:</strong> these MLS-style shots show how the bedroom looked before I moved in. They\'re here so you can picture the room with a queen bed in place. The bed I bring in before you arrive will not be these exact pieces but the layout will be similar.',
     photos: [
       { src: 'Images/apt/c9404eb434c1e056fbeba8cedf2a7c16-cc_ft_768.webp', alt: 'Bedroom with bed, paper-lantern light, before I moved in' },
       { src: 'Images/apt/c506424bd50142347b9bac4879e1ca61-cc_ft_384.webp', alt: 'Bedroom seen through sliding barn doors, before' },
@@ -510,6 +522,12 @@ const PHOTOS = GALLERY.flatMap(cat => cat.photos.map(p => p.src));
     head.className = 'cat-head';
     head.innerHTML = `<div class="cat-title">${cat.title}</div><div class="cat-count">${cat.photos.length} photo${cat.photos.length===1?'':'s'}</div>`;
     section.appendChild(head);
+    if (cat.note) {
+      const note = document.createElement('div');
+      note.className = 'cat-note';
+      note.innerHTML = cat.note;
+      section.appendChild(note);
+    }
     const grid = document.createElement('div');
     // Pick column count based on photo count, or use solo/floorplan layouts
     let extra = '';
